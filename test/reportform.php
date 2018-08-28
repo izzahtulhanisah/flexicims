@@ -300,7 +300,6 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 									<td>Type</td>
 									<td>Inventory Name</td>
 									<td>Inventory ID</td>
-									<td>Price</td>
 									<td>Quantity</td>
 									<td>Detail</td>
 									<td>Date</td>

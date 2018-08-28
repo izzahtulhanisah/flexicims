@@ -70,8 +70,14 @@ include "include/menu.php";
 	</div>
 	<div class="row">
 		<div class="col-12">
-				<a href="companyedit.php" class="btn btn-danger">Edit Company Profile</a>
-				<a href="setting.php" class="btn btn-success">Setting</a>
+		<?php
+		if($secpass>= 1){}else{
+		?>
+			<a href="companyedit.php" class="btn btn-danger">Edit Company Profile</a>
+		<?php
+		}
+		?>
+			<a href="setting.php" class="btn btn-success">Setting</a>
 		<!-- /.col-lg-12 -->
 		</div>
 	<!-- /.row -->
