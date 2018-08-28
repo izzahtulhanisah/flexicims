@@ -49,7 +49,7 @@ while($row = $result->fetch_assoc()){
 });
 
 	</script>
-	
+
 	<script>
 
 	$( document ).ready(function() {
@@ -82,12 +82,12 @@ while($row = $result->fetch_assoc()){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><center>INVENTORY CONTROLl</center></h3>
+                    <h3 class="page-header"><center>INVENTORY LIST</center></h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-lg-12"><p>View Products by <b>Locations:</b></p></div>
 					<form class="" action="" method="post">
 					<div class="col-lg-3">
@@ -107,8 +107,8 @@ while($row = $result->fetch_assoc()){
 
 							?>
 						</select>
-					</div>
-					<div class="col-lg-3">
+					</div> -->
+					<!-- <div class="col-lg-3">
 						<select class="form-control" id="select2" name="location2" >
 							<option disabled selected>Select Sub-Location..</option>
 							<?php
@@ -126,7 +126,7 @@ while($row = $result->fetch_assoc()){
 
 							?>
 						</select>
-					</div>
+					</div> -->
 					<!-- <div class="col-lg-3">
 						<select class="form-control" name="location" >
 							<option disabled selected>Select Location..</option>
@@ -145,14 +145,14 @@ while($row = $result->fetch_assoc()){
 							?>
 						</select>
 					</div> -->
-					<div class="col-lg-4">
+					<!-- <div class="col-lg-4">
 						<input type="submit" value="Confirm" name="send" class="btn btn-primary">
-					</div>
+					</div> -->
 					<!-- <div class="col-lg-1">
 						<span class="pull-left"><button class="btn btn-danger" onclick="window.location.href='home.php'">Back</button></span>
 					</div> -->
-				</form>
-			</div>
+				<!-- </form>
+			</div> -->
 <?php
 
 if(isset($_POST['send'])){
@@ -167,14 +167,13 @@ if(isset($_POST['send'])){
 }
 
 ?>
-			<br>
-			<br>
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <p>LIST OF ALL PRODUCTS
-														<button class="btn btn-success pull-right" onclick="window.location.href='inventoryadd.php'"><i class="fa fa-plus" style="font-size:12px"></i> New Item</button></p>
+														<button class="btn btn-success pull-right btn-sm" onclick="window.location.href='inventoryadd.php'"><i class="fa fa-plus" style="font-size:12px"></i> New Item</button></p>
                         </div>
 
                         <!-- /.panel-heading -->
@@ -201,7 +200,7 @@ if(isset($_POST['send'])){
 
 										include 'config.php';
 										$counter = 0;
-										
+
 										if($secpass == 2){
 											$select = "SELECT i.*,l.location FROM inventory as i INNER JOIN location as l ON l.location = i.location WHERE l.manager_id = '$logid' ORDER BY id DESC ";
 										}
@@ -211,7 +210,7 @@ if(isset($_POST['send'])){
 										else{
 											$select = "SELECT * FROM inventory ORDER BY id DESC ";
 										}
-										
+
 										$result = $conn->query($select);
 										while($row = $result->fetch_assoc()){
 											$id = $row["id"];
@@ -281,7 +280,7 @@ if(isset($_POST['send'])){
 												</td>
 
 												<td>
-												
+
 													<div class="dropdown pull-right">
 													<button class="btn btn-default dropdown-toggle btn-sm" type="button" data-toggle="dropdown"><i class="fa fa-list"></i></button>
 													  <ul class="dropdown-menu">
@@ -305,14 +304,14 @@ if(isset($_POST['send'])){
 													?>
 													  </ul>
 													</div>
-													
+
 
 													<div class="modal fade" id="outgoing<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 														<div class="modal-dialog">
 															<div class="modal-content">
 																<div class="modal-header">
 																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-																	<h4 class="modal-title" id="myModalLabel">Outgoing Form</h4>
+																	<h4 class="modal-title" id="myModalLabel"><center>Outgoing Form</center></h4>
 																</div>
 
 													<?php
@@ -320,18 +319,18 @@ if(isset($_POST['send'])){
 													date_default_timezone_set("Asia/Kuala_Lumpur");
 													$date=date("Y-m-d H:i:s");
 
-													$quanou = $quantity;
+													$quanout = $quantity;
 
 													if(isset($_POST['sendout'.$id.''])){
-																										
+
 													$id = $_POST['id'];
 													$qty = $_POST['qty'];
 													$transporter = $_POST['transporter'];
 													//$do = $_POST['do'];
 													$deliverto = $_POST['deliverto'];
 													$remark = $_POST['remark'];
-													
-													$select = "SELECT * FROM inventory WHERE id = $id ";						
+
+													$select = "SELECT * FROM inventory WHERE id = $id ";
 													$result = $conn->query($select);
 													while($row = $result->fetch_assoc()){
 														$quanout = $row["quantity"];
@@ -362,10 +361,10 @@ if(isset($_POST['send'])){
 
 													$res = $conn->query($query);
 
-													$queryout = "INSERT INTO record (type,name,inventory_id,price,quantity,detail,qr,branch,date,transporter,deliverto,remark,user) 
+													$queryout = "INSERT INTO record (type,name,inventory_id,price,quantity,detail,qr,branch,date,transporter,deliverto,remark,user)
 																VALUES ('$type','$name','$inventory_id','$price','$qty','Outgoing','$qr','$branch','$date','$transporter','$deliverto','$remark','$userid')";
 													$resout = $conn->query($queryout);
-														
+
 													if($res === TRUE){
 														echo "<script type = \"text/javascript\">
 															alert(\"Inventory Succesfully Deducted\");
@@ -385,15 +384,19 @@ if(isset($_POST['send'])){
 
 													<div class="modal-body">
 														<form action="" method="post">
-														<label></label>
-															<p>Quantity Left: <?php echo $quanou; ?></p>
-														<label>Quantity Out</label>
+														<!-- <label></label> -->
+															<p><center><i>Quantity Left: <?php echo $quanout; ?></i></center></p>
+															<!-- <br> -->
+														<label>Input Quantity</label>
 															<p><input class="form-control" name="qty" type="text" value=""></input></p>
-														<label>Transporter</label>
+															<br>
+														<label>Transporter / Tracking No</label>
 															<p><input class="form-control" name="transporter" type="text" ></input></p>
-														<label>Deliver To</label>
+															<br>
+														<label>Destination / Deliver To</label>
 															<p><input class="form-control" name="deliverto" type="text" ></input></p>
-														<label>Remark</label>
+															<br>
+														<label>Remark / Comment</label>
 														<p><input class="form-control" name="remark" type="text" ></input>
 														<input class="" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 														<input class="" name="name" type="hidden" value="<?php echo $name; ?>"></input>
@@ -407,7 +410,7 @@ if(isset($_POST['send'])){
 
 													<div class="modal-footer">
 														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-														<input type="submit" class="btn btn-success" name="sendout<?php echo $id; ?>" value="Submit" />
+														<input type="submit" class="btn btn-success" name="sendout" value="Submit" />
 														</form>
 													</div>
 													</div>
@@ -424,14 +427,14 @@ if(isset($_POST['send'])){
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel">Incoming Form</h4>
+															<h4 class="modal-title" id="myModalLabel"><center>Incoming Form</center></h4>
 														</div>
 															<?php
 
 															date_default_timezone_set("Asia/Kuala_Lumpur");
 															$date=date("Y-m-d H:i:s");
 
-															$selectin = "SELECT * FROM inventory WHERE id = $id ";						
+															$selectin = "SELECT * FROM inventory WHERE id = $id ";
 															$resultin = $conn->query($selectin);
 															while($rowin = $resultin->fetch_assoc()){
 																$quanin = $rowin["quantity"];
@@ -443,8 +446,8 @@ if(isset($_POST['send'])){
 															$qty = $_POST['qty'];
 															$supplier = $_POST['supplier'];
 															$remark = $_POST['remark'];
-															
-															$select1 = "SELECT * FROM inventory WHERE id = '$idd' ";						
+
+															$select1 = "SELECT * FROM inventory WHERE id = '$idd' ";
 															$result1 = $conn->query($select1);
 															while($row1 = $result1->fetch_assoc()){
 																$quanin = $row1["quantity"];
@@ -475,11 +478,11 @@ if(isset($_POST['send'])){
 
 															$res = $conn->query($query);
 
-															$queryin = "INSERT INTO record (type,name,inventory_id,price,quantity,detail,qr,branch,date,supplier,datereceive,remark,user) 
+															$queryin = "INSERT INTO record (type,name,inventory_id,price,quantity,detail,qr,branch,date,supplier,datereceive,remark,user)
 																		VALUES ('$type','$name','$inventory_id','$price','$qty','Incoming','$qr','$branch','$date','$supplier','$date','$remark','$userid')";
-																		
+
 															$resin = $conn->query($queryin);
-																
+
 															if($res === TRUE){
 																echo "<script type = \"text/javascript\">
 																	alert(\"Inventory Succesfully Added\");
@@ -495,23 +498,24 @@ if(isset($_POST['send'])){
 																}
 															}
 
-															?>	
+															?>
 
 
 														<div class="modal-body">
 															<form action="" method="post">
 
-															<label></label>
-															<p>Quantity Left: <?php echo $quanin; ?></p>
-																<p><input class="form-control" name="qty" type="text" value=""></input></p>
+															<!-- <label></label> -->
+															<center><p><i>Quantity Left: <?php echo $quanin; ?></i></p></center>
+															<label>Input Quantity</label>
+															<p><input class="form-control" name="qty" type="text" value=""></input></p>
 															<br>
-															<p>Supplier</p>
+															<label>Supplier Details</label>
 																<p><input class="form-control" name="supplier" type="text" value=""></input></p>
 															<br>
-															<p>Remark</p>
+															<label>Remark / Comment</label>
 																<p><input class="form-control" name="remark" type="text" value=""></input></p>
 															<br>
-																<p><input class="" name="idd" type="hidden" value="<?php echo $id; ?>"></input></p>
+																<p><input class="" name="id" type="hidden" value="<?php echo $id; ?>"></input></p>
 															<br>
 
 
@@ -519,7 +523,7 @@ if(isset($_POST['send'])){
 														<div class="modal-footer">
 															<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-															<input class="btn btn-success" type="submit" name="sendin<?php echo $id; ?>" value="Submit" />
+															<input class="btn btn-success" type="submit" name="send" value="Submit" />
 															</form>
 														</div>
 													</div>
@@ -535,18 +539,18 @@ if(isset($_POST['send'])){
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel">Edit Product Details</h4>
+															<h4 class="modal-title" id="myModalLabel"><center>Edit Product Details</center></h4>
 														</div>
 
 											<?php
 
 											if(isset($_POST['sendedit'.$id.''])){
-											
+
 											$idd = $_POST['idd'];
-											
+
 											$expired =strtotime($_POST['expireddate']);
-											
-											$select1 = "SELECT * FROM inventory WHERE id = '$idd' ";						
+
+											$select1 = "SELECT * FROM inventory WHERE id = '$idd' ";
 											$result1 = $conn->query($select1);
 											while($row1 = $result1->fetch_assoc()){
 												$location1 = $row1["location"];
@@ -554,8 +558,8 @@ if(isset($_POST['send'])){
 												$type1 = $row1["type"];
 
 												}
-												
-											
+
+
 											$name = $_POST['name'];
 											if($_POST['type'] == ''){
 												$type = $type1;
@@ -566,7 +570,7 @@ if(isset($_POST['send'])){
 											$inventory_id = $_POST['inventory_id'];
 											$price = $_POST['price'];
 											$quantity = $_POST['quantity'];
-											$qr="1";							
+											$qr="1";
 											$branch="1";
 											$date=date("Y-m-d H:i:s");
 											$critical=$_POST['critical'];
@@ -602,9 +606,9 @@ if(isset($_POST['send'])){
 											$res = $conn->query($query);
 
 											$queryin = "";
-														
+
 											$resin = $conn->query($queryin);
-												
+
 											if($res === TRUE){
 												echo "<script type = \"text/javascript\">
 													alert(\"Inventory Succesfully Edited\");
@@ -619,7 +623,7 @@ if(isset($_POST['send'])){
 													</script>";
 												}
 											}
-																											
+
 											?>
 
 											<div class="modal-body">
@@ -627,7 +631,7 @@ if(isset($_POST['send'])){
 
 											<label>Type</label>
 											<p><select class="form-control" name="type"></p>
-											<option disabled selected>Select Location..</option>
+											<option value="" selected='selected'><?php echo $type;?></option>
 											<?php
 
 											$selecttype = "SELECT * FROM type";
@@ -649,15 +653,15 @@ if(isset($_POST['send'])){
 										<label>Product ID</label>
 											<p><input class="form-control" name="inventory_id" type="text" value="<?php echo $inventory_id; ?>"></input></p>
 										<br>
-										<label>Price</label>
+										<!-- <label>Price</label>
 											<p><input class="form-control" name="price" type="text" value="<?php echo $price; ?>"></input>
-										<br>
+										<br> -->
 										<label>Quantity</label>
 											<p><input class="form-control" name="quantity" type="text" value="<?php echo $quantity; ?>"></input>
 										<br>
 										<label>Location</label>
 											<p><select class="form-control" name="location" id="select3">
-											<option disabled selected>Select Location..</option>
+											<option value="" selected='selected'><?php echo $location;?></option>
 											<?php
 
 											$selectloc = "SELECT * FROM location";
@@ -674,7 +678,7 @@ if(isset($_POST['send'])){
 										<br>
 										<label>Sub-Location</label>
 											<p><select class="form-control" name="sublocation" id="select4">
-											<option disabled selected>Select Location..</option>
+											<option value="" selected='selected'><?php echo $location2;?></option>
 											<?php
 
 											$selectloc = "SELECT * FROM sublocation";
@@ -709,7 +713,7 @@ if(isset($_POST['send'])){
 											<div class="modal-footer">
 												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-												<input type="submit" class="btn btn-primary" name="sendedit<?php echo $id; ?>" value="Enter" />
+												<input type="submit" class="btn btn-success" name="sendedit<?php echo $id; ?>" value="Save Changes" />
 												</form>
 											</div>
 
