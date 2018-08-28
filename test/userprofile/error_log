@@ -1,0 +1,4 @@
+[06-Mar-2018 02:17:11 UTC] PHP Notice:  Undefined index: user_admin in /home/washvill/wvtest.appcili.com/admin/userprofile/index.php on line 6
+[06-Mar-2018 02:17:11 UTC] PHP Notice:  Undefined index: userlevel in /home/washvill/wvtest.appcili.com/admin/userprofile/index.php on line 7
+[06-Mar-2018 02:17:11 UTC] PHP Notice:  Undefined index: userlevel in /home/washvill/wvtest.appcili.com/admin/userprofile/include/body1.php on line 2
+[06-Mar-2018 02:17:11 UTC] PHP Notice:  Undefined variable: comname in /home/washvill/wvtest.appcili.com/admin/userprofile/include/body1.php on line 20
