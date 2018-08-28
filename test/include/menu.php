@@ -10,7 +10,6 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.php" style="color:black; font-size:30px;">FLEXI<b><i>CIMS</i></b></a>
-
             </div>
             <!-- /.navbar-header -->
 
@@ -20,27 +19,10 @@
                        Hi! <?php echo $username; ?><i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-					<?php
-
-					if($secpass>= 1){
-
-					?>
 						<li><a href="profile.php""><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
-					<?php
-
-					}else{
-
-					?>
-                        <li><a href="userprofile.php"><i class="fa fa-user fa-fw"></i> User Profile</a>
+						<li><a href="setting.php"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
-					<?php
-
-					}
-
-					?>
-						<!-- <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li> -->
                         <li class="divider"></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
@@ -99,10 +81,15 @@
                         <li>
                             <a href="report.php"><i class="fa fa-folder-open"></i> Report</a>
                         </li>
+						<?php
+
+						if($secpass>= 1){}else{
+						?>
                         <li>
                             <a href="userprofile.php"><i class="fa fa-users"></i> Users</a>
                         </li>
 						<?php
+						}
 						}
 						}
 						?>

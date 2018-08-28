@@ -59,6 +59,8 @@ include "include/menu.php";
 			$position = $row["position"];
 			$user = $row["username"];
 			$password = $row["password"];
+			$question1 = $row["question1"];
+			$question2 = $row["question2"];
 		}
 		?>
 		
