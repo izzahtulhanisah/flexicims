@@ -8,7 +8,7 @@ include 'config.php';
 $username=$_SESSION['username'];
 
 
-$select = "SELECT * FROM login WHERE username = '$username' ";						
+$select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$userid = $row["id"];
@@ -19,7 +19,7 @@ while($row = $result->fetch_assoc()){
 if(isset($_POST['send'])){
 
 	$question1 = $_POST['question1'];
-	$question1 = $_POST['question2'];
+	$question2 = $_POST['question2'];
 	$loginid = $_POST['loginid'];
 
 	$query = "UPDATE login SET question1='$question1', question2='$question2' WHERE id='$loginid'";

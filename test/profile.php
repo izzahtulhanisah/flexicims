@@ -8,7 +8,7 @@ include 'config.php';
 $username=$_SESSION['username'];
 
 
-$select = "SELECT * FROM login WHERE username = '$username' ";						
+$select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$userid = $row["id"];
@@ -41,7 +41,7 @@ include "include/menu.php";
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header"><center>INVENTORY CONTROL</center></h3>
+			<!-- <h3 class="page-header"><center>INVENTORY CONTROL</center></h3> -->
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -63,23 +63,31 @@ include "include/menu.php";
 			$question2 = $row["question2"];
 		}
 		?>
-		
+
+
+  <h3>User Profile Details</h3>
+  <div class="panel panel-info" style="width: 500px">
+    <div class="panel-heading">Personal Information</div>
+    <div class="panel-body">
+
 			<p>Name: <strong><?php echo $name; ?></strong></p>
 			<p>Address: <strong><?php echo $address; ?></strong></p>
 			<p>Email: <strong><?php echo $email; ?></strong></p>
 			<p>Contact Number: <strong><?php echo $contact; ?></strong></p>
 			<p>Position: <strong><?php echo $position; ?></strong></p>
 			<p>Username: <strong><?php echo $user; ?></strong></p>
-			<p>Password: <strong><?php echo $password; ?></strong></p>
+			<!-- <p>Password: <strong><?php echo $password; ?></strong></p> -->
 			<p>Question 1: <strong><?php echo $question1; ?></strong></p>
 			<p>Question 2: <strong><?php echo $question2; ?></strong></p>
-		
+
+			</div>
+	  </div>
 	</div>
 	<div class="row">
 		<div class="col-12">
-				<a href="editprofile.php" class="btn btn-danger">Edit Your Profile</a>
-				<a href="question.php" class="btn btn-danger">Edit Your Question</a>
-				<a href="password.php" class="btn btn-primary">Edit Your Password</a>
+				<a href="editprofile.php" class="btn btn-success">Edit Profile</a>
+				<a href="question.php" class="btn btn-primary">Edit Secret Questions</a>
+				<a href="password.php" class="btn btn-danger">Edit Password</a>
 		<!-- /.col-lg-12 -->
 		</div>
 	<!-- /.row -->

@@ -410,7 +410,7 @@ if(isset($_POST['send'])){
 
 													<div class="modal-footer">
 														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-														<input type="submit" class="btn btn-success" name="sendout" value="Submit" />
+														<input type="submit" class="btn btn-success" name="sendout<?php echo $id; ?>" value="Submit" />
 														</form>
 													</div>
 													</div>
@@ -515,7 +515,7 @@ if(isset($_POST['send'])){
 															<label>Remark / Comment</label>
 																<p><input class="form-control" name="remark" type="text" value=""></input></p>
 															<br>
-																<p><input class="" name="id" type="hidden" value="<?php echo $id; ?>"></input></p>
+																<p><input class="" name="idd" type="hidden" value="<?php echo $id; ?>"></input></p>
 															<br>
 
 
@@ -523,7 +523,7 @@ if(isset($_POST['send'])){
 														<div class="modal-footer">
 															<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-															<input class="btn btn-success" type="submit" name="send" value="Submit" />
+															<input class="btn btn-success" type="submit" name="sendin<?php echo $id; ?>" value="Submit" />
 															</form>
 														</div>
 													</div>

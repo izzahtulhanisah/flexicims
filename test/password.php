@@ -8,7 +8,7 @@ include 'config.php';
 $username=$_SESSION['username'];
 
 
-$select = "SELECT * FROM login WHERE username = '$username' ";						
+$select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$userid = $row["id"];
@@ -17,17 +17,17 @@ while($row = $result->fetch_assoc()){
 }
 
 if(isset($_POST['send'])){
-			
+
 	$password1 = $_POST['password1'];
 	$password2 = $_POST['password2'];
 	$username = $_POST['username'];
-	
+
 	if($password1 === $password2){
-			
+
 		$query = "UPDATE login SET password='$password1' WHERE  username='$username'  ";
 
 		$res = $conn->query($query);
-		
+
 		if($res === TRUE){
 			echo "<script type = \"text/javascript\">
 				alert(\"Password Succesfully Edited\");
@@ -83,13 +83,19 @@ include "include/menu.php";
 	<div class="row">
 		<div class="col-lg-12">
 			<form method="post" action="">
-				<label><b>New Password<b></label>
-				<input class="form-control" type="text" name="password1">
-				<br>
-				<label><b>Confirm Password<b></label>
-				<input class="form-control" type="text" name="password2">
-				<input class="form-control" type="hidden" name="username" value="<?php echo $username; ?>">
-				<input class="btn btn-success" type="submit" name="send" value="Submit">
+				<center><div class="panel panel-danger" style="width: 500px">
+    			<div class="panel-heading">Change Password</div>
+    				<div class="panel-body">
+							<label><b>New Password<b></label>
+							<input class="form-control" type="password" name="password1">
+							<br>
+							<label><b>Confirm Password<b></label>
+							<input class="form-control" type="password" name="password2">
+							<input class="form-control" type="hidden" name="username" value="<?php echo $username; ?>">
+						</div>
+				</div></center>
+				<center><input class="btn btn-success" type="submit" name="send" value="Submit"><br></center>
+
 			</form>
 		</div>
 	</div>
