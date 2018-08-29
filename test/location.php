@@ -42,8 +42,9 @@ if(isset($_POST['updatemain'])){
 $idd = $_POST['id'];
 $location = $_POST['location'];
 $locationbase = $_POST['locationbase'];
+$managerid = $_POST['managerid'];
 
-$query = "UPDATE location SET location = '$location' WHERE id='$idd'";
+$query = "UPDATE location SET location = '$location', manager_id = '$managerid' WHERE id='$idd'";
 $res = $conn->query($query);
 
 $query1 = "UPDATE sublocation SET location = '$location' WHERE location='$locationbase'";
@@ -209,12 +210,45 @@ else {
 												while($row1 = $result1->fetch_assoc()){
 													$id = $row1["id"];
 													$location = $row1["location"];
+													$managerid = $row1["manager_id"];
+													
 												}
 												?>
 												<div class="modal-body">
 													<form action="" method="post">
 														<label>Location</label>
 														<input class="form-control" name="location" type="text" value="<?php echo $location; ?>"></input>
+														<?php
+														if($secpass <= 1){
+															
+															$selectus = "SELECT * FROM login WHERE id='$managerid'";
+															$resultus = $conn->query($selectus);
+															while($rowus = $resultus->fetch_assoc()){
+
+																$user = $rowus["username"];
+															}
+														
+														?>
+														<label>Manager Responsible</label>
+														<select class="form-control" name="managerid">
+														<option value="" disabled selected><?php echo $user;?> (current leader)</option>
+														<?php
+
+														$selectloc = "SELECT * FROM login WHERE secpass='2'";
+														$resultloc = $conn->query($selectloc);
+														while($rowloc = $resultloc->fetch_assoc()){
+															$manager = $rowloc["username"];
+															$idmanager = $rowloc["id"];
+
+														echo "<option value='". $idmanager ."'>". $manager ."</option>";
+
+														}
+
+														?>
+														</select>
+														<?php
+														}elseif($secpass >= 2){}else{}
+														?>
 														<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 														<input class="form-control" name="locationbase" type="hidden" value="<?php echo $location; ?>"></input>
 														<br>

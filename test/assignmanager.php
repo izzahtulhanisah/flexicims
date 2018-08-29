@@ -131,15 +131,16 @@ while($row = $result->fetch_assoc()){
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Assign Staff</h4>
+				<h4 class="modal-title" id="myModalLabel">Assign Location</h4>
 			</div>
 			<?php
 
 			if(isset($_POST['assign'.$id.''])){
 				
 				$assign = $_POST['assign']; 
+				$idd = $_POST['idd'];
 				
-				$query = "UPDATE login SET lead_id='$assign' WHERE  id='$idd'  ";
+				$query = "UPDATE location SET managerid='$assign' WHERE  id='$idd'  ";
 				
 				$res = $conn->query($query);
 				
@@ -148,12 +149,9 @@ while($row = $result->fetch_assoc()){
 			?>
 			<div class="modal-body">
 				<form method="post" action="">
-				<?php	
-				if($secpass <= 1){
-				?>
-				<p><strong>Pick manager for this user</strong></p>
+				<p><strong>Pick location for this manager</strong></p>
 				<select class="form-control" name="location">
-				<option value="" disabled selected><?php echo $namee;?> (current leader)</option>
+				<option value="" disabled selected><?php echo $namee;?> (current location)</option>
 				<?php
 
 				$selectloc = "SELECT * FROM login WHERE secpass='2'";
@@ -167,14 +165,6 @@ while($row = $result->fetch_assoc()){
 
 				?>
 				</select>	
-				<?php
-				}else{
-				?>
-				<p><strong>Are you sure you want to assign this staff under your management?</strong></p>
-				<input type="hidden" name="assign" value="<?php echo $userid ?>">
-				<?php
-				}
-				?>
 				<input type="hidden" name="idd" value="<?php echo $id ?>">
 			</div>
 			<div class="modal-footer">
@@ -193,7 +183,7 @@ while($row = $result->fetch_assoc()){
 							?>
 						</table>
 					</div>
-                    <a href="userprofile.php"><button type="button" class="btn btn-bg-grey">Back</button></a>
+                    <a href="setting.php"><button type="button" class="btn btn-bg-grey">Back</button></a>
 					<a href="staffadd.php"><button type="button" class="btn btn-primary">Add User</button></a>
 
 				</div>
