@@ -43,6 +43,7 @@ include 'include/menu.php';
 			<div class="col-12">
 				<center>
 					<a href="admin.php" class="btn btn-danger">Admin</a>
+					<a href="director.php" class="btn btn-warning">Director</a>
 					<a href="manager.php" class="btn btn-primary">Manager</a>
 					<a href="staff.php" class="btn btn-success">Staff</a>
 				</center>

@@ -11,7 +11,7 @@ $username=$_SESSION['username'];
 $select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
-	$id = $row["id"];
+	$loginid = $row["id"];
 	$username = $row["username"];
 	$secpass = $row["secpass"];
 }
@@ -61,7 +61,7 @@ while($row = $result->fetch_assoc()){
 								</tr>
 							</thead>
 							<?php
-							$select1 = "SELECT * FROM login WHERE secpass='1'";
+							$select1 = "SELECT * FROM login WHERE secpass='2'";
 							$result1 = $conn->query($select1);
 							while($row1 = $result1->fetch_assoc()){
 							    $id = $row1["id"];
@@ -87,14 +87,14 @@ while($row = $result->fetch_assoc()){
 			</div>
 			<?php
 
-			$select = "SELECT * FROM profile WHERE loginid='$id'";
-			$result = $conn->query($select);
-			while($row = $result->fetch_assoc()){
-				$name = $row["name"];
-				$address = $row["address"];
-				$email = $row["email"];
-				$contact = $row["contact"];
-				$position = $row["position"];
+			$selectmo = "SELECT * FROM profile WHERE loginid='$id'";
+			$resultmo = $conn->query($selectmo);
+			while($rowmo = $resultmo->fetch_assoc()){
+				$name = $rowmo["name"];
+				$address = $rowmo["address"];
+				$email = $rowmo["email"];
+				$contact = $rowmo["contact"];
+				$position = $rowmo["position"];
 			}
 			?>
 			<div class="modal-body">
@@ -118,7 +118,7 @@ while($row = $result->fetch_assoc()){
 							?>
 						</table>
 					</div>
-                    <a href="javascript: window.history.go(-1)"><button type="button" class="btn btn-bg-grey">Back</button></a>
+                    <a href="userprofile.php"><button type="button" class="btn btn-bg-grey">Back</button></a>
 					<a href="manageradd.php"><button type="button" class="btn btn-primary">Add User</button></a>
 
 				</div>

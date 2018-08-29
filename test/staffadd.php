@@ -121,7 +121,7 @@ else {
 <br>
 <input type="hidden" class="btn btn-primary" name="loginid" value="" />
 <input type="submit" class="btn btn-primary" name="send" value="Enter" />
-<button class="btn btn-danger" onclick="window.location.href='home.php'">Back</button>
+<button class="btn btn-danger" type="button" onclick="window.location.href='home.php'">Back</button>
 <br><br>
 </form>
 

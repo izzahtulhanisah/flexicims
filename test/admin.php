@@ -115,7 +115,7 @@ while($row = $result->fetch_assoc()){
 							?>
 						</table>
 					</div>
-                    <a href="javascript: window.history.go(-1)"><button type="button" class="btn btn-bg-grey">Back</button></a>
+                    <a href="userprofile.php"><button type="button" class="btn btn-bg-grey">Back</button></a>
                     <a href="adminadd.php"><button type="button" class="btn btn-primary">Add User</button></a>
 				</div>
 			</div>
