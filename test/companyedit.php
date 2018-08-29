@@ -18,35 +18,28 @@ while($row = $result->fetch_assoc()){
 
 if(isset($_POST['send'])){
 
-	$name = $_POST['name'];
-	$address = $_POST['address'];
-	$email = $_POST['email'];
-	$contact = $_POST['contact'];
-	$position = $_POST['position'];
-	$loginid = $_POST['loginid'];
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	$question1 = $_POST['question1'];
-	$question2 = $_POST['question2'];
+	$id = $_POST["id"];
+	$comname = $_POST["comname"];
+	$comaddress = $_POST["comaddress"];
+	$comemail = $_POST["comemail"];
+	$comcontact = $_POST["comcontact"];
+	$comwebsite = $_POST["comwebsite"];
 
 
-	$query = "UPDATE profile SET name = '$name', address='$address', email='$email', contact='$contact', position='$position' WHERE loginid='$loginid'";
-	$res = $conn->query($query);
-
-	$query = "UPDATE login SET username = '$username', password='$password', question1='$question1', question2='$question2' WHERE id='$loginid'";
+	$query = "UPDATE company SET comname = '$comname', comaddress='$comaddress', comemail='$comemail', comcontact='$comcontact', comwebsite='$comwebsite' WHERE id='$id'";
 	$res = $conn->query($query);
 
 	if($res === TRUE){
 		echo "<script type = \"text/javascript\">
-			alert(\"Profile Succesfully Edit\");
-			window.location = (\"profile.php\")
+			alert(\"Company Succesfully Edit\");
+			window.location = (\"companyedit.php\")
 			</script>";
 		}
 
 	else {
 		echo "<script type = \"text/javascript\">
-			alert(\"Profile Not Succesfully Edit\");
-			window.location = (\"profile.php\")
+			alert(\"Company Not Succesfully Edit\");
+			window.location = (\"companyedit.php\")
 			</script>";
 		}
 }
@@ -97,19 +90,20 @@ include "include/menu.php";
 		?>
 		<form action="" method="post">
 			<label>Company Name</label>
-			<input class="form-control" name="name" type="text" value="<?php echo $comname; ?>"></input>
+			<input class="form-control" name="comname" type="text" value="<?php echo $comname; ?>"></input>
 			<br>
 			<label>Company Address</label>
-			<input class="form-control" name="address" type="text" value="<?php echo $comaddress; ?>"></input>
+			<input class="form-control" name="comaddress" type="text" value="<?php echo $comaddress; ?>"></input>
 			<br>
 			<label>Email</label>
-			<input class="form-control" name="email" type="text" value="<?php echo $comemail; ?>"></input>
+			<input class="form-control" name="comemail" type="text" value="<?php echo $comemail; ?>"></input>
 			<br>
 			<label>Company Contact</label>
-			<input class="form-control" name="contact" type="text" value="<?php echo $comcontact; ?>"></input>
+			<input class="form-control" name="comcontact" type="text" value="<?php echo $comcontact; ?>"></input>
 			<br>
 			<label>Company Website</label>
-			<input class="form-control" name="contact" type="text" value="<?php echo $comcontact; ?>"></input>
+			<input class="form-control" name="comwebsite" type="text" value="<?php echo $comcontact; ?>"></input>
+			<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 			<br>
 			<input type="submit" class="btn btn-success" name="send" value="Submit" />
 			<button class="btn btn-bg-grey" type="button" onclick="window.location.href='companyprofile.php'">Back</button>
