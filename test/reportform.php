@@ -16,25 +16,6 @@ while($row = $result->fetch_assoc()){
 	$secpass = $row["secpass"];
 }
 
-if($secpass === '0'){
-	$admin=$_SESSION['username'];
-}
-else if($secpass === '1'){
-	$manager=$_SESSION['username'];
-}
-else if($secpass === '2'){
-	$storekeeper=$_SESSION['username'];
-}
-else if($secpass === '2'){
-	$staff=$_SESSION['username'];
-}
-
-else if($secpass === '3'){
-	$slave=$_SESSION['username'];
-}
-	
-
-
 ?>
 
 <!DOCTYPE html>
@@ -120,6 +101,21 @@ $mysqldate1 = date('Y-m-d H:i:s', $selected_date1);
 $mysqldatee1 = date('d M Y', $selected_date1);
 $todate = $mysqldate1;
 $todate1 = $mysqldatee1;
+
+$activity = $_POST['activity'];
+
+if($_POST['location'] != ""){
+	$location = "AND location = '". $_POST['location']."'";
+}else{
+	$location = "";
+}
+
+if($_POST['sublocation'] != ""){
+	$sublocation = "AND sublocation = '". $_POST['sublocation']."'";
+}else{
+	$sublocation = "";
+}
+
 ?>
 
 <head>
@@ -283,6 +279,9 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 				<br><br>
 			</div>
 			<center><div id="barchart_material" style="width: 500px; height: 400px;"></div></center>
+			<?php
+			if($activity == 'Incoming'){
+			?>
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel-heading">
@@ -309,9 +308,23 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							<?php
 
 							include 'config.php';
+							
+							if($_POST['location'] != ""){
+								$location = "AND location = '". $_POST['location']."'";
+							}else{
+								$location = "";
+							}
+
+							if($_POST['sublocation'] != ""){
+								$sublocation = "AND sublocation = '". $_POST['sublocation']."'";
+							}else{
+								$sublocation = "";
+							}
+							
 							$counter = 0;
 
-							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' AND detail='Incoming' ORDER BY detail DESC";						
+							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." AND detail='Incoming' ORDER BY detail DESC ";
+							
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
@@ -347,12 +360,16 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 				</div>
 			</div>
 			<footer></footer>
+			<?php
+			}
+			elseif($activity == 'Outgoing'){
+			?>
 			<div class="row">
-					<div class="col-lg-12">
-						<div class="panel-heading">
-							Record Of Outgoing Stock:
-						</div>
+				<div class="col-lg-12">
+					<div class="panel-heading">
+						Record Of Outgoing Stock:
 					</div>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
@@ -374,8 +391,20 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 
 							include 'config.php';
 							$counter = 0;
+							
+							if($_POST['location'] != ""){
+								$location = "AND location = '". $_POST['location']."'";
+							}else{
+								$location = "";
+							}
 
-							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' AND detail='Outgoing' ORDER BY detail DESC ";						
+							if($_POST['sublocation'] != ""){
+								$sublocation = "AND sublocation = '". $_POST['sublocation']."'";
+							}else{
+								$sublocation = "";
+							}
+
+							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." AND detail='Outgoing' ORDER BY detail DESC ";	
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
@@ -410,7 +439,90 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 					</div>
 				</div>
 			</div>
-		<footer></footer>
+			<footer></footer>
+			<?php
+			}
+			elseif($activity == 'All'){
+			?>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel-heading">
+						Record Of All Stock:
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="table-responsive">
+						<table width="100%" class="table table-striped table-bordered table-hover table-sm" id="table">
+							<thead>
+								<tr class="success">
+									<td>No.</td>
+									<td>Type</td>
+									<td>Inventory Name</td>
+									<td>Inventory ID</td>
+									<td>Quantity</td>
+									<td>Detail</td>
+									<td>Date</td>
+									<td>User</td>
+								</tr>
+							</thead>
+							<?php
+
+							include 'config.php';
+							$counter = 0;
+							
+							if($_POST['location'] != ""){
+								$location = "AND location = '". $_POST['location']."'";
+							}else{
+								$location = "";
+							}
+
+							if($_POST['sublocation'] != ""){
+								$sublocation = "AND sublocation = '". $_POST['sublocation']."'";
+							}else{
+								$sublocation = "";
+							}
+
+							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." AND 1 ORDER BY detail DESC ";
+							$result = $conn->query($select);
+							while($row = $result->fetch_assoc()){
+								$id = $row["id"];
+								$type = $row["type"];
+								$name = $row["name"];
+								$inventory_id = $row["inventory_id"];
+								$price = $row["price"];
+								$quantity = $row["quantity"];
+								$detail = $row["detail"];
+								$qr = $row["qr"];
+								$branch = $row["branch"];
+								$date = $row["date"];
+								$username = $row["username"];
+								
+								$counter++;
+
+							?>
+								<tr>
+									<td><?php echo $counter; ?></td>
+									<td><?php echo $type; ?></td>
+									<td><?php echo $name; ?></td>
+									<td><?php echo $inventory_id; ?></td>
+									<td><?php echo $quantity; ?></td>
+									<td><?php echo $detail; ?></td>
+									<td><?php echo $date; ?></td>
+									<td><?php echo $username; ?></td>
+								</tr>
+							<?php
+							}
+							?>
+						</table>
+					</div>
+				</div>
+			</div>
+			<footer></footer>
+			<?php
+			}
+			?>
 	</div>
 <!-- /.container-fluid -->
 </div>
