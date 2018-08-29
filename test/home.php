@@ -12,6 +12,7 @@ $select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$logid = $row["id"];
+	$userid = $row["id"];
 	$secpass = $row["secpass"];
 	$leadid = $row["lead_id"];
 }
@@ -93,7 +94,7 @@ while($row = $result->fetch_assoc()){
 					<div class="col-lg-3">
 						<select class="form-control" id="select1" name="location" >
 							<option disabled selected>Select Location..</option>
-							<?php
+							<php
 
 							$selectloc = "SELECT * FROM location";
 							$resultloc = $conn->query($selectloc);
@@ -111,7 +112,7 @@ while($row = $result->fetch_assoc()){
 					<!-- <div class="col-lg-3">
 						<select class="form-control" id="select2" name="location2" >
 							<option disabled selected>Select Sub-Location..</option>
-							<?php
+							<php
 
 							$selectloc2 = "SELECT location,location2 FROM inventory GROUP BY location,location2";
 							$resultloc2 = $conn->query($selectloc2);
@@ -130,7 +131,7 @@ while($row = $result->fetch_assoc()){
 					<!-- <div class="col-lg-3">
 						<select class="form-control" name="location" >
 							<option disabled selected>Select Location..</option>
-							<?php
+							<php
 
 							//$selectloc = "SELECT * FROM location";
 							//$resultloc = $conn->query($selectloc);
@@ -340,6 +341,8 @@ if(isset($_POST['send'])){
 														$price = $row["price"];
 														$qr = $row["qr"];
 														$branch = $row["branch"];
+														$location = $row["location"];
+														$sublocation = $row["location2"];
 
 														}
 
@@ -361,8 +364,8 @@ if(isset($_POST['send'])){
 
 													$res = $conn->query($query);
 
-													$queryout = "INSERT INTO record (type,name,inventory_id,price,quantity,detail,qr,branch,date,transporter,deliverto,remark,user)
-																VALUES ('$type','$name','$inventory_id','$price','$qty','Outgoing','$qr','$branch','$date','$transporter','$deliverto','$remark','$userid')";
+													$queryout = "INSERT INTO record (type,name,inventory_id,price,quantity,detail,location,sublocation,qr,branch,date,transporter,deliverto,remark,user)
+																VALUES ('$type','$name','$inventory_id','$price','$qty','Outgoing','$location','$sublocation','$qr','$branch','$date','$transporter','$deliverto','$remark','$userid')";
 													$resout = $conn->query($queryout);
 
 													if($res === TRUE){
@@ -457,6 +460,8 @@ if(isset($_POST['send'])){
 																$price = $row1["price"];
 																$qr = $row1["qr"];
 																$branch = $row1["branch"];
+																$location = $row["location"];
+																$sublocation = $row["location2"];
 
 																}
 
@@ -478,7 +483,7 @@ if(isset($_POST['send'])){
 
 															$res = $conn->query($query);
 
-															$queryin = "INSERT INTO record (type,name,inventory_id,price,quantity,detail,qr,branch,date,supplier,datereceive,remark,user)
+															$queryin = "INSERT INTO record (type,name,inventory_id,price,quantity,detail,location,sublocation,qr,branch,date,supplier,datereceive,remark,user)
 																		VALUES ('$type','$name','$inventory_id','$price','$qty','Incoming','$qr','$branch','$date','$supplier','$date','$remark','$userid')";
 
 															$resin = $conn->query($queryin);
@@ -522,7 +527,6 @@ if(isset($_POST['send'])){
 														</div>
 														<div class="modal-footer">
 															<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
 															<input class="btn btn-success" type="submit" name="sendin<?php echo $id; ?>" value="Submit" />
 															</form>
 														</div>
