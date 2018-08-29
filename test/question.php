@@ -27,14 +27,14 @@ if(isset($_POST['send'])){
 
 	if($res === TRUE){
 		echo "<script type = \"text/javascript\">
-			alert(\"Question Succesfully Edit\");
+			alert(\"Successfully Edited Answers\");
 			window.location = (\"profile.php\")
 			</script>";
 		}
 
 	else {
 		echo "<script type = \"text/javascript\">
-			alert(\"Question Not Succesfully Edit\");
+			alert(\"Failed to Edit Answers\");
 			window.location = (\"profile.php\")
 			</script>";
 		}
@@ -65,7 +65,7 @@ include "include/menu.php";
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header"><center>PROFILE</center></h3>
+			<h3 class="page-header">EDIT SECRET ANSWERS</h3>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -88,20 +88,28 @@ include "include/menu.php";
 			$question2 = $row["question2"];
 		}
 		?>
-		<form action="" method="post">
-			<label>Question 1</label>
-			<input class="form-control" name="question1" type="text" value="<?php echo $question1; ?>"></input>
-			<br>
-			<label>Question 2</label>
-			<input class="form-control" name="question2" type="text" value="<?php echo $question2; ?>"></input>
-			<br>
-			<input type="hidden" class="btn btn-primary" name="loginid" value="<?php echo $loginid; ?>" />
-			<input type="submit" class="btn btn-success" name="send" value="Submit" />
-			<button class="btn btn-bg-grey" type="button" onclick="window.location.href='index.php'">Back</button>
-			<br><br>
-		</form>
+
+		<div class="container">
+		  <div class="panel panel-primary" style="width: 500px">
+		    <div class="panel-heading">Edit Answers of Secret Questions</div>
+		    <div class="panel-body">
+						<form action="" method="post">
+							<label>In what city were you born?</label>
+							<input class="form-control" name="question1" type="text" value="<?php echo $question1; ?>"></input>
+							<br>
+							<label>What is your favorite movie?</label>
+							<input class="form-control" name="question2" type="text" value="<?php echo $question2; ?>"></input>
+							<br>
+							<input type="hidden" class="btn btn-primary" name="loginid" value="<?php echo $loginid; ?>" />
+							<button class="btn btn-bg-grey" type="button" onclick="window.location.href='profile.php'">Back</button>
+							<input type="submit" class="btn btn-success pull-right" name="send" value="Submit" />
+							<br><br>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
 
 
 <?php

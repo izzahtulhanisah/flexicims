@@ -23,41 +23,41 @@ include 'config.php';
 	<section>
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Forgot Password</h1>
+				<h1 class="page-header">FORGOT PASSWORD</h1>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
 		<?php
-			
+
 		if(isset($_POST['forgot1'])){
-			
+
 			$username = $_POST['username'];
-			
+
 			$select = "SELECT * FROM login WHERE username= '$username' ";
 			$result = $conn->query($select);
 			while($row = $result->fetch_assoc()){
 				$question1 = $row["question1"];
 			}
-			
+
 		?>
 			<div class="row">
 				<div class="col-lg-12">
 					<form method="post" action="">
-						<label><b>What's your mother's name <?php echo $username; ?><b></label>
+						<label><b>In what city were you born? <?php echo $username; ?><b></label>
 						<input class="form-control" type="text" name="question1">
 						<input class="form-control" type="hidden" name="username" value="<?php echo $username; ?>">
 						<input class="btn btn-success" type="submit" name="forgot2" value="Submit">
 					</form>
 				</div>
 			</div>
-		<?php	
-		
+		<?php
+
 		}
 		elseif(isset($_POST['forgot2'])){
-		
+
 			$question1 = $_POST['question1'];
 			$username = $_POST['username'];
-			
+
 			$select = "SELECT * FROM login WHERE username= '$username' ";
 			$result = $conn->query($select);
 			while($row = $result->fetch_assoc()){
@@ -67,28 +67,29 @@ include 'config.php';
 			<div class="row">
 				<div class="col-lg-12">
 					<form method="post" action="">
-						<label><b>What's your favourite movie? <?php echo $username; ?> | <?php echo $question1; ?><b></label>
+						<label><b>What is your favorite movie? <?php echo $username; ?> | <?php echo $question1; ?><b></label>
 						<input class="form-control" type="text" name="question2">
+
 						<input class="form-control" type="hidden" name="question1" value="<?php echo $question1; ?>">
 						<input class="form-control" type="hidden" name="username" value="<?php echo $username; ?>">
 						<input class="btn btn-success" type="submit" name="forgot3" value="Submit">
 					</form>
 				</div>
 			</div>
-		<?php	
+		<?php
 		}
 		elseif(isset($_POST['forgot3'])){
 			$answer1 = $_POST['question1'];
 			$answer2 = $_POST['question2'];
 			$username = $_POST['username'];
-			
+
 			$select = "SELECT * FROM login WHERE username= '$username' ";
 			$result = $conn->query($select);
 			while($row = $result->fetch_assoc()){
 				$question1 = $row["question1"];
 				$question2 = $row["question2"];
 			}
-			
+
 			if($question1 === $answer1 && $question2 === $answer2){
 		?>
 			<div class="row">
@@ -107,27 +108,27 @@ include 'config.php';
 		<?php
 			}
 			else{
-				
+
 				echo "<script type = \"text/javascript\">
 						alert(\"You input the wrong answer\");
 						window.location = (\"login.php\")
-						</script>"; 
+						</script>";
 			}
 		}
 		elseif(isset($_POST['reset'])){
-			
+
 			$password1 = $_POST['password1'];
 			$password2 = $_POST['password2'];
 			$username = $_POST['username'];
-			
+
 			if($password1 === $password2){
-				
-				
-				
+
+
+
 				$query = "UPDATE login SET password='$password1' WHERE  username='$username'  ";
 
 				$res = $conn->query($query);
-				
+
 				if($res === TRUE){
 					echo "<script type = \"text/javascript\">
 						alert(\"Password Succesfully Edited\");

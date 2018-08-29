@@ -85,9 +85,9 @@ include "include/menu.php";
 	</div>
 	<div class="row">
 		<div class="col-12">
-				<a href="editprofile.php" class="btn btn-success">Edit Profile</a>
-				<a href="question.php" class="btn btn-primary">Edit Secret Questions</a>
-				<a href="password.php" class="btn btn-danger">Edit Password</a>
+				<a href="editprofile.php" class="btn btn-success">Edit User Profile</a>
+				<a href="question.php" class="btn btn-primary">Edit Secret Answers</a>
+				<a href="password.php" class="btn btn-danger">Change Password</a>
 		<!-- /.col-lg-12 -->
 		</div>
 	<!-- /.row -->

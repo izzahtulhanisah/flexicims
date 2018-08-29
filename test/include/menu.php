@@ -16,10 +16,10 @@
 			<ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:black; ">
-                       Hi! <?php echo $username; ?><i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                       Hello  <b><i><?php echo $username; ?></i></b> <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-						<li><a href="profile.php""><i class="fa fa-user fa-fw"></i> User Profile</a>
+						<li><a href="profile.php"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
 						<li><a href="setting.php"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
