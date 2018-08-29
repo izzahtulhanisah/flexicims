@@ -23,7 +23,7 @@ include 'config.php';
 	<section>
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">FORGOT PASSWORD</h1>
+				<!-- <h1 class="page-header">FORGOT PASSWORD</h1> -->
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
@@ -42,12 +42,21 @@ include 'config.php';
 		?>
 			<div class="row">
 				<div class="col-lg-12">
-					<form method="post" action="">
-						<label><b>In what city were you born? <?php echo $username; ?><b></label>
-						<input class="form-control" type="text" name="question1">
-						<input class="form-control" type="hidden" name="username" value="<?php echo $username; ?>">
-						<input class="btn btn-success" type="submit" name="forgot2" value="Submit">
-					</form>
+					<div class="container">
+					  <center><h2>Secret Question 1</h2></center>
+					  <center><div class="panel panel-warning" style="width: 500px">
+					    <div class="panel-heading">Fill in the Secret Answer</div>
+					    <div class="panel-body">
+								<form method="post" action="">
+									<label>In what city were you born?</label>
+									<input class="form-control" type="text" name="question1">
+									<input class="form-control" type="hidden" name="username" value="<?php echo $username; ?>"><br>
+									<input class="btn btn-success pull-right" type="submit" name="forgot2" value="Submit">
+									<button class="btn btn-bg-grey pull-left" type="button" onclick="window.location.href='forgot.php'">Back</button>
+								</form>
+							</div>
+						</div></center>
+					</div>
 				</div>
 			</div>
 		<?php
@@ -66,14 +75,23 @@ include 'config.php';
 		?>
 			<div class="row">
 				<div class="col-lg-12">
-					<form method="post" action="">
-						<label><b>What is your favorite movie? <?php echo $username; ?> | <?php echo $question1; ?><b></label>
-						<input class="form-control" type="text" name="question2">
-
-						<input class="form-control" type="hidden" name="question1" value="<?php echo $question1; ?>">
-						<input class="form-control" type="hidden" name="username" value="<?php echo $username; ?>">
-						<input class="btn btn-success" type="submit" name="forgot3" value="Submit">
-					</form>
+					<div class="container">
+					  <center><h2>Secret Question 2</h2></center>
+					  <center><div class="panel panel-warning" style="width: 500px">
+					    <div class="panel-heading">Fill in the Secret Answer</div>
+					    <div class="panel-body">
+								<form method="post" action="">
+									<label><b>What is your favorite movie? <b></label>
+									<input class="form-control" type="text" name="question2">
+									<input class="form-control" type="hidden" name="question1" value="<?php echo $question1; ?>">
+									<input class="form-control" type="hidden" name="username" value="<?php echo $username; ?>">
+									<br>
+									<input class="btn btn-success pull-right" type="submit" name="forgot3" value="Submit">
+									<button class="btn btn-bg-grey pull-left" type="button" onclick="window.location.href='forgot.php'">Back</button>
+								</form>
+							</div>
+						</div></center>
+					</div>
 				</div>
 			</div>
 		<?php
@@ -94,15 +112,25 @@ include 'config.php';
 		?>
 			<div class="row">
 				<div class="col-lg-12">
-					<form method="post" action="">
-						<label><b>New Password<b></label>
-						<input class="form-control" type="text" name="password1">
-						<br>
-						<label><b>Confirm Password<b></label>
-						<input class="form-control" type="text" name="password2">
-						<input class="form-control" type="hidden" name="username" value="<?php echo $username; ?>">
-						<input class="btn btn-success" type="submit" name="reset" value="Submit">
-					</form>
+					<div class="container">
+					  <center><h2>Reset Password</h2></center>
+					  <center><div class="panel panel-success" style="width: 500px">
+					    <div class="panel-heading">Input Your New Password</div>
+					    <div class="panel-body">
+								<form method="post" action="">
+									<label><b>New Password<b></label>
+									<input class="form-control" type="password" name="password1">
+									<br>
+									<label><b>Confirm Password<b></label>
+									<input class="form-control" type="password" name="password2">
+									<input class="form-control" type="hidden" name="username" value="<?php echo $username; ?>">
+									<br>
+									<input class="btn btn-success pull-right" type="submit" name="reset" value="Submit">
+									<button class="btn btn-bg-grey pull-left" type="button" onclick="window.location.href='forgot.php'">Back</button>
+								</form>
+							</div>
+						</div></center>
+					</div>
 				</div>
 			</div>
 		<?php
@@ -153,11 +181,21 @@ include 'config.php';
 		?>
 			<div class="row">
 				<div class="col-lg-12">
-					<form method="post" action="">
-						<label><b>Please input your username<b></label>
-						<input class="form-control" type="text" name="username">
-						<input class="btn btn-success" type="submit" name="forgot1" value="Submit">
-					</form>
+					<div class="container">
+					  <h2><center>Forgot Password</center></h2><hr>
+					  <center><div class="panel panel-primary" style="width: 500px">
+					    <div class="panel-heading">Reset Password</div>
+					    	<div class="panel-body">
+									<form method="post" action="">
+										<label><b>Input Your Username<b></label>
+										<input class="form-control" type="text" name="username"><br>
+										<input class="btn btn-success pull-right" type="submit" name="forgot1" value="Submit">
+										<button class="btn btn-bg-grey pull-left" type="button" onclick="window.location.href='login.php'">Back</button>
+									</form>
+								</div>
+							</div></center>
+						</div>
+
 				</div>
 			</div>
 		<?php

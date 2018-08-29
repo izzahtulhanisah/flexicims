@@ -158,13 +158,14 @@ else{
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
                                 </div>
 
-                                <hr>
-                                <i><b><center><p style="color:green; font-size:20px;">Demo Mode:</p></center></b></i>
-              									<p style="text-align:center;">Admin Username: <b>AdminDemo</b></p>
+                                <!-- <hr> -->
+                                <!-- <i><b><center><p style="color:green; font-size:20px;">Demo Mode:</p></center></b></i>
+              									<p style="text-align:center;">Admin Username: <b>AdminDemo</b></p> -->
                                 <!-- <p style="text-align:right;">Manager Username: <b>ManagerDemo</b></p>
                                 <p style="text-align:right;">Staff Username: <b>StaffDemo</b></p> -->
-              									<p style="text-align:center;">Password: <b>password</b></p>
-                                <hr>
+              									<!-- <p style="text-align:center;">Password: <b>password</b></p> -->
+                                <p style="text-align:center;"><i><a href="forgot.php">Forgot Password</a></i></p>
+                                <!-- <hr> -->
                                 <!-- <div class="checkbox">
                                     <label>
                                         <input name="remember" type="checkbox" value="Remember Me">Remember Me
