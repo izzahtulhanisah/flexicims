@@ -77,6 +77,7 @@ $name = $_POST['name'];
 $type = $_POST['type'];
 $inventory_id = $_POST['inventory_id'];
 $quantity = $_POST['quantity'];
+$unit = $_POST['unit'];
 $qr="1";							
 $branch="1";
 $date=date("Y-m-d H:i:s");
@@ -103,12 +104,12 @@ if($quantity <= 0){
 	$status = "Sufficient";
 }
 
-$query = "INSERT INTO inventory (type,name,inventory_id,quantity,qr,branch,date,critical,min,max,location,location2,description,dateupdate,supplier,updateby,status) 
-		VALUES ('$type','$name','$inventory_id','$quantity','$qr','$branch','$date','$critical','$minimum','$max','$location','$sublocation','$description','$dateupdate','$supplier','$updateby','$status')";
+$query = "INSERT INTO inventory (type,name,inventory_id,quantity,unit,qr,branch,date,critical,min,max,location,location2,description,dateupdate,supplier,updateby,status) 
+		VALUES ('$type','$name','$inventory_id','$quantity','$unit','$qr','$branch','$date','$critical','$minimum','$max','$location','$sublocation','$description','$dateupdate','$supplier','$updateby','$status')";
 $res = $conn->query($query);
 
-$queryin = "INSERT INTO record (type,name,inventory_id,quantity,detail,qr,branch,date,user) 
-			VALUES ('$type','$name','$inventory_id','$quantity','Add New Item','$qr','$branch','$date','$userid')";
+$queryin = "INSERT INTO record (type,name,inventory_id,quantity,unit,detail,qr,branch,date,user) 
+			VALUES ('$type','$name','$inventory_id','$quantity','$unit','Add New Item','$qr','$branch','$date','$userid')";
 			
 $resin = $conn->query($queryin);
 
@@ -221,6 +222,9 @@ echo "<option>". $type ."</option>";
 <br>
 <label>Quantity</label>
 <input class="form-control" name="quantity" type="text" value=""></input>
+<br>
+<label>Unit</label>
+<input class="form-control" name="unit" type="text" value=""></input>
 <br>
 <label>Location</label>
 <select class="form-control" id="select1" name="location" >

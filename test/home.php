@@ -33,42 +33,42 @@ while($row = $result->fetch_assoc()){
 	<script>
 
 	$( document ).ready(function() {
-    $('#select1').on("change", function(){
-      var selectedClass = $(this).val(); //store the selected value
-      $('#select2').val("");             //clear the second dropdown selected value
+		$('#select1').on("change", function(){
+		  var selectedClass = $(this).val(); //store the selected value
+		  $('#select2').val("");             //clear the second dropdown selected value
 
-      //now loop through the 2nd dropdown, hide the unwanted options
-      $('#select2 option').each(function () {
-        var newValue = $(this).attr('class');
-        if (selectedClass != newValue && selectedClass != "") {
-            $(this).hide();
-        }
-      else{$(this).show(); }
-     });
+		  //now loop through the 2nd dropdown, hide the unwanted options
+		  $('#select2 option').each(function () {
+			var newValue = $(this).attr('class');
+			if (selectedClass != newValue && selectedClass != "") {
+				$(this).hide();
+			}
+		  else{$(this).show(); }
+		 });
 
-    });
-});
+		});
+	});
 
 	</script>
 
 	<script>
 
 	$( document ).ready(function() {
-    $('#select3').on("change", function(){
-      var selectedClass = $(this).val(); //store the selected value
-      $('#select4').val("");             //clear the second dropdown selected value
+		$('.select3').on("change", function(){
+		  var selectedClass = $(this).val(); //store the selected value
+		  $('.select4').val("");             //clear the second dropdown selected value
 
-      //now loop through the 2nd dropdown, hide the unwanted options
-      $('#select4 option').each(function () {
-        var newValue = $(this).attr('class');
-        if (selectedClass != newValue && selectedClass != "") {
-            $(this).hide();
-        }
-      else{$(this).show(); }
-     });
+		  //now loop through the 2nd dropdown, hide the unwanted options
+		  $('.select4 option').each(function () {
+			var newValue = $(this).attr('class');
+			if (selectedClass != newValue && selectedClass != "") {
+				$(this).hide();
+			}
+		  else{$(this).show(); }
+		 });
 
-    });
-});
+		});
+	});
 
 	</script>
 
@@ -174,8 +174,14 @@ if(isset($_POST['send'])){
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <p>LIST OF ALL PRODUCTS
-														<button class="btn btn-success pull-right btn-sm" onclick="window.location.href='inventoryadd.php'"><i class="fa fa-plus" style="font-size:12px"></i> New Item</button></p>
-                        </div>
+							<?php
+							if($secpass>= 3){}else{
+							?>
+							<button class="btn btn-success pull-right btn-sm" onclick="window.location.href='inventoryadd.php'"><i class="fa fa-plus" style="font-size:12px"></i> New Item</button></p>
+							<?php
+							}
+							?>
+					   </div>
 
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -190,6 +196,7 @@ if(isset($_POST['send'])){
 												<td><b>ID</b></td>
 												<td><b>Type</b></td>
 												<td><b>Quantity</b></td>
+												<td><b>Unit</b></td>
 												<td><b>Location</b></td>
 												<!-- <td>Date</td> -->
 												<td><b>Status</b></td>
@@ -220,6 +227,7 @@ if(isset($_POST['send'])){
 											$inventory_id = $row["inventory_id"];
 											$price = $row["price"];
 											$quantity = $row["quantity"];
+											$unit = $row["unit"];
 											$qr = $row["qr"];
 											$branch = $row["branch"];
 											$date = $row["date"];
@@ -244,6 +252,7 @@ if(isset($_POST['send'])){
 												<td><?php echo $inventory_id; ?></td>
 												<td><?php echo $type; ?></td>
 												<td><?php echo $quantity; ?></td>
+												<td><?php echo $unit; ?></td>
 												<td><?php echo $location2; echo " | "; echo $location; ?></td>
 
 												<td>
@@ -337,6 +346,7 @@ if(isset($_POST['send'])){
 														$quanout = $row["quantity"];
 														$type = $row["type"];
 														$name = $row["name"];
+														$unit = $row["unit"];
 														$inventory_id = $row["inventory_id"];
 														$price = $row["price"];
 														$qr = $row["qr"];
@@ -364,8 +374,8 @@ if(isset($_POST['send'])){
 
 													$res = $conn->query($query);
 
-													$queryout = "INSERT INTO record (type,name,inventory_id,price,quantity,detail,location,sublocation,qr,branch,date,transporter,deliverto,remark,user)
-																VALUES ('$type','$name','$inventory_id','$price','$qty','Outgoing','$location','$sublocation','$qr','$branch','$date','$transporter','$deliverto','$remark','$userid')";
+													$queryout = "INSERT INTO record (type,name,inventory_id,price,quantity,unit,detail,location,sublocation,qr,branch,date,transporter,deliverto,remark,user)
+																VALUES ('$type','$name','$inventory_id','$price','$qty','$unit','Outgoing','$location','$sublocation','$qr','$branch','$date','$transporter','$deliverto','$remark','$userid')";
 													$resout = $conn->query($queryout);
 
 													if($res === TRUE){
@@ -456,6 +466,7 @@ if(isset($_POST['send'])){
 																$quanin = $row1["quantity"];
 																$type = $row1["type"];
 																$name = $row1["name"];
+																$unit = $row1["unit"];
 																$inventory_id = $row1["inventory_id"];
 																$price = $row1["price"];
 																$qr = $row1["qr"];
@@ -483,8 +494,8 @@ if(isset($_POST['send'])){
 
 															$res = $conn->query($query);
 
-															$queryin = "INSERT INTO record (type,name,inventory_id,price,quantity,detail,location,sublocation,qr,branch,date,supplier,datereceive,remark,user)
-																		VALUES ('$type','$name','$inventory_id','$price','$qty','Incoming','$qr','$branch','$date','$supplier','$date','$remark','$userid')";
+															$queryin = "INSERT INTO record (type,name,inventory_id,price,quantity,unit,detail,location,sublocation,qr,branch,date,supplier,datereceive,remark,user)
+																		VALUES ('$type','$name','$inventory_id','$price','$qty','$unit','Incoming','$qr','$branch','$date','$supplier','$date','$remark','$userid')";
 
 															$resin = $conn->query($queryin);
 
@@ -520,7 +531,7 @@ if(isset($_POST['send'])){
 															<label>Remark / Comment</label>
 																<p><input class="form-control" name="remark" type="text" value=""></input></p>
 															<br>
-																<p><input class="" name="idd" type="hidden" value="<?php echo $id; ?>"></input></p>
+																<p><input class="" name="id" type="hidden" value="<?php echo $id; ?>"></input></p>
 															<br>
 
 
@@ -574,6 +585,7 @@ if(isset($_POST['send'])){
 											$inventory_id = $_POST['inventory_id'];
 											$price = $_POST['price'];
 											$quantity = $_POST['quantity'];
+											$unit = $_POST['unit'];
 											$qr="1";
 											$branch="1";
 											$date=date("Y-m-d H:i:s");
@@ -606,7 +618,7 @@ if(isset($_POST['send'])){
 												$status = "Sufficient";
 											}
 
-											$query = "UPDATE inventory SET id= '$id', name='$name', type='$type', inventory_id='$inventory_id', price='$price', quantity='$quantity', qr='$qr', branch='$branch', dateupdate='$dateupdate', critical='$critical', min='$minimum', location='$location', location2='$sublocation', description='$description', status='$status' WHERE  id='$id' ";
+											$query = "UPDATE inventory SET id= '$id', name='$name', type='$type', inventory_id='$inventory_id', price='$price', quantity='$quantity', unit='$unit', qr='$qr', branch='$branch', dateupdate='$dateupdate', critical='$critical', min='$minimum', location='$location', location2='$sublocation', description='$description', status='$status' WHERE  id='$id' ";
 											$res = $conn->query($query);
 
 											$queryin = "";
@@ -663,8 +675,11 @@ if(isset($_POST['send'])){
 										<label>Quantity</label>
 											<p><input class="form-control" name="quantity" type="text" value="<?php echo $quantity; ?>"></input>
 										<br>
+										<label>Unit</label>
+											<p><input class="form-control" name="unit" type="text" value="<?php echo $unit; ?>"></input>
+										<br>
 										<label>Location</label>
-											<p><select class="form-control" name="location" id="select3">
+											<p><select class="form-control select3" name="location" id="select3">
 											<option value="" selected='selected'><?php echo $location;?></option>
 											<?php
 
@@ -681,7 +696,7 @@ if(isset($_POST['send'])){
 											</select>
 										<br>
 										<label>Sub-Location</label>
-											<p><select class="form-control" name="sublocation" id="select4">
+											<p><select class="form-control select4" name="sublocation" id="select4">
 											<option value="" selected='selected'><?php echo $location2;?></option>
 											<?php
 
@@ -757,6 +772,10 @@ if(isset($_POST['send'])){
 																<tr>
 																	<td>Quantity:</td>
 															    <th><?php echo $quantity; ?></th>
+																</tr>
+																<tr>
+																	<td>Quantity:</td>
+															    <th><?php echo $unit; ?></th>
 																</tr>
 
 																<tr>

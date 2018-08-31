@@ -45,12 +45,18 @@
                                 <li>
                                     <a href="home.php">Inventory</a>
                                 </li>
-								                <li>
+								<?php
+								if($secpass>= 3){}else{
+								?>
+								<li>
                                     <a href="location.php">Location</a>
                                 </li>
                                 <li>
                                     <a href="type.php">Product Type</a>
                                 </li>
+								<?php
+								}
+								?>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

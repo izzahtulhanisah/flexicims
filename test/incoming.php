@@ -62,6 +62,7 @@ while($row = $result->fetch_assoc()){
 											<td><b>Type</b></td>
 											<!-- <td>Price</td> -->
 											<td><b>Quantity</b></td>
+											<td><b>Unit</b></td>
 											<!-- <td>Branch</td> -->
 											<td><b>Remark</b></td>
 											<td><b>Supplier</b></td>
@@ -83,6 +84,7 @@ while($row = $result->fetch_assoc()){
 										$inventory_id = $row["inventory_id"];
 										$price = $row["price"];
 										$quantity = $row["quantity"];
+										$unit = $row["unit"];
 										$qr = $row["qr"];
 										$branch = $row["branch"];
 										$supplier = $row["supplier"];
@@ -96,6 +98,7 @@ while($row = $result->fetch_assoc()){
 											<td><?php echo $inventory_id; ?></td>
 											<td><?php echo $type; ?></td>
 											<td><?php echo $quantity; ?></td>
+											<td><?php echo $unit; ?></td>
 											<td><?php echo $remark; ?></td>
 											<td><?php echo $supplier; ?></td>
 											<td><?php echo $datereceive; ?></td>
