@@ -104,7 +104,7 @@ else {
 
 }
 
-//Add Location--------------------------------------------------------------------------------------------------
+//Add SubLocation--------------------------------------------------------------------------------------------------
 
 if(isset($_POST['addsubloc'])){
 
@@ -167,6 +167,7 @@ else {
 					<div class="panel panel-primary">
 							<div class="panel-heading">
 									<p>LIST OF INVENTORY LOCATIONS
+									<button class="btn btn-warning pull-right" data-toggle="modal" data-placement="bottom" data-target="#addsub" title="Add Sub-Location"><i class="fa fa-plus" style="font-size:12px"></i> New Sub-location</button> 
 									<button class="btn btn-success pull-right" data-toggle="modal" data-placement="bottom" data-target="#add" title="Add"><i class="fa fa-plus" style="font-size:12px"></i> New Location</button></p>
 							</div>
 
@@ -453,6 +454,52 @@ else {
 							</div>
 							<!-- /.modal-dialog -->
 						</div>
+						<!-- START OF SUBLOCATION MODAL -->
+					<!-- /.modal -->
+					<div class="modal fade" id="addsub" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<h4 class="modal-title" id="myModalLabel">Add Sub-Location</h4>
+								</div>
+								<div class="modal-body">
+									<form action="" method="post">
+										<label>Location</label>
+										<select class="form-control" name="location">
+											<option disabled selected>Select Location..</option>
+											<?php 
+											$select = "SELECT location FROM location";
+											$result1 = $conn->query($select);
+											while($row = $result1->fetch_assoc()){
+												$location=$row['location'];
+												
+											echo "<option value='".$location."'>". $location ."</option>";
+											// close while loop 
+											}
+											?>
+										</select>
+										<input class="form-control" name="branch" type="hidden" value="1"></input>
+										<br>
+										<label>Sub-Location</label>
+										<input class="form-control" name="sublocation" type="text" value=""></input>
+										<input class="form-control" name="branch" type="hidden" value="1"></input>
+										<br>
+									
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+									<input type="submit" class="btn btn-primary" name="addsubloc" value="Enter" />
+									</form>
+								</div>
+							</div>
+							<!-- /.modal-content -->
+						</div>
+						<!-- /.modal-dialog -->
+					</div>
+					<!-- /.modal -->
+					<!-- END OF SUBLOCATION MODAL -->
 
 				</div>
 			</div>
