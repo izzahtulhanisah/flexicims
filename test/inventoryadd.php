@@ -96,6 +96,7 @@ if(isset($_POST['send'])){
 	
 $name = $_POST['name'];
 $type = $_POST['type'];
+$subtype = $_POST['subtype'];
 $inventory_id = $_POST['inventory_id'];
 $quantity = $_POST['quantity'];
 $unit = $_POST['unit'];
@@ -125,12 +126,12 @@ if($quantity <= 0){
 	$status = "Sufficient";
 }
 
-$query = "INSERT INTO inventory (type,name,inventory_id,quantity,unit,qr,branch,date,critical,min,max,location,location2,description,dateupdate,supplier,updateby,status) 
-		VALUES ('$type','$name','$inventory_id','$quantity','$unit','$qr','$branch','$date','$critical','$minimum','$max','$location','$sublocation','$description','$dateupdate','$supplier','$updateby','$status')";
+$query = "INSERT INTO inventory (type,subtype,name,inventory_id,quantity,unit,qr,branch,date,critical,min,max,location,location2,description,dateupdate,supplier,updateby,status) 
+		VALUES ('$type','$subtype','$name','$inventory_id','$quantity','$unit','$qr','$branch','$date','$critical','$minimum','$max','$location','$sublocation','$description','$dateupdate','$supplier','$updateby','$status')";
 $res = $conn->query($query);
 
-$queryin = "INSERT INTO record (type,name,inventory_id,quantity,unit,detail,qr,branch,date,user) 
-			VALUES ('$type','$name','$inventory_id','$quantity','$unit','Add New Item','$qr','$branch','$date','$userid')";
+$queryin = "INSERT INTO record (type,subtype,name,inventory_id,quantity,unit,detail,qr,branch,date,user) 
+			VALUES ('$type','$subtype','$name','$inventory_id','$quantity','$unit','Add New Item','$qr','$branch','$date','$userid')";
 			
 $resin = $conn->query($queryin);
 
@@ -216,7 +217,7 @@ else {
 
 <label>Type</label>
 	<select class="form-control select1" name="type" id="select5">
-	<option value="" selected disabled><?php echo $type;?></option>
+	<option value="" selected disabled>Please Select...</option>
 	<?php
 
 	$selecttype = "SELECT * FROM type";
@@ -234,7 +235,7 @@ else {
 <br>
 <label>Sub-Type</label>
 	<select class="form-control select2" name="subtype" id="select6">
-	<option value="" selected disabled><?php echo $subtype;?></option>
+	<option value="" selected disabled>Please Select...</option>
 	<?php
 
 	$selecttype = "SELECT * FROM subtype";
@@ -248,11 +249,6 @@ else {
 	}
 	?>
 	</select>
-
-
-<br>
-</select>
-<br>
 <br>
 <label>Name</label>
 <input class="form-control" name="name" type="text" value=""></input>
