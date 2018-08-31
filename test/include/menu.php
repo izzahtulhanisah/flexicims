@@ -37,7 +37,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.php"><i class="fa fa-home"></i> Home</a>
+                            <a href="index.php"><i class="fa fa-home"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-cubes"></i> Inventory Management<span class="fa arrow"></span></a>
@@ -94,6 +94,15 @@
                         <li>
                             <a href="userprofile.php"><i class="fa fa-users"></i> Users</a>
                         </li>
+
+                        <li>
+                            <a href="admindetails.php"><i class="fa fa-question-circle"></i> Need Help</a>
+                        </li>
+
+                        <li>
+                            <a href="https://goo.gl/forms/t5Juvhv7pF7v3VGL2"><i class="fa fa-send"></i> Feedback</a>
+                        </li>
+
 						<?php
 						}
 						}
