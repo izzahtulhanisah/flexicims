@@ -48,6 +48,27 @@ while($row = $result->fetch_assoc()){
 	});
 	
 	</script>
+	
+	<script>
+	
+	$( document ).ready(function() {
+		$('.select1').on("change", function(){
+		  var selectedClass = $(this).val(); //store the selected value
+		  $('.select2').val("");             //clear the second dropdown selected value
+
+		  //now loop through the 2nd dropdown, hide the unwanted options
+		  $('.select2 option').each(function () {
+			var newValue = $(this).attr('class');
+			if (selectedClass != newValue && selectedClass != "") {
+				$(this).hide();  
+			}
+		  else{$(this).show(); }
+		 });
+		
+		});
+	});
+	
+	</script>
 
 </head>
 
@@ -194,24 +215,43 @@ else {
 <form action="" method="post">
 
 <label>Type</label>
-<select class="form-control" name="type">
-<option disabled selected>Select Location..</option>
-<?php
+	<select class="form-control select1" name="type" id="select5">
+	<option value="" selected disabled><?php echo $type;?></option>
+	<?php
 
-$selecttype = "SELECT * FROM type";						
-$resulttype = $conn->query($selecttype);
-while($rowtype = $resulttype->fetch_assoc()){
-	$id = $rowtype["id"];
-	$type = $rowtype["type"];
+	$selecttype = "SELECT * FROM type";
+	$resulttype = $conn->query($selecttype);
+	while($rowtype = $resulttype->fetch_assoc()){
+		$type = $rowtype["type"];
 
-echo "<option>". $type ."</option>";
+	echo "<option>". $type ."</option>";
 
-}
+	}
+	?>
+	</select>
 
-?>
-</select>
+
 <br>
-<a href = "#" class="btn btn-success" data-toggle="modal" data-target="#TypeModal"><i class="fa fa-plus-square"></i></a>
+<label>Sub-Type</label>
+	<select class="form-control select2" name="subtype" id="select6">
+	<option value="" selected disabled><?php echo $subtype;?></option>
+	<?php
+
+	$selecttype = "SELECT * FROM subtype";
+	$resulttype = $conn->query($selecttype);
+	while($rowtype = $resulttype->fetch_assoc()){
+		$typesub = $rowtype["type"];
+		$subtype = $rowtype["subtype"];
+
+	echo "<option class='". $typesub ."'>". $subtype ."</option>";
+
+	}
+	?>
+	</select>
+
+
+<br>
+</select>
 <br>
 <br>
 <label>Name</label>
@@ -263,8 +303,6 @@ echo "<option class='".$location."'>". $sublocation ."</option>";
 ?>
 </select>
 <br>
-<a href = "#" class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square"></i></a>
-<br>
 <br>
 <label>Critical</label>
 <input class="form-control" name="critical" type="text" value=""></input>
@@ -286,61 +324,7 @@ echo "<option class='".$location."'>". $sublocation ."</option>";
 <br><br>
 </form>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Add Location</h4>
-			</div>
-			<div class="modal-body">
-				<form action="" method="post">
-					<label>Location</label>
-					<input class="form-control" name="location" type="text" value=""></input>
-					<input class="form-control" name="branch" type="hidden" value="1"></input>
-					<br>
-				
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-				<input type="submit" class="btn btn-primary" name="sendloc" value="Enter" />
-				</form>
-			</div>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-<div class="modal fade" id="TypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Add Type</h4>
-			</div>
-			<div class="modal-body">
-				<form action="" method="post">
-					<label>Location</label>
-					<input class="form-control" name="type" type="text" value=""></input>
-					<input class="form-control" name="branch" type="hidden" value="1"></input>
-					<br>
-				
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-				<input type="submit" class="btn btn-primary" name="sendtype" value="Enter" />
-				</form>
-			</div>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
 
 </div>
 </div>

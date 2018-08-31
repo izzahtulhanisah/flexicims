@@ -50,6 +50,27 @@ while($row = $result->fetch_assoc()){
 	});
 
 	</script>
+	
+	<script>
+
+	$( document ).ready(function() {
+		$('.select5').on("change", function(){
+		  var selectedClass = $(this).val(); //store the selected value
+		  $('.select6').val("");             //clear the second dropdown selected value
+
+		  //now loop through the 2nd dropdown, hide the unwanted options
+		  $('.select6 option').each(function () {
+			var newValue = $(this).attr('class');
+			if (selectedClass != newValue && selectedClass != "") {
+				$(this).hide();
+			}
+		  else{$(this).show(); }
+		 });
+
+		});
+	});
+
+	</script>
 
 	<script>
 
@@ -195,6 +216,7 @@ if(isset($_POST['send'])){
 												<td><b>Name</b></td>
 												<td><b>ID</b></td>
 												<td><b>Type</b></td>
+												<td><b>Sub-Type</b></td>
 												<td><b>Quantity</b></td>
 												<td><b>Unit</b></td>
 												<td><b>Location</b></td>
@@ -223,6 +245,7 @@ if(isset($_POST['send'])){
 										while($row = $result->fetch_assoc()){
 											$id = $row["id"];
 											$type = $row["type"];
+											$subtype = $row["subtype"];
 											$name = $row["name"];
 											$inventory_id = $row["inventory_id"];
 											$price = $row["price"];
@@ -251,6 +274,7 @@ if(isset($_POST['send'])){
 												<td><?php echo $name; ?></td>
 												<td><?php echo $inventory_id; ?></td>
 												<td><?php echo $type; ?></td>
+												<td><?php echo $subtype; ?></td>
 												<td><?php echo $quantity; ?></td>
 												<td><?php echo $unit; ?></td>
 												<td><?php echo $location2; echo " | "; echo $location; ?></td>
@@ -345,6 +369,7 @@ if(isset($_POST['send'])){
 													while($row = $result->fetch_assoc()){
 														$quanout = $row["quantity"];
 														$type = $row["type"];
+														$subtype = $row["subtype"];
 														$name = $row["name"];
 														$unit = $row["unit"];
 														$inventory_id = $row["inventory_id"];
@@ -374,8 +399,8 @@ if(isset($_POST['send'])){
 
 													$res = $conn->query($query);
 
-													$queryout = "INSERT INTO record (type,name,inventory_id,price,quantity,unit,detail,location,sublocation,qr,branch,date,transporter,deliverto,remark,user)
-																VALUES ('$type','$name','$inventory_id','$price','$qty','$unit','Outgoing','$location','$sublocation','$qr','$branch','$date','$transporter','$deliverto','$remark','$userid')";
+													$queryout = "INSERT INTO record (type,subtype,name,inventory_id,price,quantity,unit,detail,location,sublocation,qr,branch,date,transporter,deliverto,remark,user)
+																VALUES ('$type','$subtype','$name','$inventory_id','$price','$qty','$unit','Outgoing','$location','$sublocation','$qr','$branch','$date','$transporter','$deliverto','$remark','$userid')";
 													$resout = $conn->query($queryout);
 
 													if($res === TRUE){
@@ -494,8 +519,8 @@ if(isset($_POST['send'])){
 
 															$res = $conn->query($query);
 
-															$queryin = "INSERT INTO record (type,name,inventory_id,price,quantity,unit,detail,location,sublocation,qr,branch,date,supplier,datereceive,remark,user)
-																		VALUES ('$type','$name','$inventory_id','$price','$qty','$unit','Incoming','$qr','$branch','$date','$supplier','$date','$remark','$userid')";
+															$queryin = "INSERT INTO record (type,subtype,name,inventory_id,price,quantity,unit,detail,location,sublocation,qr,branch,date,supplier,datereceive,remark,user)
+																		VALUES ('$type','$subtype','$name','$inventory_id','$price','$qty','$unit','Incoming','$qr','$branch','$date','$supplier','$date','$remark','$userid')";
 
 															$resin = $conn->query($queryin);
 
@@ -571,6 +596,7 @@ if(isset($_POST['send'])){
 												$location1 = $row1["location"];
 												$sublocation1 = $row1["sublocation"];
 												$type1 = $row1["type"];
+												$subtype1 = $row1["subtype"];
 
 												}
 
@@ -581,6 +607,14 @@ if(isset($_POST['send'])){
 											}
 											else{
 												$type = $_POST['type'];
+											}
+											
+											
+											if($_POST['subtype'] == ''){
+												$subtype = $subtype1;
+											}
+											else{
+												$subtype = $_POST['subtype'];
 											}
 											$inventory_id = $_POST['inventory_id'];
 											$price = $_POST['price'];
@@ -618,7 +652,7 @@ if(isset($_POST['send'])){
 												$status = "Sufficient";
 											}
 
-											$query = "UPDATE inventory SET id= '$id', name='$name', type='$type', inventory_id='$inventory_id', price='$price', quantity='$quantity', unit='$unit', qr='$qr', branch='$branch', dateupdate='$dateupdate', critical='$critical', min='$minimum', location='$location', location2='$sublocation', description='$description', status='$status' WHERE  id='$id' ";
+											$query = "UPDATE inventory SET id= '$id', name='$name', type='$type', subtype='$subtype', inventory_id='$inventory_id', price='$price', quantity='$quantity', unit='$unit', qr='$qr', branch='$branch', dateupdate='$dateupdate', critical='$critical', min='$minimum', location='$location', location2='$sublocation', description='$description', status='$status' WHERE  id='$id' ";
 											$res = $conn->query($query);
 
 											$queryin = "";
@@ -646,8 +680,8 @@ if(isset($_POST['send'])){
 												<form action="" method="post">
 
 											<label>Type</label>
-											<p><select class="form-control" name="type"></p>
-											<option value="" selected='selected'><?php echo $type;?></option>
+											<p><select class="form-control select5" name="type" id="select5"></p>
+											<option value="" selected disabled><?php echo $type;?></option>
 											<?php
 
 											$selecttype = "SELECT * FROM type";
@@ -663,6 +697,25 @@ if(isset($_POST['send'])){
 
 
 										<br>
+										<label>Sub-Type</label>
+											<p><select class="form-control select6" name="subtype" id="select6"></p>
+											<option value="" selected disabled><?php echo $subtype;?></option>
+											<?php
+
+											$selecttype = "SELECT * FROM subtype";
+											$resulttype = $conn->query($selecttype);
+											while($rowtype = $resulttype->fetch_assoc()){
+												$typesub = $rowtype["type"];
+												$subtype = $rowtype["subtype"];
+
+											echo "<option class='". $typesub ."'>". $subtype ."</option>";
+
+											}
+											?>
+											</select>
+
+
+										<br>
 										<label>Name</label>
 											<p><input class="form-control" name="name" type="text" value="<?php echo $name; ?>"></input></p>
 										<br>
@@ -670,7 +723,7 @@ if(isset($_POST['send'])){
 											<p><input class="form-control" name="inventory_id" type="text" value="<?php echo $inventory_id; ?>"></input></p>
 										<br>
 										<!-- <label>Price</label>
-											<p><input class="form-control" name="price" type="text" value="<?php echo $price; ?>"></input>
+											<p><input class="form-control" name="price" type="text" value="<php echo $price; ?>"></input>
 										<br> -->
 										<label>Quantity</label>
 											<p><input class="form-control" name="quantity" type="text" value="<?php echo $quantity; ?>"></input>
@@ -679,7 +732,7 @@ if(isset($_POST['send'])){
 											<p><input class="form-control" name="unit" type="text" value="<?php echo $unit; ?>"></input>
 										<br>
 										<label>Location</label>
-											<p><select class="form-control select3" name="location" id="select3">
+											<p><select class="form-control select3" name="location">
 											<option value="" selected='selected'><?php echo $location;?></option>
 											<?php
 
@@ -696,7 +749,7 @@ if(isset($_POST['send'])){
 											</select>
 										<br>
 										<label>Sub-Location</label>
-											<p><select class="form-control select4" name="sublocation" id="select4">
+											<p><select class="form-control select4" name="sublocation" >
 											<option value="" selected='selected'><?php echo $location2;?></option>
 											<?php
 
@@ -767,6 +820,11 @@ if(isset($_POST['send'])){
 																<tr>
 																	<td>Product Type:</td>
 															    <th><?php echo $type; ?></th>
+																</tr>
+																
+																<tr>
+																	<td>Product Sub-Type:</td>
+															    <th><?php echo $subtype; ?></th>
 																</tr>
 
 																<tr>
