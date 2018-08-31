@@ -405,7 +405,7 @@ include 'include/menu.php';
 		                                <div class="col-xs-9 text-right">
 
 																				<?php
-																				$sqlstaff="SELECT id FROM profile WHERE position='Staff'";
+																				$sqlstaff="SELECT id FROM login WHERE secpass='3'";
 
 																				if ($resultstaff=mysqli_query($conn,$sqlstaff))
 																					{
@@ -442,7 +442,7 @@ include 'include/menu.php';
 		                                <div class="col-xs-9 text-right">
 
 																				<?php
-																				$sqladmin="SELECT id FROM profile WHERE position='Admin'";
+																				$sqladmin="SELECT id FROM login WHERE secpass='0'";
 
 																				if ($resultadmin=mysqli_query($conn,$sqladmin))
 																				  {
@@ -479,7 +479,7 @@ include 'include/menu.php';
 		                                <div class="col-xs-9 text-right">
 
 																				<?php
-																				$sqldirector="SELECT id FROM profile WHERE position='Director'";
+																				$sqldirector="SELECT id FROM login WHERE secpass='1'";
 
 																				if ($resultdirector=mysqli_query($conn,$sqldirector))
 																				  {
@@ -516,7 +516,7 @@ include 'include/menu.php';
 		                                <div class="col-xs-9 text-right">
 
 																				<?php
-																				$sqlman="SELECT id FROM profile WHERE position='Manager'";
+																				$sqlman="SELECT id FROM login WHERE secpass='2'";
 
 																				if ($resultman=mysqli_query($conn,$sqlman))
 																				  {

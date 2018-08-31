@@ -39,8 +39,9 @@ while($row = $result->fetch_assoc()){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Add New Director</h1>
+                    <h3 class="page-header">Add New Director</h3>
                 </div>
+						</div>
                 <!-- /.col-lg-12 -->
 
 <?php
@@ -50,14 +51,14 @@ include "config.php";
 
 if(isset($_POST['send'])){
 
-$expired =strtotime($_POST['expireddate']);
+// $expired =strtotime($_POST['expireddate']);
 
 $name = $_POST['name'];
 $address = $_POST['address'];
 $email = $_POST['email'];
 $contact = $_POST['contact'];
 $position = $_POST['position'];
-$loginid = $_POST['loginid'];
+// $loginid = $_POST['loginid'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 $secpass = "1";
@@ -81,7 +82,7 @@ $res = $conn->query($query);
 
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">
-		alert(\"Successfully Added New Director\");
+		alert(\"Succesfully Added Director\");
 		window.location = (\"director.php\")
 		</script>";
 	}
@@ -96,41 +97,38 @@ else {
 
 ?>
 
-<div class="container">
-  <h2>Panel Heading</h2>
-  <div class="panel panel-default">
-    <div class="panel-heading">Panel Heading</div>
-    <div class="panel-body">Panel Content</div>
+<div class="panel panel-warning" style="width: 500px">
+    <div class="panel-heading">Fill in the form to Add New User (Director)</div>
+    <div class="panel-body">
+				<form action="" method="post">
+				<label>Name :</label>
+				<input class="form-control" name="name" type="text" value=""></input>
+				<br>
+				<label>Address :</label>
+				<input class="form-control" name="address" type="text" value=""></input>
+				<br>
+				<label>Email :</label>
+				<input class="form-control" name="email" type="text" value=""></input>
+				<br>
+				<label>Contact No :</label>
+				<input class="form-control" name="contact" type="text" value=""></input>
+				<br>
+				<label>Position :</label>
+				<input class="form-control" name="position" type="text" value=""></input>
+				<br>
+				<label>Username :</label>
+				<input class="form-control" name="username" type="text" value=""></input>
+				<br>
+				<label>Password :</label>
+				<input class="form-control" name="password" type="password" value=""></input>
+				<br>
+				<input type="hidden" class="btn btn-primary" name="loginid" value="" />
+				<input type="submit" class="btn btn-success pull-right" name="send" value="Submit" />
+				<button class="btn btn-default" type="button" onclick="window.location.href='director.php'">Back</button>
+				<br><br>
+				</form>
+		</div>
   </div>
-</div>
-
-<form action="" method="post">
-<label>Name</label>
-<input class="form-control" name="name" type="text" value=""></input>
-<br>
-<label>Address</label>
-<input class="form-control" name="address" type="text" value=""></input>
-<br>
-<label>Email</label>
-<input class="form-control" name="email" type="text" value=""></input>
-<br>
-<label>Contact</label>
-<input class="form-control" name="contact" type="text" value=""></input>
-<br>
-<label>Position</label>
-<input class="form-control" name="position" type="text" value=""></input>
-<br>
-<label>Username</label>
-<input class="form-control" name="username" type="text" value=""></input>
-<br>
-<label>Password</label>
-<input class="form-control" name="password" type="password" value=""></input>
-<br>
-<input type="hidden" class="btn btn-primary" name="loginid" value="" />
-<input type="submit" class="btn btn-primary" name="send" value="Enter" />
-<button class="btn btn-default" type="button" onclick="window.location.href='director.php'">Back</button>
-<br><br>
-</form>
 
 	</div>
 </div>
