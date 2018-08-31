@@ -49,6 +49,27 @@ while($row = $result->fetch_assoc()){
 	});
 
 	</script>
+	
+	<script>
+
+	$( document ).ready(function() {
+		$('.select1').on("change", function(){
+		  var selectedClass = $(this).val(); //store the selected value
+		  $('.select2').val("");             //clear the second dropdown selected value
+
+		  //now loop through the 2nd dropdown, hide the unwanted options
+		  $('.select2 option').each(function () {
+			var newValue = $(this).attr('class');
+			if (selectedClass != newValue && selectedClass != "") {
+				$(this).hide();
+			}
+		  else{$(this).show(); }
+		 });
+
+		});
+	});
+
+	</script>
 
 </head>
 
@@ -84,6 +105,50 @@ while($row = $result->fetch_assoc()){
 										<option value="Outgoing">Outgoing</option>
 									</select>
 								</div>
+							</div>
+							<br>
+							<label>Type</label>
+								<br>
+							<div class="row">								
+								<div class="col-lg-4">
+									<select class="form-control select1" name="type">
+										<option disabled selected>Select type..</option>
+										<option value ="" ></option>
+										<?php
+										
+										$selecttype = "SELECT * FROM type";						
+										$resulttype = $conn->query($selecttype);
+										while($rowtype = $resulttype->fetch_assoc()){
+											$id = $rowtype["id"];
+											$type = $rowtype["type"];
+										
+										echo "<option value='". $type ."'>". $type ."</option>";
+										
+										}
+										
+										?>
+									</select>
+								</div>
+								<div class="col-lg-4">
+									<select class="form-control select2" name="subtype" >
+										<option disabled selected>Select Sub-type..</option>
+										<option value ="" ></option>
+										<?php
+										
+										$selecttype2 = "SELECT type,subtype FROM subtype";						
+										$resulttype2 = $conn->query($selecttype2);
+										while($rowtype2 = $resulttype2->fetch_assoc()){
+											$id = $rowtype2["id"];
+											$type = $rowtype2["type"];
+											$subtype = $rowtype2["subtype"];
+										
+										echo "<option class='".$type."'>". $subtype ."</option>";
+										
+										}
+										
+										?>
+									</select>
+								</div>							
 							</div>
 							<br>
 							<label>Location</label>
@@ -130,28 +195,6 @@ while($row = $result->fetch_assoc()){
 								</div>							
 							</div>
 							<br>
-							<!-- <div class="row">
-								<div class="col-lg-8">
-									<label>Type</label>
-									<select class="form-control" name="type" >
-										<option disabled selected>Select Type..</option>
-										<php
-										
-										$selectloc2 = "SELECT * FROM type";						
-										$resultloc2 = $conn->query($selectloc2);
-										while($rowloc2 = $resultloc2->fetch_assoc()){
-											$id = $rowloc2["id"];
-											$type = $rowloc2["type"];
-										
-										echo "<option>". $type ."</option>";
-										
-										}
-										
-										?>
-									</select>
-								</div>
-							</div>
-							<br> -->
 							<div class="row">							
 								<div class="col-lg-4">
 									<label>From : </label>

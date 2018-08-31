@@ -104,18 +104,6 @@ $todate1 = $mysqldatee1;
 
 $activity = $_POST['activity'];
 
-if($_POST['location'] != ""){
-	$location = "AND location = '". $_POST['location']."'";
-}else{
-	$location = "";
-}
-
-if($_POST['sublocation'] != ""){
-	$sublocation = "AND sublocation = '". $_POST['sublocation']."'";
-}else{
-	$sublocation = "";
-}
-
 ?>
 
 <head>
@@ -261,10 +249,6 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
     <br>
     <button style="float: right"; class="button button2" onclick="printContent('div1')">Print</button>
 
-
-<form action="report">
-    <button type="submit" class="button button1" style="float: left"; >Back</button><br>
-</form>
 <br><br>
 <div class="yunyun" id="div1">
 	<div class="container-fluid">
@@ -278,14 +262,14 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 				</div>
 				<br><br>
 			</div>
-			<center><div id="barchart_material" style="width: 500px; height: 400px;"></div></center>
+			<!-- <center><div id="barchart_material" style="width: 500px; height: 400px;"></div></center> -->
 			<?php
 			if($activity == 'Incoming'){
 			?>
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel-heading">
-						Record Of Incoming Stock:
+						Record Of Incoming Stock: <?php echo $_POST['type']; echo $_POST['location']; ?>
 					</div>
 				</div>
 			</div>
@@ -321,9 +305,21 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$sublocation = "";
 							}
 							
+							if($_POST['type'] != ""){
+								$type = "AND type = '". $_POST['type']."'";
+							}else{
+								$type = "";
+							}
+
+							if($_POST['subtype'] != ""){
+								$subtype = "AND subtype = '". $_POST['subtype']."'";
+							}else{
+								$subtype = "";
+							}
+							
 							$counter = 0;
 
-							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." AND detail='Incoming' ORDER BY detail DESC ";
+							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND detail='Incoming' ORDER BY detail DESC ";
 							
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
@@ -367,7 +363,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel-heading">
-						Record Of Outgoing Stock:
+						Record Of Outgoing Stock: <?php echo $_POST['type']; echo $_POST['location']; ?>
 					</div>
 				</div>
 			</div>
@@ -403,8 +399,20 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							}else{
 								$sublocation = "";
 							}
+							
+							if($_POST['type'] != ""){
+								$type = "AND type = '". $_POST['type']."'";
+							}else{
+								$type = "";
+							}
 
-							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." AND detail='Outgoing' ORDER BY detail DESC ";	
+							if($_POST['subtype'] != ""){
+								$subtype = "AND subtype = '". $_POST['subtype']."'";
+							}else{
+								$subtype = "";
+							}
+
+							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND detail='Outgoing' ORDER BY detail DESC ";	
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
@@ -447,7 +455,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel-heading">
-						Record Of All Stock:
+						Record Of All Stock: <?php echo $_POST['type']; echo $_POST['location']; ?>
 					</div>
 				</div>
 			</div>
@@ -483,8 +491,20 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							}else{
 								$sublocation = "";
 							}
+							
+							if($_POST['type'] != ""){
+								$type = "AND type = '". $_POST['type']."'";
+							}else{
+								$type = "";
+							}
 
-							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." AND 1 ORDER BY detail DESC ";
+							if($_POST['subtype'] != ""){
+								$subtype = "AND subtype = '". $_POST['subtype']."'";
+							}else{
+								$subtype = "";
+							}
+
+							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND 1 ORDER BY detail DESC ";
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
