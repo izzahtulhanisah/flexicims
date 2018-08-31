@@ -9,7 +9,7 @@ $username=$_SESSION['username'];
 
 
 
-$select = "SELECT * FROM login WHERE username = '$username' ";						
+$select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$userid = $row["id"];
@@ -39,7 +39,7 @@ while($row = $result->fetch_assoc()){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Director Edit</h1>
+                    <h1 class="page-header">Add New Director</h1>
                 </div>
                 <!-- /.col-lg-12 -->
 
@@ -49,9 +49,9 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
 include "config.php";
 
 if(isset($_POST['send'])){
-	
+
 $expired =strtotime($_POST['expireddate']);
-	
+
 $name = $_POST['name'];
 $address = $_POST['address'];
 $email = $_POST['email'];
@@ -71,31 +71,38 @@ $sqlid="SELECT MAX(id) AS maxid FROM login";
     $id=$rowid['maxid']+1;
  }
 
-$query1 = "INSERT INTO profile (name,address,email,contact,position,loginid) 
+$query1 = "INSERT INTO profile (name,address,email,contact,position,loginid)
 		VALUES ('$name','$address','$email','$contact','$position','$id')";
 $res1 = $conn->query($query1);
 
-$query = "INSERT INTO login(id,username,password,secpass) 
+$query = "INSERT INTO login(id,username,password,secpass)
 		VALUES ('$id','$username','$password','$secpass')";
 $res = $conn->query($query);
-	
+
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">
-		alert(\"Director Succesfully Add\");
+		alert(\"Successfully Added New Director\");
 		window.location = (\"director.php\")
 		</script>";
 	}
 
 else {
 	echo "<script type = \"text/javascript\">
-		alert(\"Director Not Succesfully Add\");
+		alert(\"Failed to Add Director\");
 		window.location = (\"director.php\")
 		</script>";
 	}
 }
 
-?>		
+?>
 
+<div class="container">
+  <h2>Panel Heading</h2>
+  <div class="panel panel-default">
+    <div class="panel-heading">Panel Heading</div>
+    <div class="panel-body">Panel Content</div>
+  </div>
+</div>
 
 <form action="" method="post">
 <label>Name</label>
@@ -121,7 +128,7 @@ else {
 <br>
 <input type="hidden" class="btn btn-primary" name="loginid" value="" />
 <input type="submit" class="btn btn-primary" name="send" value="Enter" />
-<button class="btn btn-danger" type="button" onclick="window.location.href='home.php'">Back</button>
+<button class="btn btn-default" type="button" onclick="window.location.href='director.php'">Back</button>
 <br><br>
 </form>
 

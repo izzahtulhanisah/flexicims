@@ -144,7 +144,7 @@ else{
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title" style="color:black;"><center>Sign in to explore Live Demo
+                        <h3 class="panel-title" style="color:black;"><center>Sign in to FlexiCims
 
 </center></h3>
                     </div>

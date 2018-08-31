@@ -35,7 +35,7 @@ include 'include/menu.php';
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><center>SETTING</center></h3>
+                    <h3 class="page-header"><center>SETTINGS</center></h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -50,9 +50,9 @@ include 'include/menu.php';
 					<?php
 					}
 					elseif($secpass == 1){
-					?>	
+					?>
 					<a href="assignmanager.php" class="btn btn-primary">ASSIGN LEADER</a>
-					<?php	
+					<?php
 					}
 					else{
 					?>
@@ -64,7 +64,7 @@ include 'include/menu.php';
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 									<h4 class="modal-title" id="myModalLabel">Assign Staff</h4>
 								</div>
-								
+
 								<div class="modal-body">
 									<a href="assignmanager.php" class="btn btn-primary">ASSIGN LEADER(MANAGER)</a>
 									<a href="assignstaff.php" class="btn btn-primary">ASSIGN LEADER(STAFF)</a>

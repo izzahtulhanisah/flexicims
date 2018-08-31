@@ -75,7 +75,7 @@ include "include/menu.php";
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header">CHANGE PASSWORD</h3>
+			<h3>CHANGE PASSWORD</h3><hr>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>

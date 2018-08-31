@@ -29,7 +29,7 @@ $res = $conn->query($query);
 
 //Update Location--------------------------------------------------------------------------------------------------
 
-$select = "SELECT * FROM login WHERE username = '$username' ";						
+$select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$id = $row["id"];
@@ -38,7 +38,7 @@ while($row = $result->fetch_assoc()){
 }
 
 if(isset($_POST['updatemain'])){
-	
+
 $idd = $_POST['id'];
 $location = $_POST['location'];
 $locationbase = $_POST['locationbase'];
@@ -49,13 +49,13 @@ $res = $conn->query($query);
 
 $query1 = "UPDATE sublocation SET location = '$location' WHERE location='$locationbase'";
 $res1 = $conn->query($query1);
-	
+
 
 }
 
 //Update Sub-Location--------------------------------------------------------------------------------------------------
 
-$select = "SELECT * FROM login WHERE username = '$username' ";						
+$select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$id = $row["id"];
@@ -64,35 +64,35 @@ while($row = $result->fetch_assoc()){
 }
 
 if(isset($_POST['updatesub'])){
-	
+
 $idd = $_POST['id'];
 $sublocation = $_POST['sublocation'];
 $location = $_POST['location'];
 
 $query = "UPDATE sublocation SET sublocation = '$sublocation' WHERE id='$idd'";
 $res = $conn->query($query);
-	
+
 
 }
 
 //Add Location--------------------------------------------------------------------------------------------------
 
 if(isset($_POST['sendloc'])){
-	
+
 $location = $_POST['location'];
 $branch = $_POST['branch'];
-	
-$query = "INSERT INTO location (location,branch) 
+
+$query = "INSERT INTO location (location,branch)
 		VALUES ('$location','$branch')";
-			
+
 $res = $conn->query($query);
 
 if($res === TRUE){
-	
+
 	echo "<script type = \"text/javascript\">
 		window.location = (\"location.php\")
 		</script>";
-	
+
 	}
 
 else {
@@ -107,22 +107,22 @@ else {
 //Add Location--------------------------------------------------------------------------------------------------
 
 if(isset($_POST['addsubloc'])){
-	
+
 $location = $_POST['location'];
 $sublocation = $_POST['sublocation'];
 $branch = $_POST['branch'];
-	
-$query = "INSERT INTO sublocation (location,sublocation,branch) 
+
+$query = "INSERT INTO sublocation (location,sublocation,branch)
 		VALUES ('$location','$sublocation','$branch')";
-			
+
 $res = $conn->query($query);
 
 if($res === TRUE){
-	
+
 	echo "<script type = \"text/javascript\">
 		window.location = (\"location.php\")
 		</script>";
-	
+
 	}
 
 else {
@@ -191,27 +191,27 @@ else {
 									<td>
 
 									<?php echo $location; ?><span class="pull-right">
-										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-placement="bottom" data-target="#view<?php echo $id; ?>" title="View"><i class="fa fa-eye"></i> View Sub-location</button> 
-										<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-placement="bottom" data-target="#edit<?php echo $id; ?>" title="Edit"><i class="fa fa-edit"></i> Edit</button> 
-										<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-placement="bottom" data-target="#delete<?php echo $id; ?>" title="Delete"><i class="fa fa-trash-o"></i> Delete</button> 
+										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-placement="bottom" data-target="#view<?php echo $id; ?>" title="View"><i class="fa fa-info-circle"></i> View Sub-location</button> 
+										<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-placement="bottom" data-target="#edit<?php echo $id; ?>" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+										<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-placement="bottom" data-target="#delete<?php echo $id; ?>" title="Delete"><i class="fa fa-trash-o"></i> Delete</button>
 										</span>
 									</td>
-									<div class="modal fade" id="edit<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+									<div class="modal fade" id="edit<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 													<h4 class="modal-title" id="myModalLabel">Edit Location</h4>
 												</div>
-												<?php 
-												
+												<?php
+
 												$select1 = "SELECT * FROM location WHERE id='$id'";
 												$result1 = $conn->query($select1);
 												while($row1 = $result1->fetch_assoc()){
 													$id = $row1["id"];
 													$location = $row1["location"];
 													$managerid = $row1["manager_id"];
-													
+
 												}
 												?>
 												<div class="modal-body">
@@ -220,14 +220,14 @@ else {
 														<input class="form-control" name="location" type="text" value="<?php echo $location; ?>"></input>
 														<?php
 														if($secpass <= 1){
-															
+
 															$selectus = "SELECT * FROM login WHERE id='$managerid'";
 															$resultus = $conn->query($selectus);
 															while($rowus = $resultus->fetch_assoc()){
 
 																$user = $rowus["username"];
 															}
-														
+
 														?>
 														<label>Manager Responsible</label>
 														<select class="form-control" name="managerid">
@@ -257,13 +257,13 @@ else {
 													</form>
 													<label>Sub-Location</label>
 													<?php
-													
+
 													$selectsub = "SELECT * FROM sublocation WHERE location='$location'";
 													$resultsub = $conn->query($selectsub);
 													while($rowsub = $resultsub->fetch_assoc()){
 														$idsub = $rowsub["id"];
 														$sublocation = $rowsub["sublocation"];
-													
+
 													?>
 													<form action="" method="post">
 														<div class="row">
@@ -290,16 +290,16 @@ else {
 										</div>
 										<!-- /.modal-dialog -->
 									</div>
-									<!-- /.modal -->	
-									<div class="modal fade" id="delete<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+									<!-- /.modal -->
+									<div class="modal fade" id="delete<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 													<h4 class="modal-title" id="myModalLabel">Edit Location</h4>
 												</div>
-												<?php 
-												
+												<?php
+
 												$select1 = "SELECT * FROM location WHERE id='$id'";
 												$result1 = $conn->query($select1);
 												while($row1 = $result1->fetch_assoc()){
@@ -319,13 +319,13 @@ else {
 													</form>
 													<label>Sub-Location</label>
 													<?php
-													
+
 													$selectsub = "SELECT * FROM sublocation WHERE location='$location'";
 													$resultsub = $conn->query($selectsub);
 													while($rowsub = $resultsub->fetch_assoc()){
 														$idsub = $rowsub["id"];
 														$sublocation = $rowsub["sublocation"];
-													
+
 													?>
 													<form action="locationdelete.php" method="post">
 														<div class="row">
@@ -353,15 +353,15 @@ else {
 										<!-- /.modal-dialog -->
 									</div>
 									<!-- /.modal -->
-									<div class="modal fade" id="view<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+									<div class="modal fade" id="view<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 													<h4 class="modal-title" id="myModalLabel">Edit Location</h4>
 												</div>
-												<?php 
-												
+												<?php
+
 												$select1 = "SELECT * FROM location WHERE id='$id'";
 												$result1 = $conn->query($select1);
 												while($row1 = $result1->fetch_assoc()){
@@ -379,13 +379,13 @@ else {
 													</form>
 													<label>Sub-Location</label>
 													<?php
-													
+
 													$selectsub = "SELECT * FROM sublocation WHERE location='$location'";
 													$resultsub = $conn->query($selectsub);
 													while($rowsub = $resultsub->fetch_assoc()){
 														$idsub = $rowsub["id"];
 														$sublocation = $rowsub["sublocation"];
-													
+
 													?>
 													<form action="locationdelete.php" method="post">
 														<div class="row">
@@ -409,9 +409,9 @@ else {
 										</div>
 										<!-- /.modal-dialog -->
 									</div>
-									<!-- /.modal -->	
+									<!-- /.modal -->
 
-									
+
 									<!-- <td>
 										<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-placement="bottom" data-target="#myModal<?php echo $id; ?>" title="Edit"><i class="fa fa-edit"></i> Edit</button>
 										<button type="button" onclick="window.location.href='locationdelete.php?id=<?php echo $id; ?>'" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fa fa-trash-o"></i> Delete</button></span>

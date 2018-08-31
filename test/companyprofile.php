@@ -8,7 +8,7 @@ include 'config.php';
 $username=$_SESSION['username'];
 
 
-$select = "SELECT * FROM login WHERE username = '$username' ";						
+$select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$userid = $row["id"];
@@ -41,7 +41,7 @@ include "include/menu.php";
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header"><center>INVENTORY CONTROL</center></h3>
+			<h3>COMPANY INFO</h3><hr>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -60,24 +60,32 @@ include "include/menu.php";
 			$comwebsite = $row["comwebsite"];
 		}
 		?>
-		
-			<p>Name: <strong><?php echo $comname; ?></strong></p>
-			<p>Address: <strong><?php echo $comaddress; ?></strong></p>
-			<p>Email: <strong><?php echo $comemail; ?></strong></p>
-			<p>Contact Number: <strong><?php echo $comcontact; ?></strong></p>
-			<p>Website: <strong><?php echo $comwebsite; ?></strong></p>
-		
-	</div>
+
+		<div class="container">
+
+		  <div class="panel panel-info" style="width: 500px">
+		    <div class="panel-heading">Company Details</div>
+		    <div class="panel-body">
+					<p>Name: <strong><?php echo $comname; ?></strong></p>
+					<p>Address: <strong><?php echo $comaddress; ?></strong></p>
+					<p>Email: <strong><?php echo $comemail; ?></strong></p>
+					<p>Contact Number: <strong><?php echo $comcontact; ?></strong></p>
+					<p>Website: <strong><?php echo $comwebsite; ?></strong></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	<div class="row">
-		<div class="col-12">
+		<div class="col-lg-12">
 		<?php
 		if($secpass>= 1){}else{
 		?>
-			<a href="companyedit.php" class="btn btn-danger">Edit Company Profile</a>
+			<a href="companyedit.php" class="btn btn-warning">Edit Company Profile</a>
 		<?php
 		}
 		?>
-			<a href="setting.php" class="btn btn-success">Setting</a>
+			<!-- <a href="setting.php" class="btn btn-success">Setting</a> -->
 		<!-- /.col-lg-12 -->
 		</div>
 	<!-- /.row -->

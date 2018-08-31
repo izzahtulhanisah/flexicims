@@ -8,7 +8,7 @@ include 'config.php';
 $username=$_SESSION['username'];
 
 
-$select = "SELECT * FROM login WHERE username = '$username' ";						
+$select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$userid = $row["id"];
@@ -31,15 +31,15 @@ if(isset($_POST['send'])){
 
 	if($res === TRUE){
 		echo "<script type = \"text/javascript\">
-			alert(\"Company Succesfully Edit\");
-			window.location = (\"companyedit.php\")
+			alert(\"Succesfully Edited Company Details\");
+			window.location = (\"companyprofile.php\")
 			</script>";
 		}
 
 	else {
 		echo "<script type = \"text/javascript\">
-			alert(\"Company Not Succesfully Edit\");
-			window.location = (\"companyedit.php\")
+			alert(\"Failed to Edit Company Details\");
+			window.location = (\"companyprofile.php\")
 			</script>";
 		}
 }
@@ -69,7 +69,7 @@ include "include/menu.php";
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header"><center>COMPANY PROFILE</center></h3>
+			<h3>COMPANY PROFILE</h3><hr>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -88,27 +88,37 @@ include "include/menu.php";
 			$comwebsite = $row["comwebsite"];
 		}
 		?>
-		<form action="" method="post">
-			<label>Company Name</label>
-			<input class="form-control" name="comname" type="text" value="<?php echo $comname; ?>"></input>
-			<br>
-			<label>Company Address</label>
-			<input class="form-control" name="comaddress" type="text" value="<?php echo $comaddress; ?>"></input>
-			<br>
-			<label>Email</label>
-			<input class="form-control" name="comemail" type="text" value="<?php echo $comemail; ?>"></input>
-			<br>
-			<label>Company Contact</label>
-			<input class="form-control" name="comcontact" type="text" value="<?php echo $comcontact; ?>"></input>
-			<br>
-			<label>Company Website</label>
-			<input class="form-control" name="comwebsite" type="text" value="<?php echo $comcontact; ?>"></input>
-			<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
-			<br>
-			<input type="submit" class="btn btn-success" name="send" value="Submit" />
-			<button class="btn btn-bg-grey" type="button" onclick="window.location.href='companyprofile.php'">Back</button>
-			<br><br>
-		</form>
+
+		<div class="container">
+
+		  <div class="panel panel-warning" style="width: 500px">
+		    <div class="panel-heading">Edit Company Details</div>
+		    <div class="panel-body">
+
+					<form action="" method="post">
+						<label>Company Name</label>
+						<input class="form-control" name="comname" type="text" value="<?php echo $comname; ?>"></input>
+						<br>
+						<label>Company Address</label>
+						<input class="form-control" name="comaddress" type="text" value="<?php echo $comaddress; ?>"></input>
+						<br>
+						<label>Email</label>
+						<input class="form-control" name="comemail" type="text" value="<?php echo $comemail; ?>"></input>
+						<br>
+						<label>Company Contact</label>
+						<input class="form-control" name="comcontact" type="text" value="<?php echo $comcontact; ?>"></input>
+						<br>
+						<label>Company Website</label>
+						<input class="form-control" name="comwebsite" type="text" value="<?php echo $comwebsite; ?>"></input>
+						<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
+						<br>
+						<input type="submit" class="btn btn-success pull-right" name="send" value="Submit" />
+						<button class="btn btn-bg-grey pull-left" type="button" onclick="window.location.href='companyprofile.php'">Back</button>
+						<br><br>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 

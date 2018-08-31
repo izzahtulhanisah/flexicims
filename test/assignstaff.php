@@ -37,7 +37,7 @@ while($row = $result->fetch_assoc()){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><center>USER : <b>STAFF</b></center></h3>
+                    <h3 class="page-header"><center>ASSIGN STAFF <i class="fa fa-exchange"></i> MANAGER</center></h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -54,9 +54,9 @@ while($row = $result->fetch_assoc()){
 						<table width="100%" class="table table-striped table-bordered table-hover table-sm" id="table">
 							<thead>
 								<tr>
-								  <th>Username</th>
-								  <th>Manager</th>
-								  <th><span class="pull-right">Assign</span></th>
+								  <th>Staff Name</th>
+								  <th>Manager Name</th>
+								  <th><span class="pull-right">Actions</span></th>
 								</tr>
 							</thead>
 							<?php
@@ -72,20 +72,20 @@ while($row = $result->fetch_assoc()){
 									<td><?php echo $username; ?></td>
 									<td>
 									<?php
-									
+
 									$select2 = "SELECT * FROM login WHERE id='$lead_id'";
 									$result2 = $conn->query($select2);
 									while($row2 = $result2->fetch_assoc()){
 										$namee = $row2["username"];
 									}
-									
+
 									echo $namee;
 									?>
 									</td>
 									<td>
 										<span class="pull-right">
-											<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-placement="bottom" data-target="#myModal<?php echo $id; ?>" title="Info"><i class="fa fa-info"></i> Info</button>
-											<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-placement="bottom" data-target="#assign<?php echo $id; ?>" title="Assign"><i class="fa fa-info"></i> Assign</button>
+											<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-placement="bottom" data-target="#myModal<?php echo $id; ?>" title="Info"><i class="fa fa-info-circle"></i> Details</button>
+											<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-placement="bottom" data-target="#assign<?php echo $id; ?>" title="Assign"><i class="fa fa-users"></i> Assign</button>
 										</span>
 									</td>
 
@@ -96,7 +96,7 @@ while($row = $result->fetch_assoc()){
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Add Type</h4>
+				<h4 class="modal-title" id="myModalLabel">Staff Details</h4>
 			</div>
 			<?php
 
@@ -131,41 +131,41 @@ while($row = $result->fetch_assoc()){
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Assign Staff</h4>
+				<h4 class="modal-title" id="myModalLabel">Assign Staff to Manager</h4>
 			</div>
 			<?php
 
 			if(isset($_POST['assign'.$id.''])){
-				
-				$assign = $_POST['assign']; 
-				$idd = $_POST['idd']; 
-				
+
+				$assign = $_POST['assign'];
+				$idd = $_POST['idd'];
+
 				$query = "UPDATE login SET lead_id='$assign' WHERE  id='$idd'  ";
-				
+
 				$res = $conn->query($query);
 				if($res === TRUE){
 					echo "<script type = \"text/javascript\">
-						alert(\"Manager Succesfully Edited\");
+						alert(\"Successfully Assigned Staff to Selected Manager\");
 						window.location = (\"assignstaff.php\")
 						</script>";
 					}
 
 				else {
 					echo "<script type = \"text/javascript\">
-						alert(\"Manager Not Succesfully Edited\");
+						alert(\"Failed to Assign Staff\");
 						window.location = (\"assignstaff.php\")
 						</script>";
 					}
-				
+
 			}
 
 			?>
 			<div class="modal-body">
 				<form method="post" action="">
-				<?php	
+				<?php
 				if($secpass <= 1){
 				?>
-				<p><strong>Pick manager for this user</strong></p>
+				<p><strong>Select a Manager</strong></p>
 				<select class="form-control" name="assign">
 				<option value="" disabled selected><?php echo $namee;?> (current leader)</option>
 				<?php
@@ -181,7 +181,7 @@ while($row = $result->fetch_assoc()){
 				}
 
 				?>
-				</select>	
+				</select>
 				<?php
 				}elseif($secpass == 2){
 				?>
@@ -193,8 +193,8 @@ while($row = $result->fetch_assoc()){
 				<input type="hidden" name="idd" value="<?php echo $id ?>">
 			</div>
 			<div class="modal-footer">
-				<input class="btn btn-success" type="submit" name="assign<?php echo $id; ?>" value="Submit" />
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<input class="btn btn-success pull-right" type="submit" name="assign<?php echo $id; ?>" value="Submit" />
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
 				</form>
 			</div>
 		</div>

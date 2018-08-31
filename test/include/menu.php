@@ -19,10 +19,12 @@
                        Hello  <b><i><?php echo $username; ?></i></b> <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-						<li><a href="profile.php"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-						<li><a href="setting.php"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
+						          <li>
+                        <a href="profile.php"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                      </li>
+						          <li>
+                        <a href="companyprofile.php"><i class="fa fa-building fa-fw"></i> Company Info</a>
+                      </li>
                         <li class="divider"></li>
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
@@ -71,7 +73,7 @@
                                 <li>
                                     <a href="incoming.php">Incoming</a>
                                 </li>
-								<li>
+								                <li>
                                     <a href="outgoing.php">Outgoing</a>
                                 </li>
                                 <li>
@@ -92,7 +94,16 @@
 						if($secpass>= 1){}else{
 						?>
                         <li>
-                            <a href="userprofile.php"><i class="fa fa-users"></i> Users</a>
+                            <a href="#"><i class="fa fa-user"></i> Users<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="userprofile.php">Manage Users</a>
+                                </li>
+								                <li>
+                                    <a href="assignstaff.php">Assign Staff</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
 
                         <li>
@@ -107,6 +118,7 @@
 						}
 						}
 						}
+
 						?>
 
                     </ul>

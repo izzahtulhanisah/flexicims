@@ -65,7 +65,7 @@ include "include/menu.php";
 		?>
 
 
-  <h3>User Profile Details</h3>
+  <h3>USER PROFILE DETAILS</h3><hr>
   <div class="panel panel-info" style="width: 500px">
     <div class="panel-heading">Personal Information</div>
     <div class="panel-body">

@@ -48,7 +48,7 @@ while($row = $result->fetch_assoc()){
 					<div class="panel panel-primary">
 							<div class="panel-heading">
 									<p>LIST OF ADMINS
-									<button class="btn btn-success pull-right" onclick="window.location.href='adminadd.php'"><i class="fa fa-plus" style="font-size:12px"></i> New User</button></p>
+									<button class="btn btn-success btn-sm pull-right" onclick="window.location.href='adminadd.php'"><i class="fa fa-plus" style="font-size:12px"></i> New User</button></p>
 							</div>
 
 					<div class="panel-body">
@@ -69,8 +69,8 @@ while($row = $result->fetch_assoc()){
 							<tbody>
 								<tr>
 									<td><?php echo $username; ?><span class="pull-right">
+										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-placement="bottom" data-target="#myModal<?php echo $id; ?>" title="Info"><i class="fa fa-info-circle"></i> Details</button>
 										<button type="button" onclick="window.location.href='adminedit.php?loginid=<?php echo $id; ?>'" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-placement="bottom" data-target="#myModal<?php echo $id; ?>" title="Info"><i class="fa fa-info"></i> Info</button>
 										<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-placement="bottom" data-target="#myModal<?php echo $id; ?>" title="Delete"><i class="fa fa-remove"></i> Delete</button></span></td>
 
 								</tr>
@@ -80,7 +80,7 @@ while($row = $result->fetch_assoc()){
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Add Type</h4>
+				<h4 class="modal-title" id="myModalLabel">View Admin Details</h4>
 			</div>
 			<?php
 
@@ -116,7 +116,7 @@ while($row = $result->fetch_assoc()){
 						</table>
 					</div>
                     <a href="userprofile.php"><button type="button" class="btn btn-bg-grey">Back</button></a>
-                    <a href="adminadd.php"><button type="button" class="btn btn-primary">Add User</button></a>
+                    <!-- <a href="adminadd.php"><button type="button" class="btn btn-primary">Add User</button></a> -->
 				</div>
 			</div>
 				</div>

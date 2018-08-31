@@ -71,7 +71,7 @@ include "include/menu.php";
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h3 class="page-header">EDIT USER PROFILE</h3>
+			<h3>EDIT USER PROFILE</h3><hr>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
