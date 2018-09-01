@@ -192,7 +192,7 @@ if($secpass>= 1){
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
+                                    <i class="fa fa-cubes fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
 									<?php
@@ -231,7 +231,7 @@ if($secpass>= 1){
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
+                                    <i class="fa fa-warning fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <?php
@@ -271,7 +271,7 @@ if($secpass>= 1){
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                    <i class="fa fa-sign-in fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <?php
@@ -311,7 +311,7 @@ if($secpass>= 1){
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
+                                    <i class="fa fa-truck fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <?php
@@ -405,7 +405,7 @@ if($secpass>= 1){
 		                        <div class="panel-heading">
 		                            <div class="row">
 		                                <div class="col-xs-3">
-		                                    <i class="fa fa-comments fa-5x"></i>
+		                                    <i class="fa fa-users fa-5x"></i>
 		                                </div>
 		                                <div class="col-xs-9 text-right">
 
@@ -442,7 +442,7 @@ if($secpass>= 1){
 		                        <div class="panel-heading">
 		                            <div class="row">
 		                                <div class="col-xs-3">
-		                                    <i class="fa fa-tasks fa-5x"></i>
+		                                    <i class="fa fa-cogs fa-5x"></i>
 		                                </div>
 		                                <div class="col-xs-9 text-right">
 
@@ -479,7 +479,7 @@ if($secpass>= 1){
 		                        <div class="panel-heading">
 		                            <div class="row">
 		                                <div class="col-xs-3">
-		                                    <i class="fa fa-shopping-cart fa-5x"></i>
+		                                    <i class="fa fa-check-square-o fa-5x"></i>
 		                                </div>
 		                                <div class="col-xs-9 text-right">
 
@@ -516,7 +516,7 @@ if($secpass>= 1){
 		                        <div class="panel-heading">
 		                            <div class="row">
 		                                <div class="col-xs-3">
-		                                    <i class="fa fa-support fa-5x"></i>
+		                                    <i class="fa fa-edit fa-5x"></i>
 		                                </div>
 		                                <div class="col-xs-9 text-right">
 
