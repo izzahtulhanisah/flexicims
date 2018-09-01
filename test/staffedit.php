@@ -123,7 +123,8 @@ else {
 <input class="form-control" name="position" type="text" value="<?php echo $position; ?>"></input>
 <br>
 <label>Username</label>
-<input class="form-control" name="username" type="text" value="<?php echo $users; ?>"></input>
+<input class="form-control" type="text" value="<?php echo $users; ?>"></input>
+<input class="form-control" name="username" type="hidden" value="<?php echo $users; ?>"></input>
 <br>
 <label>Password</label>
 <input class="form-control" name="password" type="password" value="<?php echo $password; ?>"></input>
