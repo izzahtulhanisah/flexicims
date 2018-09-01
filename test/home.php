@@ -818,98 +818,98 @@ if(isset($_POST['send'])){
 														<div class="modal-body">
 															
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																	<p>Name: 
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																	<b><?php echo $name; ?></b></p>
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																	<p>Product ID: </p>
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																	<b><?php echo $inventory_id; ?></b>
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																	<p>Product Type: </p>
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																	<b><?php echo $type; ?></b>
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																	<p>Product Sub-Type: </p>
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																	<b><?php echo $subtype; ?></b>
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																<p>Quantity: </p>
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																<b><?php echo $quantity; ?></b>
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																<p>Quantity: </p>
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																<b><?php echo $unit; ?></b>
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																<p>Maximum Quantity: </p>
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																<b><?php echo $max; ?></b>
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																<p>Minimimum Quantity: </p>
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																<b><?php echo $min; ?></b>
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																<p>Critical Quantity: </p>
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																<b><?php echo $critical; ?></b>
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																<p>Location:</p>
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																 <b><?php echo $location2; echo " | "; echo $location; ?></b>
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																<p>Supplier: </p>
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																<b><?php echo $supplier; ?></b>
 																</div>
 															</div>
 															<div class="row">
-																<div class="col-lg-4">
+																<div class="col-lg-6">
 																<p>Status: </p>
 																</div>
-																<div class="col-lg-8">
+																<div class="col-lg-6">
 																<b><?php echo $alert; ?></b>
 																</div>
 															</div>
