@@ -388,7 +388,8 @@ else {
 													<form action="locationdelete.php" method="post">
 														<label>Location :</label>
 														<input class="form-control" name="location" type="text" value="<?php echo $location; ?>" disabled></input>
-														<label>Manager In Charge :</label>
+														<br>
+														<label>Manager (Person-In Charge) :</label>
 														<?php
 														$selectus = "SELECT * FROM login WHERE id='$managerid'";
 														$resultus = $conn->query($selectus);

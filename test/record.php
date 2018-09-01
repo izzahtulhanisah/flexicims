@@ -61,7 +61,7 @@ while($row = $result->fetch_assoc()){
 											<td><b>Type</b></td>
 											<td><b>Quantity</b></td>
 											<td><b>Unit</b></td>
-											<td><b>Detail</b></td>
+											<td><b>Details</b></td>
 											<td><b>Date</b></td>
 											<td><b>User</b></td>
 										</tr>

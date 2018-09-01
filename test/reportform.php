@@ -8,7 +8,7 @@ include 'config.php';
 $username=$_SESSION['username'];
 
 
-$select = "SELECT * FROM login WHERE username = '$username' ";						
+$select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$id = $row["id"];
@@ -38,8 +38,8 @@ while($row = $result->fetch_assoc()){
 }
 
 .button1 {
-    background-color: white; 
-    color: black; 
+    background-color: white;
+    color: black;
     border: 2px solid #4CAF50;
 }
 .button1:hover {
@@ -48,8 +48,8 @@ while($row = $result->fetch_assoc()){
 }
 
 .button2 {
-    background-color: white; 
-    color: black; 
+    background-color: white;
+    color: black;
     border: 2px solid #008CBA;
 }
 .button2:hover {
@@ -58,8 +58,8 @@ while($row = $result->fetch_assoc()){
 }
 
 .button3 {
-    background-color: white; 
-    color: black; 
+    background-color: white;
+    color: black;
     border: 2px solid #f44336;
 }
 .button3:hover {
@@ -118,9 +118,9 @@ include 'include/head.php';
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	
+
 	<script>
-	
+
 	$( document ).ready(function() {
     $('#select1').on("change", function(){
       var selectedClass = $(this).val(); //store the selected value
@@ -130,32 +130,32 @@ include 'include/head.php';
       $('#select2 option').each(function () {
         var newValue = $(this).attr('class');
         if (selectedClass != newValue && selectedClass != "") {
-            $(this).hide();  
+            $(this).hide();
         }
       else{$(this).show(); }
      });
-    
+
     });
 });
-	
+
 	</script>
 
 <style>
 
 @media print {
     h1 {page-break-before: always;}
-	
+
 	footer {page-break-after: always;}
-	
+
 	#printPageButton {
     display: none;
   }
-	
-	
+
+
 }
 
 #box {
-    background: #73AD21;       
+    background: #73AD21;
 }
 
 
@@ -177,11 +177,11 @@ margin: 0 0 0 0;
 	color:#555;
 }
 
- 
+
 body {
   -webkit-print-color-adjust: exact;
 }
-	
+
 
 </style>
 
@@ -202,7 +202,7 @@ function printContent(el){
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
       ['Type', 'Incoming', 'Outgoing'],
-     
+
 
 <?php
 
@@ -210,7 +210,7 @@ function printContent(el){
 
 
 $query= "SELECT type, (CASE WHEN detail = 'Incoming' THEN SUM(quantity) ELSE 0 END) AS incoming, (CASE WHEN detail = 'Outgoing' THEN SUM(quantity) ELSE 0 END) AS outgoing FROM record GROUP BY type";
-  
+
 $result = $conn->query($query);
 
 // All good?
@@ -224,10 +224,10 @@ if ( !$result ) {
 while ( $row = mysqli_fetch_assoc($result) ) {
 echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing'] . "'],";
 }
-?>	  
-  
+?>
+
    ]);
-  
+
     var options = {
       chart: {
         title: 'Outgoing & Incoming Based on Type',
@@ -242,7 +242,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
     chart.draw(data, google.charts.Bar.convertOptions(options));
   }
 </script>
-	
+
 </head>
 
 <body>
@@ -252,12 +252,12 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 <br><br>
 <div class="yunyun" id="div1">
 	<div class="container-fluid">
-	
+
 			<h1 class="page-header">REPORT</h1>
 			<div class="row">
 				<div class="col-xs-12 col-md-12">
 					<strong>From : <?php echo $fromdate1; ?></strong>
-				
+
 					<strong style="float: right";>To : <?php echo $todate1; ?></strong>
 				</div>
 				<br><br>
@@ -281,10 +281,10 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								<tr class="success">
 									<td>No.</td>
 									<td>Type</td>
-									<td>Inventory Name</td>
-									<td>Inventory ID</td>
+									<td>Product Name</td>
+									<td>Product ID</td>
 									<td>Quantity</td>
-									<td>Detail</td>
+									<td>Activity</td>
 									<td>Date</td>
 									<td>User</td>
 								</tr>
@@ -292,7 +292,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							<?php
 
 							include 'config.php';
-							
+
 							if($_POST['location'] != ""){
 								$location = "AND location = '". $_POST['location']."'";
 							}else{
@@ -304,7 +304,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							}else{
 								$sublocation = "";
 							}
-							
+
 							if($_POST['type'] != ""){
 								$type = "AND type = '". $_POST['type']."'";
 							}else{
@@ -316,11 +316,11 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							}else{
 								$subtype = "";
 							}
-							
+
 							$counter = 0;
 
 							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND detail='Incoming' ORDER BY detail DESC ";
-							
+
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
@@ -334,7 +334,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$branch = $row["branch"];
 								$date = $row["date"];
 								$username = $row["username"];
-								
+
 								$counter++;
 
 							?>
@@ -375,10 +375,10 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								<tr class="success">
 									<td>No.</td>
 									<td>Type</td>
-									<td>Inventory Name</td>
-									<td>Inventory ID</td>
+									<td>Product Name</td>
+									<td>Product ID</td>
 									<td>Quantity</td>
-									<td>Detail</td>
+									<td>Activity</td>
 									<td>Date</td>
 									<td>User</td>
 								</tr>
@@ -387,7 +387,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 
 							include 'config.php';
 							$counter = 0;
-							
+
 							if($_POST['location'] != ""){
 								$location = "AND location = '". $_POST['location']."'";
 							}else{
@@ -399,7 +399,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							}else{
 								$sublocation = "";
 							}
-							
+
 							if($_POST['type'] != ""){
 								$type = "AND type = '". $_POST['type']."'";
 							}else{
@@ -412,7 +412,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$subtype = "";
 							}
 
-							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND detail='Outgoing' ORDER BY detail DESC ";	
+							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND detail='Outgoing' ORDER BY detail DESC ";
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
@@ -426,7 +426,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$branch = $row["branch"];
 								$date = $row["date"];
 								$username = $row["username"];
-								
+
 								$counter++;
 
 							?>
@@ -467,10 +467,10 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								<tr class="success">
 									<td>No.</td>
 									<td>Type</td>
-									<td>Inventory Name</td>
-									<td>Inventory ID</td>
+									<td>Product Name</td>
+									<td>Product ID</td>
 									<td>Quantity</td>
-									<td>Detail</td>
+									<td>Activity</td>
 									<td>Date</td>
 									<td>User</td>
 								</tr>
@@ -479,7 +479,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 
 							include 'config.php';
 							$counter = 0;
-							
+
 							if($_POST['location'] != ""){
 								$location = "AND location = '". $_POST['location']."'";
 							}else{
@@ -491,7 +491,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							}else{
 								$sublocation = "";
 							}
-							
+
 							if($_POST['type'] != ""){
 								$type = "AND type = '". $_POST['type']."'";
 							}else{
@@ -518,7 +518,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$branch = $row["branch"];
 								$date = $row["date"];
 								$username = $row["username"];
-								
+
 								$counter++;
 
 							?>
@@ -586,7 +586,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$branch = $row["branch"];
 								$date = $row["date"];
 								$username = $row["username"];
-								
+
 								$counter++;
 
 							?>
