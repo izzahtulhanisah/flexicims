@@ -167,8 +167,11 @@ else {
 					<div class="panel panel-primary">
 							<div class="panel-heading">
 									<p>LIST OF INVENTORY LOCATIONS
-									<button class="btn btn-warning pull-right" data-toggle="modal" data-placement="bottom" data-target="#addsub" title="Add Sub-Location"><i class="fa fa-plus" style="font-size:12px"></i> New Sub-location</button> 
-									<button class="btn btn-success pull-right" data-toggle="modal" data-placement="bottom" data-target="#add" title="Add"><i class="fa fa-plus" style="font-size:12px"></i> New Location</button></p>
+										<span class="pull-right">
+											<button class="btn btn-success btn-sm" data-toggle="modal" data-placement="bottom" data-target="#add" title="Add"><i class="fa fa-plus"></i> New Location</button>
+											<button class="btn btn-default btn-sm" data-toggle="modal" data-placement="bottom" data-target="#addsub" title="Add Sub-Location"><i class="fa fa-plus"></i> New Sub-Location</button>
+										</span>
+									</p>
 							</div>
 
 					<div class="panel-body">
@@ -192,17 +195,17 @@ else {
 									<td>
 
 									<?php echo $location; ?><span class="pull-right">
-										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-placement="bottom" data-target="#view<?php echo $id; ?>" title="View"><i class="fa fa-info-circle"></i> View Sub-location</button> 
-										<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-placement="bottom" data-target="#edit<?php echo $id; ?>" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-placement="bottom" data-target="#view<?php echo $id; ?>" title="View"><i class="fa fa-info-circle"></i> View Sub-location</button>
+										<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-placement="bottom" data-target="#edit<?php echo $id; ?>" title="Edit"><i class="fa fa-edit"></i> Edit</button>
 										<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-placement="bottom" data-target="#delete<?php echo $id; ?>" title="Delete"><i class="fa fa-trash-o"></i> Delete</button>
 										</span>
 									</td>
 									<div class="modal fade" id="edit<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
-												<div class="modal-header">
+												<div class="modal-header" style="background-color: lightgrey">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4 class="modal-title" id="myModalLabel">Edit Location</h4>
+													<h4 class="modal-title" id="myModalLabel"><center>EDIT LOCATION DETAILS</center></h4>
 												</div>
 												<?php
 
@@ -217,7 +220,7 @@ else {
 												?>
 												<div class="modal-body">
 													<form action="" method="post">
-														<label>Location</label>
+														<label>Location :</label>
 														<input class="form-control" name="location" type="text" value="<?php echo $location; ?>"></input>
 														<?php
 														if($secpass <= 1){
@@ -230,9 +233,11 @@ else {
 															}
 
 														?>
-														<label>Manager Responsible</label>
+
+														<br>
+														<label>Manager (Person-In-Charge) :</label>
 														<select class="form-control" name="managerid">
-														<option value="" disabled selected><?php echo $user;?> (current leader)</option>
+														<option value="" disabled selected><?php echo $user;?> (current manager)</option>
 														<?php
 
 														$selectloc = "SELECT * FROM login WHERE secpass='2'";
@@ -254,9 +259,10 @@ else {
 														<input class="form-control" name="locationbase" type="hidden" value="<?php echo $location; ?>"></input>
 														<br>
 														<input type="submit" class="btn btn-success" name="updatemain" value="Edit" />
-														<br><br>
+														<br>
 													</form>
-													<label>Sub-Location</label>
+													<hr>
+													<label>Sub-Location(s) :</label>
 													<?php
 
 													$selectsub = "SELECT * FROM sublocation WHERE location='$location'";
@@ -295,9 +301,9 @@ else {
 									<div class="modal fade" id="delete<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
-												<div class="modal-header">
+												<div class="modal-header" style="background-color: lightgrey">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4 class="modal-title" id="myModalLabel">Edit Location</h4>
+													<h4 class="modal-title" id="myModalLabel"><center>DELETE LOCATION</center></h4>
 												</div>
 												<?php
 
@@ -310,7 +316,7 @@ else {
 												?>
 												<div class="modal-body">
 													<form action="locationdelete.php" method="post">
-														<label>Location</label>
+														<label>Location :</label>
 														<input class="form-control" name="location" type="text" value="<?php echo $location; ?>"></input>
 														<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 														<input class="form-control" name="locationbase" type="hidden" value="<?php echo $location; ?>"></input>
@@ -318,7 +324,7 @@ else {
 														<input type="submit" class="btn btn-danger" name="deletelocation" value="Delete" />
 														<br><br>
 													</form>
-													<label>Sub-Location</label>
+													<label>Sub-Location(s) :</label>
 													<?php
 
 													$selectsub = "SELECT * FROM sublocation WHERE location='$location'";
@@ -357,9 +363,9 @@ else {
 									<div class="modal fade" id="view<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
-												<div class="modal-header">
+												<div class="modal-header" style="background-color: lightgrey">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4 class="modal-title" id="myModalLabel">Edit Location</h4>
+													<h4 class="modal-title" id="myModalLabel"><center>VIEW LOCATION DETAILS</center></h4>
 												</div>
 												<?php
 
@@ -372,13 +378,13 @@ else {
 												?>
 												<div class="modal-body">
 													<form action="locationdelete.php" method="post">
-														<label>Location</label>
+														<label>Location :</label>
 														<input class="form-control" name="location" type="text" value="<?php echo $location; ?>" disabled></input>
 														<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 														<input class="form-control" name="locationbase" type="hidden" value="<?php echo $location; ?>"></input>
-														<br><br>
+														<hr>
 													</form>
-													<label>Sub-Location</label>
+													<label>Sub-Location(s) :</label>
 													<?php
 
 													$selectsub = "SELECT * FROM sublocation WHERE location='$location'";
@@ -431,9 +437,9 @@ else {
 						<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
-									<div class="modal-header">
+									<div class="modal-header" style="background-color: lightgrey">
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-										<h4 class="modal-title" id="myModalLabel">Add New Location</h4>
+										<h4 class="modal-title" id="myModalLabel"><center>ADD NEW LOCATION</center></h4>
 									</div>
 									<div class="modal-body">
 										<form action="" method="post">
@@ -446,7 +452,7 @@ else {
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-										<input type="submit" class="btn btn-primary" name="sendloc" value="Enter" />
+										<input type="submit" class="btn btn-success" name="sendloc" value="Submit" />
 										</form>
 									</div>
 								</div>
@@ -456,26 +462,26 @@ else {
 						</div>
 						<!-- START OF SUBLOCATION MODAL -->
 					<!-- /.modal -->
-					<div class="modal fade" id="addsub" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+					<div class="modal fade" id="addsub" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
-								<div class="modal-header">
+								<div class="modal-header" style="background-color: lightgrey">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									<h4 class="modal-title" id="myModalLabel">Add Sub-Location</h4>
+									<h4 class="modal-title" id="myModalLabel"><center>ADD SUB-LOCATION</center></h4>
 								</div>
 								<div class="modal-body">
 									<form action="" method="post">
 										<label>Location</label>
 										<select class="form-control" name="location">
 											<option disabled selected>Select Location..</option>
-											<?php 
+											<?php
 											$select = "SELECT location FROM location";
 											$result1 = $conn->query($select);
 											while($row = $result1->fetch_assoc()){
 												$location=$row['location'];
-												
+
 											echo "<option value='".$location."'>". $location ."</option>";
-											// close while loop 
+											// close while loop
 											}
 											?>
 										</select>
@@ -485,12 +491,12 @@ else {
 										<input class="form-control" name="sublocation" type="text" value=""></input>
 										<input class="form-control" name="branch" type="hidden" value="1"></input>
 										<br>
-									
+
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-									<input type="submit" class="btn btn-primary" name="addsubloc" value="Enter" />
+									<input type="submit" class="btn btn-success" name="addsubloc" value="Submit" />
 									</form>
 								</div>
 							</div>

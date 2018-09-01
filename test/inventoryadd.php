@@ -8,7 +8,7 @@ include 'config.php';
 $username=$_SESSION['username'];
 
 
-$select = "SELECT * FROM login WHERE username = '$username' ";						
+$select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$userid = $row["id"];
@@ -27,9 +27,9 @@ while($row = $result->fetch_assoc()){
 	include 'include/head.php';
 	?>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	
+
 	<script>
-	
+
 	$( document ).ready(function() {
 		$('#select1').on("change", function(){
 		  var selectedClass = $(this).val(); //store the selected value
@@ -39,18 +39,18 @@ while($row = $result->fetch_assoc()){
 		  $('#select2 option').each(function () {
 			var newValue = $(this).attr('class');
 			if (selectedClass != newValue && selectedClass != "") {
-				$(this).hide();  
+				$(this).hide();
 			}
 		  else{$(this).show(); }
 		 });
-		
+
 		});
 	});
-	
+
 	</script>
-	
+
 	<script>
-	
+
 	$( document ).ready(function() {
 		$('.select1').on("change", function(){
 		  var selectedClass = $(this).val(); //store the selected value
@@ -60,14 +60,14 @@ while($row = $result->fetch_assoc()){
 		  $('.select2 option').each(function () {
 			var newValue = $(this).attr('class');
 			if (selectedClass != newValue && selectedClass != "") {
-				$(this).hide();  
+				$(this).hide();
 			}
 		  else{$(this).show(); }
 		 });
-		
+
 		});
 	});
-	
+
 	</script>
 
 </head>
@@ -81,8 +81,9 @@ while($row = $result->fetch_assoc()){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Inventory Add</h1>
+                    <h3 class="page-header">ADD NEW PRODUCT</h3>
                 </div>
+						</div>
                 <!-- /.col-lg-12 -->
 
 <?php
@@ -91,16 +92,16 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
 include "config.php";
 
 if(isset($_POST['send'])){
-	
+
 //$expired =strtotime($_POST['expireddate']);
-	
+
 $name = $_POST['name'];
 $type = $_POST['type'];
 $subtype = $_POST['subtype'];
 $inventory_id = $_POST['inventory_id'];
 $quantity = $_POST['quantity'];
 $unit = $_POST['unit'];
-$qr="1";							
+$qr="1";
 $branch="1";
 $date=date("Y-m-d H:i:s");
 $critical=$_POST['critical'];
@@ -126,13 +127,13 @@ if($quantity <= 0){
 	$status = "Sufficient";
 }
 
-$query = "INSERT INTO inventory (type,subtype,name,inventory_id,quantity,unit,qr,branch,date,critical,min,max,location,location2,description,dateupdate,supplier,updateby,status) 
+$query = "INSERT INTO inventory (type,subtype,name,inventory_id,quantity,unit,qr,branch,date,critical,min,max,location,location2,description,dateupdate,supplier,updateby,status)
 		VALUES ('$type','$subtype','$name','$inventory_id','$quantity','$unit','$qr','$branch','$date','$critical','$minimum','$max','$location','$sublocation','$description','$dateupdate','$supplier','$updateby','$status')";
 $res = $conn->query($query);
 
-$queryin = "INSERT INTO record (type,subtype,name,inventory_id,quantity,unit,detail,qr,branch,date,user) 
+$queryin = "INSERT INTO record (type,subtype,name,inventory_id,quantity,unit,detail,qr,branch,date,user)
 			VALUES ('$type','$subtype','$name','$inventory_id','$quantity','$unit','Add New Item','$qr','$branch','$date','$userid')";
-			
+
 $resin = $conn->query($queryin);
 
 if($res === TRUE){
@@ -148,28 +149,28 @@ else {
 		window.location = (\"inventoryadd.php\")
 		</script>";
 	}
-	
+
 
 }
 
 //--------------------------------------------------------------------------------------------------
 
 if(isset($_POST['sendloc'])){
-	
+
 $location = $_POST['location'];
 $branch = $_POST['branch'];
-	
-$query = "INSERT INTO location (location,branch) 
+
+$query = "INSERT INTO location (location,branch)
 		VALUES ('$location','$branch')";
-			
+
 $res = $conn->query($query);
 
 if($res === TRUE){
-	
+
 	echo "<script type = \"text/javascript\">
 		window.location = (\"inventoryadd.php\")
 		</script>";
-	
+
 	}
 
 else {
@@ -184,13 +185,13 @@ else {
 //--------------------------------------------------------------------------------------------------
 
 if(isset($_POST['sendtype'])){
-	
+
 $type = $_POST['type'];
 $branch = $_POST['branch'];
-	
-$query = "INSERT INTO type (type,branch) 
+
+$query = "INSERT INTO type (type,branch)
 		VALUES ('$type','$branch')";
-			
+
 $res = $conn->query($query);
 
 if($res === TRUE){
@@ -210,115 +211,117 @@ else {
 
 }
 
-?>		
-
-
-<form action="" method="post">
-
-<label>Type</label>
-	<select class="form-control select1" name="type" id="select5">
-	<option value="" selected disabled>Please Select...</option>
-	<?php
-
-	$selecttype = "SELECT * FROM type";
-	$resulttype = $conn->query($selecttype);
-	while($rowtype = $resulttype->fetch_assoc()){
-		$type = $rowtype["type"];
-
-	echo "<option>". $type ."</option>";
-
-	}
-	?>
-	</select>
-
-
-<br>
-<label>Sub-Type</label>
-	<select class="form-control select2" name="subtype" id="select6">
-	<option value="" selected disabled>Please Select...</option>
-	<?php
-
-	$selecttype = "SELECT * FROM subtype";
-	$resulttype = $conn->query($selecttype);
-	while($rowtype = $resulttype->fetch_assoc()){
-		$typesub = $rowtype["type"];
-		$subtype = $rowtype["subtype"];
-
-	echo "<option class='". $typesub ."'>". $subtype ."</option>";
-
-	}
-	?>
-	</select>
-<br>
-<label>Name</label>
-<input class="form-control" name="name" type="text" value=""></input>
-<br>
-<label>Inventory ID</label>
-<input class="form-control" name="inventory_id" type="text" value=""></input>
-<br>
-<label>Quantity</label>
-<input class="form-control" name="quantity" type="text" value=""></input>
-<br>
-<label>Unit</label>
-<input class="form-control" name="unit" type="text" value=""></input>
-<br>
-<label>Location</label>
-<select class="form-control" id="select1" name="location" >
-	<option disabled selected>Select Location..</option>
-	<?php
-
-	$selectloc = "SELECT * FROM location";
-	$resultloc = $conn->query($selectloc);
-	while($rowloc = $resultloc->fetch_assoc()){
-		$id = $rowloc["id"];
-		$location = $rowloc["location"];
-
-	echo "<option value='". $location ."'>". $location ."</option>";
-
-	}
-
-	?>
-</select>
-<br>
-<label>Sub-Location</label>
-<select class="form-control" id="select2" name="sublocation" >
-<option disabled selected>Select Sub-Location..</option>
-<?php
-
-$selectsub = "SELECT * FROM sublocation";						
-$resultsub = $conn->query($selectsub);
-while($rowsub = $resultsub->fetch_assoc()){
-$id = $rowsub["id"];
-$location = $rowsub["location"];
-$sublocation = $rowsub["sublocation"];
-
-echo "<option class='".$location."'>". $sublocation ."</option>";
-
-}
-
 ?>
-</select>
-<br>
-<br>
-<label>Critical</label>
-<input class="form-control" name="critical" type="text" value=""></input>
-<br>
-<label>Minimum</label>
-<input class="form-control" name="minimum" type="text" value=""></input>
-<br>
-<label>Maximum</label>
-<input class="form-control" name="max" type="text" value=""></input>
-<br>
-<label>Description</label>
-<input class="form-control" name="description" type="text" value=""></input>
-<br>
-<label>Supplier</label>
-<input class="form-control" name="supplier" type="text" value=""></input>
-<br>
-<input type="submit" class="btn btn-primary" name="send" value="Enter" />
-<button class="btn btn-danger" onclick="window.location.href='home.php'">Back</button>
-<br><br>
-</form>
+
+	<div class="panel panel-success"  style="width: 600px">
+    <div class="panel-heading">Add New Product to Inventory</div>
+    <div class="panel-body">
+
+				<form action="" method="post">
+
+					<label>Product Name :</label>
+					<input class="form-control" name="name" type="text" value=""></input>
+					<br>
+					<label>Product ID :</label>
+					<input class="form-control" name="inventory_id" type="text" value=""></input>
+					<br>
+
+					<label>Product Type :</label>
+						<select class="form-control select1" name="type" id="select5">
+						<option value="" selected disabled>Please Select</option>
+						<?php
+
+						$selecttype = "SELECT * FROM type";
+						$resulttype = $conn->query($selecttype);
+						while($rowtype = $resulttype->fetch_assoc()){
+							$type = $rowtype["type"];
+
+						echo "<option>". $type ."</option>";
+
+						}
+						?>
+						</select>
+					<br>
+					<label>Sub-Type :</label>
+						<select class="form-control select2" name="subtype" id="select6">
+						<option value="" selected disabled>Please Select</option>
+
+						<?php
+						$selecttype = "SELECT * FROM subtype";
+						$resulttype = $conn->query($selecttype);
+						while($rowtype = $resulttype->fetch_assoc()){
+							$typesub = $rowtype["type"];
+							$subtype = $rowtype["subtype"];
+						echo "<option class='". $typesub ."'>". $subtype ."</option>";
+						}
+						?>
+
+						</select>
+					<br>
+
+					<label>Quantity :</label>
+					<input class="form-control" name="quantity" type="text" value=""></input>
+					<br>
+					<label>Unit <i>(pc, kg, litre, others)</i> :</label>
+					<input class="form-control" name="unit" type="text" value=""></input>
+					<br>
+					<label>Location :</label>
+						<select class="form-control" id="select1" name="location" >
+						<option disabled selected>Select Location..</option>
+
+						<?php
+						$selectloc = "SELECT * FROM location";
+						$resultloc = $conn->query($selectloc);
+						while($rowloc = $resultloc->fetch_assoc()){
+							$id = $rowloc["id"];
+							$location = $rowloc["location"];
+						echo "<option value='". $location ."'>". $location ."</option>";
+						}
+						?>
+						</select>
+					<br>
+					<label>Sub-Location :</label>
+						<select class="form-control" id="select2" name="sublocation" >
+						<option disabled selected>Select Sub-Location</option>
+
+						<?php
+						$selectsub = "SELECT * FROM sublocation";
+						$resultsub = $conn->query($selectsub);
+						while($rowsub = $resultsub->fetch_assoc()){
+						$id = $rowsub["id"];
+						$location = $rowsub["location"];
+						$sublocation = $rowsub["sublocation"];
+						echo "<option class='".$location."'>". $sublocation ."</option>";
+						}
+						?>
+
+						</select>
+					<br>
+					<label>Product Description :</label>
+					<input class="form-control" name="description" type="text" value=""></input>
+					<br>
+					<label>Supplier Details :</label>
+					<input class="form-control" name="supplier" type="text" value=""></input>
+					<hr>
+					<h4><i>Minimum & Maximum Quantity Level Settings</i></h4>
+					<br>
+					<label>Critical Quantity :</label>
+					<input class="form-control" name="critical" type="text" value=""></input>
+					<br>
+					<label>Minimum Quantity :</label>
+					<input class="form-control" name="minimum" type="text" value=""></input>
+					<br>
+					<label>Maximum Quantity :</label>
+					<input class="form-control" name="max" type="text" value=""></input>
+					<br>
+
+				<input type="submit" class="btn btn-success pull-right" name="send" value="Submit" />
+				<button class="btn btn-default" onclick="window.location.href='home.php'">Back</button>
+				<br><br>
+				</form>
+
+				</div>
+		  </div>
 
 
 

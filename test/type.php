@@ -71,22 +71,22 @@ else {
 //Add SubType--------------------------------------------------------------------------------------------------
 
 if(isset($_POST['addsubtype'])){
-	
+
 $type = $_POST['type'];
 $subtype = $_POST['subtype'];
 $branch = $_POST['branch'];
-	
-$query = "INSERT INTO subtype (type,subtype,branch) 
+
+$query = "INSERT INTO subtype (type,subtype,branch)
 		VALUES ('$type','$subtype','$branch')";
-			
+
 $res = $conn->query($query);
 
 if($res === TRUE){
-	
+
 	echo "<script type = \"text/javascript\">
 		window.type = (\"type.php\")
 		</script>";
-	
+
 	}
 
 else {
@@ -131,15 +131,18 @@ else {
 					<div class="panel panel-primary">
 							<div class="panel-heading">
 									<p>LIST OF PRODUCT TYPES
-									<button class="btn btn-success pull-right" data-toggle="modal" data-placement="bottom" data-target="#TypeModal" title="Add"><i class="fa fa-plus" style="font-size:12px"></i> New Product Type</button>
-									<button class="btn btn-success pull-right" data-toggle="modal" data-placement="bottom" data-target="#SubTypeModal" title="Add"><i class="fa fa-plus" style="font-size:12px"></i> New Product Sub Type</button></p>
+										<span class="pull-right">
+											<button class="btn btn-success btn-sm" data-toggle="modal" data-placement="bottom" data-target="#TypeModal" title="Add"><i class="fa fa-plus" style="font-size:12px"></i> New Product Type</button>
+											<button class="btn btn-default btn-sm" data-toggle="modal" data-placement="bottom" data-target="#SubTypeModal" title="Add"><i class="fa fa-plus" style="font-size:12px"></i> New Sub-Type</button>
+										</span>
+									</p>
 							</div>
 					<div class="panel-body">
 					<div class="table-responsive">
 						<table width="100%" class="table table-striped table-bordered table-hover table-sm" id="table">
 							<thead>
 								<tr>
-								  <th>Type Name</th>
+								  <th>Product Type Name</th>
 								</tr>
 							</thead>
 							<?php
@@ -154,9 +157,9 @@ else {
 									<td>
 
 									<?php echo $type; ?><span class="pull-right">
-										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-placement="bottom" data-target="#view<?php echo $id; ?>" title="View"><i class="fa fa-eye"></i> View</button>
+										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-placement="bottom" data-target="#view<?php echo $id; ?>" title="View"><i class="fa fa-eye"></i> View Sub-type</button>
 										<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-placement="bottom" data-target="#edit<?php echo $id; ?>" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-										<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-placement="bottom" data-target="#delete<?php echo $id; ?>" title="Delete"><i class="fa fa-trash-o"></i> Delete</button> 
+										<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-placement="bottom" data-target="#delete<?php echo $id; ?>" title="Delete"><i class="fa fa-trash-o"></i> Delete</button>
 									<!--<div class="modal fade" id="edits<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
@@ -193,42 +196,42 @@ else {
 										<!-- /.modal-dialog ->
 									</div>
 									<!-- /.modal -->
-									
+
 									<!-- /.modal -->
-									<div class="modal fade" id="edit<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+									<div class="modal fade" id="edit<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
-												<div class="modal-header">
+												<div class="modal-header" style="background-color: lightgrey">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4 class="modal-title" id="myModalLabel">Edit type</h4>
+													<h4 class="modal-title" id="myModalLabel"><center>EDIT PRODUCT TYPE</center></h4>
 												</div>
-												<?php 
-												
+												<?php
+
 												$select1 = "SELECT * FROM type WHERE id='$id'";
 												$result1 = $conn->query($select1);
 												while($row1 = $result1->fetch_assoc()){
 													$id = $row1["id"];
 													$type = $row1["type"];
-													
+
 												}
 												?>
 												<div class="modal-body">
 													<form action="" method="post">
-														<label>Type</label>
+														<label>Product Type :</label>
 														<input class="form-control" name="type" type="text" value="<?php echo $type; ?>"></input>
 														<br>
 														<input type="submit" class="btn btn-success" name="updatemain" value="Edit" />
 														<br><br>
 													</form>
-													<label>Sub-type</label>
+													<label>Sub-Type(s) :</label>
 													<?php
-													
+
 													$selectsub = "SELECT * FROM subtype WHERE type='$type'";
 													$resultsub = $conn->query($selectsub);
 													while($rowsub = $resultsub->fetch_assoc()){
 														$idsub = $rowsub["id"];
 														$subtype = $rowsub["subtype"];
-													
+
 													?>
 													<form action="" method="post">
 														<div class="row">
@@ -256,15 +259,15 @@ else {
 										<!-- /.modal-dialog -->
 									</div>
 									<!-- /.modal -->
-									<div class="modal fade" id="view<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+									<div class="modal fade" id="view<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
-												<div class="modal-header">
+												<div class="modal-header" style="background-color: lightgrey">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4 class="modal-title" id="myModalLabel">Edit type</h4>
+														<h4 class="modal-title" id="myModalLabel"><center>VIEW PRODUCT TYPE DETAILS</center></h4>
 												</div>
-												<?php 
-												
+												<?php
+
 												$select1 = "SELECT * FROM type WHERE id='$id'";
 												$result1 = $conn->query($select1);
 												while($row1 = $result1->fetch_assoc()){
@@ -274,21 +277,21 @@ else {
 												?>
 												<div class="modal-body">
 													<form action="typedelete.php" method="post">
-														<label>type</label>
+														<label>Product Type :</label>
 														<input class="form-control" name="type" type="text" value="<?php echo $type; ?>" disabled></input>
 														<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 														<input class="form-control" name="typebase" type="hidden" value="<?php echo $type; ?>"></input>
 														<br><br>
 													</form>
-													<label>Sub-type</label>
+													<label>Sub-Type(s) :</label>
 													<?php
-													
+
 													$selectsub = "SELECT * FROM subtype WHERE type='$type'";
 													$resultsub = $conn->query($selectsub);
 													while($rowsub = $resultsub->fetch_assoc()){
 														$idsub = $rowsub["id"];
 														$subtype = $rowsub["subtype"];
-													
+
 													?>
 													<form action="typedelete.php" method="post">
 														<div class="row">
@@ -313,15 +316,15 @@ else {
 										<!-- /.modal-dialog -->
 									</div>
 									<!-- /.modal -->
-									<div class="modal fade" id="delete<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+									<div class="modal fade" id="delete<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
-												<div class="modal-header">
+												<div class="modal-header" style="background-color: lightgrey">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4 class="modal-title" id="myModalLabel">Edit type</h4>
+													<h4 class="modal-title" id="myModalLabel"><center>DELETE PRODUCT TYPE</center></h4>
 												</div>
-												<?php 
-												
+												<?php
+
 												$select1 = "SELECT * FROM type WHERE id='$id'";
 												$result1 = $conn->query($select1);
 												while($row1 = $result1->fetch_assoc()){
@@ -331,7 +334,7 @@ else {
 												?>
 												<div class="modal-body">
 													<form action="typedelete.php" method="post">
-														<label>type</label>
+														<label>Product Type :</label>
 														<input class="form-control" name="type" type="text" value="<?php echo $type; ?>"></input>
 														<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 														<input class="form-control" name="typebase" type="hidden" value="<?php echo $type; ?>"></input>
@@ -339,15 +342,15 @@ else {
 														<input type="submit" class="btn btn-danger" name="deletetype" value="Delete" />
 														<br><br>
 													</form>
-													<label>Sub-type</label>
+													<label>Sub-Type(s) :</label>
 													<?php
-													
+
 													$selectsub = "SELECT * FROM subtype WHERE type='$type'";
 													$resultsub = $conn->query($selectsub);
 													while($rowsub = $resultsub->fetch_assoc()){
 														$idsub = $rowsub["id"];
 														$subtype = $rowsub["subtype"];
-													
+
 													?>
 													<form action="typedelete.php" method="post">
 														<div class="row">
@@ -389,13 +392,13 @@ else {
 					<div class="modal fade" id="TypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
-								<div class="modal-header">
+								<div class="modal-header" style="background-color: lightgrey">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									<h4 class="modal-title" id="myModalLabel">Add Product Type</h4>
+									<h4 class="modal-title" id="myModalLabel"><center>ADD NEW PRODUCT TYPE<center></h4>
 								</div>
 								<div class="modal-body">
 									<form action="" method="post">
-										<label>Product Type Name</label>
+										<label>Name :</label>
 										<input class="form-control" name="type" type="text" value=""></input>
 										<input class="form-control" name="branch" type="hidden" value="1"></input>
 										<br>
@@ -412,41 +415,41 @@ else {
 						<!-- /.modal-dialog -->
 					</div>
 					<!-- /.modal -->
-					<div class="modal fade" id="SubTypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">	
+					<div class="modal fade" id="SubTypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									<h4 class="modal-title" id="myModalLabel">Add Sub-type</h4>
+									<h4 class="modal-title" id="myModalLabel">Add Sub-Type</h4>
 								</div>
 								<div class="modal-body">
 									<form action="" method="post">
-										<label>type</label>
+										<label>Product Type :</label>
 										<select class="form-control" name="type">
-											<option disabled selected>Select type..</option>
-											<?php 
+											<option disabled selected>Select Product Type</option>
+											<?php
 											$select = "SELECT type FROM type";
 											$result1 = $conn->query($select);
 											while($row = $result1->fetch_assoc()){
 												$type=$row['type'];
-												
+
 											echo "<option value='".$type."'>". $type ."</option>";
-											// close while loop 
+											// close while loop
 											}
 											?>
 										</select>
 										<input class="form-control" name="branch" type="hidden" value="1"></input>
 										<br>
-										<label>Sub-type</label>
+										<label>Sub-Type Name :</label>
 										<input class="form-control" name="subtype" type="text" value=""></input>
 										<input class="form-control" name="branch" type="hidden" value="1"></input>
 										<br>
-									
+
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-									<input type="submit" class="btn btn-primary" name="addsubtype" value="Enter" />
+									<input type="submit" class="btn btn-success" name="addsubtype" value="Submit" />
 									</form>
 								</div>
 							</div>

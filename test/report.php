@@ -8,7 +8,7 @@ include 'config.php';
 $username=$_SESSION['username'];
 
 
-$select = "SELECT * FROM login WHERE username = '$username' ";						
+$select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$id = $row["id"];
@@ -26,9 +26,9 @@ while($row = $result->fetch_assoc()){
     <?php
 	include 'include/head.php';
 	?>
-	
+
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	
+
 	<script>
 
 	$( document ).ready(function() {
@@ -82,7 +82,7 @@ while($row = $result->fetch_assoc()){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Incoming</h1>
+                    <h3 class="page-header">REPORT</h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -93,7 +93,7 @@ while($row = $result->fetch_assoc()){
 					$todaydate=date("Y-m-d");
 					$before30=date('Y-m-d', strtotime("-30 days"));
 					?>
-					<div class="row">						
+					<div class="row">
 						<form action="reportform.php" method="post" name="report_card" id="form_id" target="myNewWinsr">
 							<div class="row">
 								<div class="col-lg-8">
@@ -153,23 +153,23 @@ while($row = $result->fetch_assoc()){
 							<br>
 							<label>Location</label>
 								<br>
-							<div class="row">								
+							<div class="row">
 								<div class="col-lg-4">
 									<select class="form-control" id="select1" name="location">
 										<option disabled selected>Select Location..</option>
 										<option value ="" ></option>
 										<?php
-										
-										$selectloc = "SELECT * FROM location";						
+
+										$selectloc = "SELECT * FROM location";
 										$resultloc = $conn->query($selectloc);
 										while($rowloc = $resultloc->fetch_assoc()){
 											$id = $rowloc["id"];
 											$location = $rowloc["location"];
-										
+
 										echo "<option value='". $location ."'>". $location ."</option>";
-										
+
 										}
-										
+
 										?>
 									</select>
 								</div>
@@ -178,32 +178,32 @@ while($row = $result->fetch_assoc()){
 										<option disabled selected>Select Sub-location..</option>
 										<option value ="" ></option>
 										<?php
-										
-										$selectloc2 = "SELECT location,location2 FROM inventory GROUP BY location,location2";						
+
+										$selectloc2 = "SELECT location,location2 FROM inventory GROUP BY location,location2";
 										$resultloc2 = $conn->query($selectloc2);
 										while($rowloc2 = $resultloc2->fetch_assoc()){
 											$id = $rowloc2["id"];
 											$location = $rowloc2["location"];
 											$location2 = $rowloc2["location2"];
-										
+
 										echo "<option class='".$location."'>". $location2 ."</option>";
-										
+
 										}
-										
+
 										?>
 									</select>
-								</div>							
+								</div>
 							</div>
 							<br>
 							<div class="row">							
 								<div class="col-lg-4">
-									<label>From : </label>
+									<label>From Date : </label>
 									<input class="form-control" name="salesfrom" type="date" value="<?php echo $before30 ?>" id="to_sales_date" />
 								</div>
 								<div class="col-lg-4">
-									<label>To : </label>
+									<label>To Date : </label>
 									<input class="form-control" name="salesto" value="<?php echo $todaydate ?>" type="date" id="to_sales_date" />
-								</div>							
+								</div>
 							</div>
 							<br>
 							<div class="row">
@@ -211,7 +211,7 @@ while($row = $result->fetch_assoc()){
 									<input class="btn btn-primary" type="submit" value="Generate Report" />
 								</div>
 							</div>
-						</form>							
+						</form>
 					</div>
                 </div>
                 <!-- /.col-lg-12 -->
