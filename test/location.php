@@ -191,7 +191,14 @@ else {
 								</tr>
 							</thead>
 							<?php
-							$select = "SELECT * FROM location";
+							
+							if($secpass== '2'){
+								$select = "SELECT * FROM location WHERE manager_id = '$id'";
+							}elseif($secpass== '3'){
+								$select = "SELECT l.*,log.* FROM location as l INNER JOIN login as log ON l.manager_id = log.lead_id WHERE l.manager_id = '$id'";
+							}else{
+								$select = "SELECT * FROM location";
+							}
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
 							    $id = $row["id"];

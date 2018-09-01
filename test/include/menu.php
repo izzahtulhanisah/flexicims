@@ -117,7 +117,7 @@
                             <a href="admindetails.php"><i class="fa fa-question-circle"></i> Need Help</a>
                         </li>
 						<?php
-						if($secpass >= '1'){}else{
+						if($secpass >= '2'){}else{
 						?>
                         <li>
                             <a href="https://goo.gl/forms/t5Juvhv7pF7v3VGL2"><i class="fa fa-send"></i> Feedback</a>

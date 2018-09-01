@@ -131,8 +131,8 @@ $query = "INSERT INTO inventory (type,subtype,name,inventory_id,quantity,unit,qr
 		VALUES ('$type','$subtype','$name','$inventory_id','$quantity','$unit','$qr','$branch','$date','$critical','$minimum','$max','$location','$sublocation','$description','$dateupdate','$supplier','$updateby','$status')";
 $res = $conn->query($query);
 
-$queryin = "INSERT INTO record (type,subtype,name,inventory_id,quantity,unit,detail,qr,branch,date,user)
-			VALUES ('$type','$subtype','$name','$inventory_id','$quantity','$unit','Add New Item','$qr','$branch','$date','$userid')";
+$queryin = "INSERT INTO record (type,subtype,name,inventory_id,quantity,unit,location,sublocation,detail,qr,branch,date,user)
+			VALUES ('$type','$subtype','$name','$inventory_id','$quantity','$unit','$location','$sublocation','Add New Item','$qr','$branch','$date','$userid')";
 
 $resin = $conn->query($queryin);
 
