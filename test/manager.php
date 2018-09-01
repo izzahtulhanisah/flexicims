@@ -72,7 +72,7 @@ while($row = $result->fetch_assoc()){
 									<td><?php echo $username; ?><span class="pull-right">
 										<button type="button" onclick="window.location.href='manageredit.php?loginid=<?php echo $id; ?>'" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-edit"></i> Edit</button>
 										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-placement="bottom" data-target="#myModal<?php echo $id; ?>" title="Info"><i class="fa fa-info"></i> Info</button>
-										<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-placement="bottom" data-target="" title="Delete"><i class="fa fa-remove"></i> Delete</button>
+										<a href="userdelete.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete the user?')" class="btn btn-danger btn-sm" ><i class="fa fa-remove"></i> Delete</a>
 									</span></td>
 									<div class="modal fade" id="TypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 

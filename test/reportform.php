@@ -269,7 +269,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel-heading">
-						Record Of Incoming Stock: <?php echo $_POST['type']; echo $_POST['location']; ?>
+						Record Of Incoming Stock:
 					</div>
 				</div>
 			</div>
@@ -363,7 +363,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel-heading">
-						Record Of Outgoing Stock: <?php echo $_POST['type']; echo $_POST['location']; ?>
+						Record Of Outgoing Stock:
 					</div>
 				</div>
 			</div>
@@ -455,7 +455,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel-heading">
-						Record Of All Stock: <?php echo $_POST['type']; echo $_POST['location']; ?>
+						Record Of All Stock:
 					</div>
 				</div>
 			</div>
@@ -505,6 +505,74 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							}
 
 							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND 1 ORDER BY detail DESC ";
+							$result = $conn->query($select);
+							while($row = $result->fetch_assoc()){
+								$id = $row["id"];
+								$type = $row["type"];
+								$name = $row["name"];
+								$inventory_id = $row["inventory_id"];
+								$price = $row["price"];
+								$quantity = $row["quantity"];
+								$detail = $row["detail"];
+								$qr = $row["qr"];
+								$branch = $row["branch"];
+								$date = $row["date"];
+								$username = $row["username"];
+								
+								$counter++;
+
+							?>
+								<tr>
+									<td><?php echo $counter; ?></td>
+									<td><?php echo $type; ?></td>
+									<td><?php echo $name; ?></td>
+									<td><?php echo $inventory_id; ?></td>
+									<td><?php echo $quantity; ?></td>
+									<td><?php echo $detail; ?></td>
+									<td><?php echo $date; ?></td>
+									<td><?php echo $username; ?></td>
+								</tr>
+							<?php
+							}
+							?>
+						</table>
+					</div>
+				</div>
+			</div>
+			<footer></footer>
+			<?php
+			}
+			else{
+			?>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel-heading">
+						Record Of All Stock:
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="table-responsive">
+						<table width="100%" class="table table-striped table-bordered table-hover table-sm" id="table">
+							<thead>
+								<tr class="success">
+									<td>No.</td>
+									<td>Type</td>
+									<td>Inventory Name</td>
+									<td>Inventory ID</td>
+									<td>Quantity</td>
+									<td>Detail</td>
+									<td>Date</td>
+									<td>User</td>
+								</tr>
+							</thead>
+							<?php
+
+							include 'config.php';
+							$counter = 0;
+
+							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ORDER BY detail DESC ";
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];

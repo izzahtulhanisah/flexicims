@@ -86,8 +86,8 @@ $password = $_POST['password'];
 $query = "UPDATE profile SET name = '$name', address='$address', email='$email', contact='$contact', position='$position' WHERE loginid='$loginid'";
 $res = $conn->query($query);
 
-$query = "UPDATE login SET username = '$users', password='$password' WHERE id='$loginid'";
-$res = $conn->query($query);
+$query1 = "UPDATE login SET username = '$users', password='$password' WHERE id='$loginid'";
+$res1 = $conn->query($query1);
 
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">

@@ -90,15 +90,15 @@ $res = $conn->query($query);
 
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">
-		alert(\"Manager Succesfully Edit\");
-		window.location = (\"manageredit.php\")
+		alert(\"Staff Succesfully Edit\");
+		window.location = (\"staff.php\")
 		</script>";
 	}
 
 else {
 	echo "<script type = \"text/javascript\">
-		alert(\"Manager Not Succesfully Edit\");
-		window.location = (\"manageredit.php\")
+		alert(\"Staff Not Succesfully Edit\");
+		window.location = (\"staff.php\")
 		</script>";
 	}
 }

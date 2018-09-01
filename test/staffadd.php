@@ -39,7 +39,7 @@ while($row = $result->fetch_assoc()){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Manager Edit</h1>
+                    <h1 class="page-header">Staff Edit</h1>
                 </div>
                 <!-- /.col-lg-12 -->
 
@@ -49,8 +49,6 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
 include "config.php";
 
 if(isset($_POST['send'])){
-
-$expired =strtotime($_POST['expireddate']);
 
 $name = $_POST['name'];
 $address = $_POST['address'];
@@ -81,15 +79,15 @@ $res = $conn->query($query);
 
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">
-		alert(\"Manager Succesfully Edit\");
-		window.location = (\"manageredit.php\")
+		alert(\"Staff Succesfully Edit\");
+		window.location = (\"staff.php\")
 		</script>";
 	}
 
 else {
 	echo "<script type = \"text/javascript\">
-		alert(\"Manager Not Succesfully Edit\");
-		window.location = (\"manageredit.php\")
+		alert(\"Staff Not Succesfully Edit\");
+		window.location = (\"staff.php\")
 		</script>";
 	}
 }

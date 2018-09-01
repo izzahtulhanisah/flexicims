@@ -42,9 +42,15 @@ if(isset($_POST['updatemain'])){
 $idd = $_POST['id'];
 $location = $_POST['location'];
 $locationbase = $_POST['locationbase'];
-$managerid = $_POST['managerid'];
 
-$query = "UPDATE location SET location = '$location', manager_id = '$managerid' WHERE id='$idd'";
+if(isset($_POST['managerid'])){	
+	$managerid = $_POST['managerid'];
+	$query = "UPDATE location SET location = '$location', manager_id = '$managerid' WHERE id='$idd'";
+}
+else{
+	$query = "UPDATE location SET location = '$location' WHERE id='$idd'";
+}
+
 $res = $conn->query($query);
 
 $query1 = "UPDATE sublocation SET location = '$location' WHERE location='$locationbase'";
@@ -237,7 +243,7 @@ else {
 														<br>
 														<label>Manager (Person-In-Charge) :</label>
 														<select class="form-control" name="managerid">
-														<option value="" disabled selected><?php echo $user;?> (current manager)</option>
+														<option value="<?php echo $user;?>" disabled selected><?php echo $user;?> (current manager)</option>
 														<?php
 
 														$selectloc = "SELECT * FROM login WHERE secpass='2'";
@@ -321,7 +327,7 @@ else {
 														<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 														<input class="form-control" name="locationbase" type="hidden" value="<?php echo $location; ?>"></input>
 														<br>
-														<input type="submit" class="btn btn-danger" name="deletelocation" value="Delete" />
+														<input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete the location/sublocation?')" name="delloc" value="Delete" />
 														<br><br>
 													</form>
 													<label>Sub-Location(s) :</label>
@@ -342,7 +348,7 @@ else {
 																<input class="form-control" name="location" type="hidden" value="<?php echo $location; ?>"></input>
 															</div>
 															<div class="col-lg-2">
-																<input type="submit" class="btn btn-danger btn-sm" name="deletesublocation" value="Delete" />
+																<input type="submit" onclick="return confirm('Are you sure you want to delete the location/sublocation?')" class="btn btn-danger btn-sm" name="delsubloc" value="Delete" />
 															</div>
 														</div>
 														<br>
@@ -452,7 +458,7 @@ else {
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-										<input type="submit" class="btn btn-success" name="sendloc" value="Submit" />
+										<input type="submit" class="btn btn-success" name="sendloc"  onclick="return confirm('Are you sure you want to Add the location/sublocation?')" value="Submit" />
 										</form>
 									</div>
 								</div>
@@ -496,7 +502,7 @@ else {
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-									<input type="submit" class="btn btn-success" name="addsubloc" value="Submit" />
+									<input type="submit" class="btn btn-success" name="addsubloc" onclick="return confirm('Are you sure you want to Add the location/sublocation?')" value="Submit" />
 									</form>
 								</div>
 							</div>

@@ -70,8 +70,6 @@ include "config.php";
 
 if(isset($_POST['send'])){
 
-$expired =strtotime($_POST['expireddate']);
-
 $name = $_POST['name'];
 $address = $_POST['address'];
 $email = $_POST['email'];
@@ -85,20 +83,20 @@ $password = $_POST['password'];
 $query = "UPDATE profile SET name = '$name', address='$address', email='$email', contact='$contact', position='$position' WHERE loginid='$loginid'";
 $res = $conn->query($query);
 
-$query = "UPDATE login SET username = '$username', password='$password' WHERE id='$loginid'";
-$res = $conn->query($query);
+$query1 = "UPDATE login SET username = '$username', password='$password' WHERE id='$loginid'";
+$res1 = $conn->query($query1);
 
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">
 		alert(\"Manager Succesfully Edit\");
-		window.location = (\"manageredit.php\")
+		window.location = (\"manager.php\")
 		</script>";
 	}
 
 else {
 	echo "<script type = \"text/javascript\">
 		alert(\"Manager Not Succesfully Edit\");
-		window.location = (\"manageredit.php\")
+		window.location = (\"manager.php\")
 		</script>";
 	}
 }

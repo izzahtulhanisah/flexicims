@@ -74,6 +74,8 @@ while($row = $result->fetch_assoc()){
 									<?php
 
 									include 'config.php';
+									
+									$counter=0;
 
 									$select = "SELECT * FROM record WHERE detail = 'Incoming' ORDER BY id DESC ";
 									$result = $conn->query($select);
@@ -90,10 +92,12 @@ while($row = $result->fetch_assoc()){
 										$supplier = $row["supplier"];
 										$datereceive = $row["datereceive"];
 										$remark = $row["remark"];
+										
+										$counter++;
 
 									?>
 										<tr>
-											<td><?php echo $id; ?></td>
+											<td><?php echo $counter; ?></td>
 											<td><?php echo $name; ?></td>
 											<td><?php echo $inventory_id; ?></td>
 											<td><?php echo $type; ?></td>

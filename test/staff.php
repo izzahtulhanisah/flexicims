@@ -69,9 +69,9 @@ while($row = $result->fetch_assoc()){
 							<tbody>
 								<tr>
 									<td><?php echo $username; ?><span class="pull-right">
-										<button type="button" onclick="window.location.href='adminedit.php?loginid=<?php echo $id; ?>'" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-edit"></i> Edit</button>
+										<button type="button" onclick="window.location.href='staffedit.php?loginid=<?php echo $id; ?>'" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-edit"></i> Edit</button>
 										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-placement="bottom" data-target="#myModal<?php echo $id; ?>" title="Info"><i class="fa fa-info"></i> Info</button>
-										<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-placement="bottom" data-target="#myModal<?php echo $id; ?>" title="Delete"><i class="fa fa-remove"></i> Delete</button></span></td>
+										<a href="userdelete.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete the user?')" class="btn btn-danger btn-sm" ><i class="fa fa-remove"></i> Delete</a>
 
 								</tr>
 							</tbody>

@@ -6,7 +6,6 @@ header("Location:login.php?location=" . $_SERVER['REQUEST_URI']);
 
 include 'config.php';
 $username=$_SESSION['username'];
-$loginid=$_REQUEST['loginid'];
 
 
 $select = "SELECT * FROM login WHERE username = '$username' ";
@@ -17,7 +16,7 @@ while($row = $result->fetch_assoc()){
 	$secpass = $row["secpass"];
 }
 
-$select = "SELECT * FROM login WHERE id = '$loginid' ";
+$select = "SELECT * FROM login WHERE id = '$userid' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 
@@ -26,7 +25,7 @@ while($row = $result->fetch_assoc()){
 }
 
 
-$select = "SELECT * FROM profile WHERE loginid = $loginid ";
+$select = "SELECT * FROM profile WHERE loginid = $userid ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$loginid = $row["loginid"];
@@ -59,7 +58,7 @@ while($row = $result->fetch_assoc()){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Manager Edit</h1>
+                    <h1 class="page-header">Admin Edit</h1>
                 </div>
                 <!-- /.col-lg-12 -->
 
@@ -101,15 +100,15 @@ $res = $conn->query($query);
 
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">
-		alert(\"Manager Succesfully Edit\");
-		window.location = (\"manageredit.php\")
+		alert(\"Admin Succesfully Edit\");
+		window.location = (\"admin.php\")
 		</script>";
 	}
 
 else {
 	echo "<script type = \"text/javascript\">
-		alert(\"Manager Not Succesfully Edit\");
-		window.location = (\"manageredit.php\")
+		alert(\"Admin Not Succesfully Edit\");
+		window.location = (\"admin.php\")
 		</script>";
 	}
 }

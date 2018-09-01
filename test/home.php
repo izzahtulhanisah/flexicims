@@ -590,31 +590,32 @@ if(isset($_POST['send'])){
 
 											$expired =strtotime($_POST['expireddate']);
 
-											$select1 = "SELECT * FROM inventory WHERE id = '$idd' ";
-											$result1 = $conn->query($select1);
-											while($row1 = $result1->fetch_assoc()){
-												$location1 = $row1["location"];
-												$sublocation1 = $row1["sublocation"];
-												$type1 = $row1["type"];
-												$subtype1 = $row1["subtype"];
+											$selectdit = "SELECT * FROM inventory WHERE id = '$idd' ";
+											$resultdit = $conn->query($selectdit);
+											while($rowdit = $resultdit->fetch_assoc()){
+												$locationbase = $rowdit["location"];
+												$sublocationbase = $rowdit["location2"];
+												$typebase = $rowdit["type"];
+												$subtypebase = $rowdit["subtype"];
 
 												}
 
 
 											$name = $_POST['name'];
-											if($_POST['type'] == ''){
-												$type = $type1;
-											}
-											else{
+											if(isset($_POST['type'])){
 												$type = $_POST['type'];
 											}
-
-
-											if($_POST['subtype'] == ''){
-												$subtype = $subtype1;
+											elseif(!isset($_POST['type'])){
+												
+												$type = $typebase;
 											}
-											else{
+
+
+											if(isset($_POST['subtype'])){
 												$subtype = $_POST['subtype'];
+											}
+											elseif(!isset($_POST['subtype'])){	
+												$subtype = $subtypebase;
 											}
 											$inventory_id = $_POST['inventory_id'];
 											$price = $_POST['price'];
@@ -626,14 +627,21 @@ if(isset($_POST['send'])){
 											$critical=$_POST['critical'];
 											$minimum=$_POST['minimum'];
 											$maximum=$_POST['maximum'];
-											if($_POST['location'] == ''){
-												$location=$location1;
-												$sublocation=$sublocation1;
-											}
-											else{
+											
+											if(isset($_POST['location'])){
 												$location=$_POST['location'];
+											}
+											elseif(!isset($_POST['location'])){	
+												$location=$locationbase;
+											}
+											
+											if(isset($_POST['sublocation'])){
 												$sublocation=$_POST['sublocation'];
 											}
+											elseif(!isset($_POST['sublocation'])){	
+												$sublocation=$sublocationbase;
+											}
+											
 											$description=$_POST['description'];
 											$dateupdate=date("Y-m-d H:i:s");
 											$expireddate=date("d-m-Y",$expired);
@@ -733,7 +741,7 @@ if(isset($_POST['send'])){
 										<br>
 										<label>Location</label>
 											<p><select class="form-control select3" name="location">
-											<option value="" selected='selected'><?php echo $location;?></option>
+											<option value="" selected disabled><?php echo $location;?></option>
 											<?php
 
 											$selectloc = "SELECT * FROM location";
@@ -750,7 +758,7 @@ if(isset($_POST['send'])){
 										<br>
 										<label>Sub-Location</label>
 											<p><select class="form-control select4" name="sublocation" >
-											<option value="" selected='selected'><?php echo $location2;?></option>
+											<option value="" selected disabled><?php echo $location2;?></option>
 											<?php
 
 											$selectloc = "SELECT * FROM sublocation";
@@ -773,10 +781,11 @@ if(isset($_POST['send'])){
 											<p><input class="form-control" name="minimum" type="text" value="<?php echo $min; ?>"></input></p>
 										<br>
 										<label>Maximum Quantity</label>
-											<p><input class="form-control" name="minimum" type="text" value="<?php echo $max; ?>"></input></p>
+											<p><input class="form-control" name="maximum" type="text" value="<?php echo $max; ?>"></input></p>
 										<br>
 										<label>Description</label>
 											<p><input class="form-control" name="description" type="text" value="<?php echo $description; ?>"></input></p>
+											<input class="" name="idd" type="hidden" value="<?php echo $id; ?>"></input>
 										<br>
 
 													<br>

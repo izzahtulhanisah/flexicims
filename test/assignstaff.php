@@ -72,13 +72,18 @@ while($row = $result->fetch_assoc()){
 									<td><?php echo $username; ?></td>
 									<td>
 									<?php
-
-									$select2 = "SELECT * FROM login WHERE id='$lead_id'";
-									$result2 = $conn->query($select2);
-									while($row2 = $result2->fetch_assoc()){
-										$namee = $row2["username"];
+									
+									if($lead_id != ''){
+										$select2 = "SELECT * FROM login WHERE id='$lead_id'";
+										$result2 = $conn->query($select2);
+										while($row2 = $result2->fetch_assoc()){
+											$namee = $row2["username"];
+										}
 									}
-
+									else{
+										$namee = '';
+									}
+									
 									echo $namee;
 									?>
 									</td>
@@ -208,7 +213,7 @@ while($row = $result->fetch_assoc()){
 							?>
 						</table>
 					</div>
-                    <a href="setting.php"><button type="button" class="btn btn-bg-grey">Back</button></a>
+
 
 				</div>
 			</div>

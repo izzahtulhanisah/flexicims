@@ -39,6 +39,53 @@ else {
 	}
 }
 
+//Update Type--------------------------------------------------------------------------------------------------
+
+$select = "SELECT * FROM login WHERE username = '$username' ";
+$result = $conn->query($select);
+while($row = $result->fetch_assoc()){
+	$id = $row["id"];
+	$username = $row["username"];
+	$secpass = $row["secpass"];
+}
+
+if(isset($_POST['updatemain'])){
+
+$idd = $_POST['id'];
+$type = $_POST['type'];
+$typebase = $_POST['typebase'];
+
+$query = "UPDATE type SET type = '$type' WHERE id='$idd'";
+$res = $conn->query($query);
+
+$query1 = "UPDATE subtype SET type = '$type' WHERE type='$typebase'";
+$res1 = $conn->query($query1);
+
+
+}
+
+//Update Sub-Type--------------------------------------------------------------------------------------------------
+
+$select = "SELECT * FROM login WHERE username = '$username' ";
+$result = $conn->query($select);
+while($row = $result->fetch_assoc()){
+	$id = $row["id"];
+	$username = $row["username"];
+	$secpass = $row["secpass"];
+}
+
+if(isset($_POST['updatesub'])){
+
+$idd = $_POST['id'];
+$subtype = $_POST['subtype'];
+$type = $_POST['type'];
+
+$query = "UPDATE subtype SET subtype = '$subtype' WHERE id='$idd'";
+$res = $conn->query($query);
+
+
+}
+
 //Add Product Type---------------------------------------------------
 
 if(isset($_POST['sendtype'])){
@@ -220,6 +267,8 @@ else {
 														<label>Product Type :</label>
 														<input class="form-control" name="type" type="text" value="<?php echo $type; ?>"></input>
 														<br>
+														<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
+														<input class="form-control" name="typebase" type="hidden" value="<?php echo $type; ?>"></input>
 														<input type="submit" class="btn btn-success" name="updatemain" value="Edit" />
 														<br><br>
 													</form>
@@ -239,6 +288,7 @@ else {
 																<input class="form-control" name="subtype" type="text" value="<?php echo $subtype; ?>"></input>
 																<input class="form-control" name="id" type="hidden" value="<?php echo $idsub; ?>"></input>
 																<input class="form-control" name="type" type="hidden" value="<?php echo $type; ?>"></input>
+																<input class="form-control" name="typebase" type="hidden" value="<?php echo $type; ?>"></input>
 															</div>
 															<div class="col-lg-2">
 																<input type="submit" class="btn btn-success btn-sm" name="updatesub" value="Edit" />

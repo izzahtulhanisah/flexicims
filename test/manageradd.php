@@ -50,8 +50,6 @@ include "config.php";
 
 if(isset($_POST['send'])){
 	
-$expired =strtotime($_POST['expireddate']);
-	
 $name = $_POST['name'];
 $address = $_POST['address'];
 $email = $_POST['email'];
@@ -60,7 +58,7 @@ $position = $_POST['position'];
 $loginid = $_POST['loginid'];
 $username = $_POST['username'];
 $password = $_POST['password'];
-$secpass = "1";
+$secpass = "2";
 
 $sqlid="SELECT MAX(id) AS maxid FROM login";
  $resultid = mysqli_query($conn, $sqlid);

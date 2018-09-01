@@ -17,14 +17,29 @@ while($row = $result->fetch_assoc()){
 }
 
 include 'config.php';
-$id = $_REQUEST['id'];
-$query = "DELETE FROM location WHERE id = '$id'";
-$result = $conn->query($query);
-if($result === TRUE){
-	echo "<script type = \"text/javascript\">
-				alert(\"Location Successfully Delete\");
-				window.location = (\"location.php\")
-			</script>";
+
+if(isset($_POST['delloc'])){
+	$id = $_REQUEST['id'];
+	$query = "DELETE FROM location WHERE id = '$id'";
+	$result = $conn->query($query);
+	if($result === TRUE){
+		echo "<script type = \"text/javascript\">
+					alert(\"Location Successfully Delete\");
+					window.location = (\"location.php\")
+				</script>";
+	}
+}
+
+if(isset($_POST['delsubloc'])){
+	$id = $_REQUEST['id'];
+	$query = "DELETE FROM sublocation WHERE id = '$id'";
+	$result = $conn->query($query);
+	if($result === TRUE){
+		echo "<script type = \"text/javascript\">
+					alert(\"Location Successfully Delete\");
+					window.location = (\"location.php\")
+				</script>";
+	}
 }
 
 ?>

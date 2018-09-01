@@ -99,7 +99,6 @@ while($row = $result->fetch_assoc()){
 								<div class="col-lg-8">
 									<label>Activity</label>
 									<select class="form-control" name="activity" >
-										<option disabled selected>Select..</option>
 										<option value="All">All</option>
 										<option value="Incoming">Incoming</option>
 										<option value="Outgoing">Outgoing</option>
@@ -107,12 +106,11 @@ while($row = $result->fetch_assoc()){
 								</div>
 							</div>
 							<br>
-							<label>Type</label>
+							<label>Type & Sub-type</label>
 								<br>
 							<div class="row">								
 								<div class="col-lg-4">
 									<select class="form-control select1" name="type">
-										<option disabled selected>Select type..</option>
 										<option value ="" ></option>
 										<?php
 										
@@ -131,7 +129,6 @@ while($row = $result->fetch_assoc()){
 								</div>
 								<div class="col-lg-4">
 									<select class="form-control select2" name="subtype" >
-										<option disabled selected>Select Sub-type..</option>
 										<option value ="" ></option>
 										<?php
 										
@@ -151,12 +148,11 @@ while($row = $result->fetch_assoc()){
 								</div>							
 							</div>
 							<br>
-							<label>Location</label>
+							<label>Location & Sub-location</label>
 								<br>
 							<div class="row">
 								<div class="col-lg-4">
 									<select class="form-control" id="select1" name="location">
-										<option disabled selected>Select Location..</option>
 										<option value ="" ></option>
 										<?php
 
@@ -175,7 +171,6 @@ while($row = $result->fetch_assoc()){
 								</div>
 								<div class="col-lg-4">
 									<select class="form-control" id="select2" name="sublocation" >
-										<option disabled selected>Select Sub-location..</option>
 										<option value ="" ></option>
 										<?php
 
