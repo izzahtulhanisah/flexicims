@@ -598,6 +598,7 @@ if(isset($_POST['send'])){
 												$sublocationbase = $rowdit["location2"];
 												$typebase = $rowdit["type"];
 												$subtypebase = $rowdit["subtype"];
+												$unitbase = $rowdit["unit"];
 
 												}
 
@@ -641,6 +642,13 @@ if(isset($_POST['send'])){
 											}
 											elseif(!isset($_POST['sublocation'])){	
 												$sublocation=$sublocationbase;
+											}
+											
+											if(isset($_POST['unit'])){
+												$unit=$_POST['unit'];
+											}
+											elseif(!isset($_POST['unit'])){	
+												$unit=$unitbase;
 											}
 											
 											$description=$_POST['description'];
@@ -738,7 +746,13 @@ if(isset($_POST['send'])){
 											<p><input class="form-control" name="quantity" type="text" value="<?php echo $quantity; ?>"></input>
 										<br>
 										<label>Unit</label>
-											<p><input class="form-control" name="unit" type="text" value="<?php echo $unit; ?>"></input>
+											<p><select class="form-control" name="unit">
+												<option value="" selected disabled><?php echo $unit;?></option>
+												<option>pc</option>
+												<option>kg</option>
+												<option>litre</option>
+												<option>others</option>
+											</select>
 										<br>
 										<label>Location</label>
 											<p><select class="form-control select3" name="location">

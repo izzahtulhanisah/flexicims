@@ -87,9 +87,10 @@ if(isset($_POST['sendloc'])){
 
 $location = $_POST['location'];
 $branch = $_POST['branch'];
+$managerid = $_POST['managerid'];
 
-$query = "INSERT INTO location (location,branch)
-		VALUES ('$location','$branch')";
+$query = "INSERT INTO location (location,manager_id,branch)
+		VALUES ('$location','$managerid','$branch')";
 
 $res = $conn->query($query);
 
@@ -451,6 +452,23 @@ else {
 										<form action="" method="post">
 											<label>Location Name</label>
 											<input class="form-control" name="location" type="text" value=""></input>
+											<label>Manager</label>
+											<select class="form-control" name="managerid">
+											<option value="" disabled selected>Please Select...</option>
+											<?php
+
+											$selectloc = "SELECT * FROM login WHERE secpass='2'";
+											$resultloc = $conn->query($selectloc);
+											while($rowloc = $resultloc->fetch_assoc()){
+												$manager = $rowloc["username"];
+												$idmanager = $rowloc["id"];
+
+											echo "<option value='". $idmanager ."'>". $manager ."</option>";
+
+											}
+
+											?>
+											</select>
 											<input class="form-control" name="branch" type="hidden" value="1"></input>
 											<br>
 
