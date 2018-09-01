@@ -338,7 +338,8 @@ if(isset($_POST['send'])){
 													?>
 													  </ul>
 													</div>
-
+												</td>
+											</tr>
 
 													<div class="modal fade" id="outgoing<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 														<div class="modal-dialog">
@@ -597,6 +598,7 @@ if(isset($_POST['send'])){
 												$sublocationbase = $rowdit["location2"];
 												$typebase = $rowdit["type"];
 												$subtypebase = $rowdit["subtype"];
+												$unitbase = $rowdit["unit"];
 
 												}
 
@@ -640,6 +642,13 @@ if(isset($_POST['send'])){
 											}
 											elseif(!isset($_POST['sublocation'])){	
 												$sublocation=$sublocationbase;
+											}
+											
+											if(isset($_POST['unit'])){
+												$unit=$_POST['unit'];
+											}
+											elseif(!isset($_POST['unit'])){	
+												$unit=$unitbase;
 											}
 											
 											$description=$_POST['description'];
@@ -737,7 +746,13 @@ if(isset($_POST['send'])){
 											<p><input class="form-control" name="quantity" type="text" value="<?php echo $quantity; ?>"></input>
 										<br>
 										<label>Unit</label>
-											<p><input class="form-control" name="unit" type="text" value="<?php echo $unit; ?>"></input>
+											<p><select class="form-control" name="unit">
+												<option value="" selected disabled><?php echo $unit;?></option>
+												<option>pc</option>
+												<option>kg</option>
+												<option>litre</option>
+												<option>others</option>
+											</select>
 										<br>
 										<label>Location</label>
 											<p><select class="form-control select3" name="location">
@@ -815,69 +830,104 @@ if(isset($_POST['send'])){
 															<h4 class="modal-title" id="myModalLabel"><center>PRODUCT DETAILS</center></h4>
 														</div>
 														<div class="modal-body">
-															<table style="width:60%" align="center">
-																<tr>
-																	<td>Name:</td>
-															    <th><?php echo $name; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Product ID:</td>
-															    <th><?php echo $inventory_id; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Product Type:</td>
-															    <th><?php echo $type; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Product Sub-Type:</td>
-															    <th><?php echo $subtype; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Quantity:</td>
-															    <th><?php echo $quantity; ?></th>
-																</tr>
-																<tr>
-																	<td>Quantity:</td>
-															    <th><?php echo $unit; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Maximum Quantity:</td>
-															    <th><?php echo $max; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Minimimum Quantity:</td>
-															    <th><?php echo $min; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Critical Quantity:</td>
-															    <th><?php echo $critical; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Location:</td>
-															    <th><?php echo $location2; echo " | "; echo $location; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Supplier:</td>
-															    <th><?php echo $supplier; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Status:</td>
-															    <th><?php echo $alert; ?></th>
-																</tr>
-
-															</table>
-
-
+															
+															<div class="row">
+																<div class="col-lg-6">
+																	<p>Name: 
+																</div>
+																<div class="col-lg-6">
+																	<b><?php echo $name; ?></b></p>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-6">
+																	<p>Product ID: </p>
+																</div>
+																<div class="col-lg-6">
+																	<b><?php echo $inventory_id; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-6">
+																	<p>Product Type: </p>
+																</div>
+																<div class="col-lg-6">
+																	<b><?php echo $type; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-6">
+																	<p>Product Sub-Type: </p>
+																</div>
+																<div class="col-lg-6">
+																	<b><?php echo $subtype; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-6">
+																<p>Quantity: </p>
+																</div>
+																<div class="col-lg-6">
+																<b><?php echo $quantity; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-6">
+																<p>Quantity: </p>
+																</div>
+																<div class="col-lg-6">
+																<b><?php echo $unit; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-6">
+																<p>Maximum Quantity: </p>
+																</div>
+																<div class="col-lg-6">
+																<b><?php echo $max; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-6">
+																<p>Minimimum Quantity: </p>
+																</div>
+																<div class="col-lg-6">
+																<b><?php echo $min; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-6">
+																<p>Critical Quantity: </p>
+																</div>
+																<div class="col-lg-6">
+																<b><?php echo $critical; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-6">
+																<p>Location:</p>
+																</div>
+																<div class="col-lg-6">
+																 <b><?php echo $location2; echo " | "; echo $location; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-6">
+																<p>Supplier: </p>
+																</div>
+																<div class="col-lg-6">
+																<b><?php echo $supplier; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-6">
+																<p>Status: </p>
+																</div>
+																<div class="col-lg-6">
+																<b><?php echo $alert; ?></b>
+																</div>
+															</div>
+															
 														</div>
 														<div class="modal-footer">
 															<button type="button" class="btn btn-bg-grey" data-dismiss="modal">Close</button>
@@ -889,8 +939,7 @@ if(isset($_POST['send'])){
 											</div>
 											<!-- /.modal -->
 
-												</td>
-											</tr>
+												
 										<?php
 
 										}

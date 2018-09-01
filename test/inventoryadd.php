@@ -263,7 +263,12 @@ else {
 					<input class="form-control" name="quantity" type="text" value=""></input>
 					<br>
 					<label>Unit <i>(pc, kg, litre, others)</i> :</label>
-					<input class="form-control" name="unit" type="text" value=""></input>
+					<select class="form-control" name="unit">
+						<option>pc</option>
+						<option>kg</option>
+						<option>litre</option>
+						<option>others</option>
+					</select>
 					<br>
 					<label>Location :</label>
 						<select class="form-control" id="select1" name="location" >
