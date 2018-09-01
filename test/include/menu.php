@@ -41,6 +41,9 @@
                         <li>
                             <a href="index.php"><i class="fa fa-home"></i> Dashboard</a>
                         </li>
+						<?php
+						if($secpass == '0'){}else{
+						?>
                         <li>
                             <a href="#"><i class="fa fa-cubes"></i> Inventory Management<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -48,7 +51,7 @@
                                     <a href="home.php">Inventory</a>
                                 </li>
 								<?php
-								if($secpass>= 3){}else{
+								if($secpass>= '3'){}else{
 								?>
 								<li>
                                     <a href="location.php">Location</a>
@@ -62,9 +65,9 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-						 <?php
-
-						if($secpass>= 3){}else{
+						<?php
+						}
+						if($secpass == '0'){}else{
 						?>
                         <li>
                             <a href="#"><i class="fa fa-history"></i> Activity Tracking<span class="fa arrow"></span></a>
@@ -82,16 +85,18 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-						 <?php
-
-						if($secpass>= 2){}else{
+						<?php
+						
+						if($secpass >= '3'){}else{
+						
 						?>
-                        <li>
+						<li>
                             <a href="report.php"><i class="fa fa-folder-open"></i> Report</a>
                         </li>
 						<?php
-
-						if($secpass>= 1){}else{
+						}
+						}
+						if($secpass>= '2'){}else{
 						?>
                         <li>
                             <a href="#"><i class="fa fa-user"></i> Users<span class="fa arrow"></span></a>
@@ -105,22 +110,21 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-
+						<?php
+						}
+						?>
                         <li>
                             <a href="admindetails.php"><i class="fa fa-question-circle"></i> Need Help</a>
                         </li>
-
+						<?php
+						if($secpass >= '1'){}else{
+						?>
                         <li>
                             <a href="https://goo.gl/forms/t5Juvhv7pF7v3VGL2"><i class="fa fa-send"></i> Feedback</a>
                         </li>
-
 						<?php
 						}
-						}
-						}
-
 						?>
-
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

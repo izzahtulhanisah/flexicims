@@ -381,12 +381,23 @@ else {
 												while($row1 = $result1->fetch_assoc()){
 													$id = $row1["id"];
 													$location = $row1["location"];
+													$managerid = $row1["manager_id"];
 												}
 												?>
 												<div class="modal-body">
 													<form action="locationdelete.php" method="post">
 														<label>Location :</label>
 														<input class="form-control" name="location" type="text" value="<?php echo $location; ?>" disabled></input>
+														<label>Manager In Charge :</label>
+														<?php
+														$selectus = "SELECT * FROM login WHERE id='$managerid'";
+														$resultus = $conn->query($selectus);
+														while($rowus = $resultus->fetch_assoc()){
+
+															$user = $rowus["username"];
+														}
+														?>
+														<input class="form-control" name="location" type="text" value="<?php echo $user; ?>" disabled></input>
 														<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 														<input class="form-control" name="locationbase" type="hidden" value="<?php echo $location; ?>"></input>
 														<hr>
