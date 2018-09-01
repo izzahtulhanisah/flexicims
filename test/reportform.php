@@ -284,6 +284,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 									<td>Product Name</td>
 									<td>Product ID</td>
 									<td>Quantity</td>
+									<td>Unit</td>
 									<td>Activity</td>
 									<td>Date</td>
 									<td>User</td>
@@ -318,14 +319,19 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							}
 
 							$counter = 0;
-
-							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND detail='Incoming' ORDER BY detail DESC ";
-
+							
+							if($secpass == '2'){
+								$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND detail='Incoming' AND r.leadid = '$id' ORDER BY detail DESC ";
+							}else{
+								$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND detail='Incoming' ORDER BY detail DESC ";
+							}
+							
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
 								$type = $row["type"];
 								$name = $row["name"];
+								$unit = $row["unit"];
 								$inventory_id = $row["inventory_id"];
 								$price = $row["price"];
 								$quantity = $row["quantity"];
@@ -344,6 +350,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 									<td><?php echo $name; ?></td>
 									<td><?php echo $inventory_id; ?></td>
 									<td><?php echo $quantity; ?></td>
+									<td><?php echo $unit; ?></td>
 									<td><?php echo $detail; ?></td>
 									<td><?php echo $date; ?></td>
 									<td><?php echo $username; ?></td>
@@ -363,7 +370,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel-heading">
-						Record Of Outgoing Stock:
+						Record Of Outgoing Stock: 
 					</div>
 				</div>
 			</div>
@@ -378,6 +385,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 									<td>Product Name</td>
 									<td>Product ID</td>
 									<td>Quantity</td>
+									<td>Unit</td>
 									<td>Activity</td>
 									<td>Date</td>
 									<td>User</td>
@@ -411,12 +419,17 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							}else{
 								$subtype = "";
 							}
-
-							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND detail='Outgoing' ORDER BY detail DESC ";
+							
+							if($secpass == '2'){
+								$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND detail='Outgoing' AND r.leadid = '$id' ORDER BY detail DESC ";	
+							}else{
+								$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND detail='Outgoing' ORDER BY detail DESC ";
+							}
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
 								$type = $row["type"];
+								$unit = $row["unit"];
 								$name = $row["name"];
 								$inventory_id = $row["inventory_id"];
 								$price = $row["price"];
@@ -426,7 +439,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$branch = $row["branch"];
 								$date = $row["date"];
 								$username = $row["username"];
-
+								
 								$counter++;
 
 							?>
@@ -436,6 +449,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 									<td><?php echo $name; ?></td>
 									<td><?php echo $inventory_id; ?></td>
 									<td><?php echo $quantity; ?></td>
+									<td><?php echo $unit; ?></td>
 									<td><?php echo $detail; ?></td>
 									<td><?php echo $date; ?></td>
 									<td><?php echo $username; ?></td>
@@ -470,6 +484,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 									<td>Product Name</td>
 									<td>Product ID</td>
 									<td>Quantity</td>
+									<td>Unit</td>
 									<td>Activity</td>
 									<td>Date</td>
 									<td>User</td>
@@ -503,8 +518,13 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							}else{
 								$subtype = "";
 							}
-
-							$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND 1 ORDER BY detail DESC ";
+							
+							if($secpass == '2'){
+								$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND r.leadid = '$id' AND 1 ORDER BY detail DESC ";
+							}else{
+								$select = "SELECT r.* , l.username FROM record as r INNER JOIN login as l ON r.user = l.id WHERE DATE(date) BETWEEN '$fromdate' AND '$todate' ". $location ." ". $sublocation ." ". $type ." ". $subtype ." AND 1 ORDER BY detail DESC ";
+							}
+							
 							$result = $conn->query($select);
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
@@ -512,6 +532,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$name = $row["name"];
 								$inventory_id = $row["inventory_id"];
 								$price = $row["price"];
+								$unit = $row["unit"];
 								$quantity = $row["quantity"];
 								$detail = $row["detail"];
 								$qr = $row["qr"];
@@ -528,6 +549,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 									<td><?php echo $name; ?></td>
 									<td><?php echo $inventory_id; ?></td>
 									<td><?php echo $quantity; ?></td>
+									<td><?php echo $unit; ?></td>
 									<td><?php echo $detail; ?></td>
 									<td><?php echo $date; ?></td>
 									<td><?php echo $username; ?></td>

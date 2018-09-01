@@ -115,6 +115,12 @@ $dateupdate=date("Y-m-d H:i:s");
 $supplier=$_POST['supplier'];
 $updateby=$userid;
 
+$sel = "SELECT * FROM location WHERE location ='$location' ";
+$rslt = $conn->query($sel);
+while($rw = $rslt->fetch_assoc()){
+	$leadid = $rw['manager_id'];
+}
+
 if($quantity <= 0){
 	$status = "No Stock";
 }else if($critical >= $quantity){
@@ -131,8 +137,8 @@ $query = "INSERT INTO inventory (type,subtype,name,inventory_id,quantity,unit,qr
 		VALUES ('$type','$subtype','$name','$inventory_id','$quantity','$unit','$qr','$branch','$date','$critical','$minimum','$max','$location','$sublocation','$description','$dateupdate','$supplier','$updateby','$status')";
 $res = $conn->query($query);
 
-$queryin = "INSERT INTO record (type,subtype,name,inventory_id,quantity,unit,location,sublocation,detail,qr,branch,date,user)
-			VALUES ('$type','$subtype','$name','$inventory_id','$quantity','$unit','$location','$sublocation','Add New Item','$qr','$branch','$date','$userid')";
+$queryin = "INSERT INTO record (type,subtype,name,inventory_id,quantity,unit,location,sublocation,detail,qr,branch,date,user,leadid)
+			VALUES ('$type','$subtype','$name','$inventory_id','$quantity','$unit','$location','$sublocation','Add New Item','$qr','$branch','$date','$userid','$leadid')";
 
 $resin = $conn->query($queryin);
 
@@ -275,7 +281,11 @@ else {
 						<option disabled selected>Select Location..</option>
 
 						<?php
-						$selectloc = "SELECT * FROM location";
+						if($secpass == '2'){
+							$selectloc = "SELECT * FROM location WHERE manager_id = '$userid'";
+						}else{
+							$selectloc = "SELECT * FROM location";
+						}
 						$resultloc = $conn->query($selectloc);
 						while($rowloc = $resultloc->fetch_assoc()){
 							$id = $rowloc["id"];

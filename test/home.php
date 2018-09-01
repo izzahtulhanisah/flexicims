@@ -381,6 +381,11 @@ if(isset($_POST['send'])){
 														$sublocation = $row["location2"];
 
 														}
+													$sel = "SELECT * FROM location WHERE location ='$location' ";
+													$rslt = $conn->query($sel);
+													while($rw = $rslt->fetch_assoc()){
+														$leadid = $rw['manager_id'];
+													}
 
 													$quantity = $quanout - $qty;
 
@@ -400,8 +405,8 @@ if(isset($_POST['send'])){
 
 													$res = $conn->query($query);
 
-													$queryout = "INSERT INTO record (type,subtype,name,inventory_id,price,quantity,unit,detail,location,sublocation,qr,branch,date,transporter,deliverto,remark,user)
-																VALUES ('$type','$subtype','$name','$inventory_id','$price','$qty','$unit','Outgoing','$location','$sublocation','$qr','$branch','$date','$transporter','$deliverto','$remark','$userid')";
+													$queryout = "INSERT INTO record (type,subtype,name,inventory_id,price,quantity,unit,detail,location,sublocation,qr,branch,date,transporter,deliverto,remark,user,leadid)
+																VALUES ('$type','$subtype','$name','$inventory_id','$price','$qty','$unit','Outgoing','$location','$sublocation','$qr','$branch','$date','$transporter','$deliverto','$remark','$userid','$leadid')";
 													$resout = $conn->query($queryout);
 
 													if($res === TRUE){
@@ -501,6 +506,11 @@ if(isset($_POST['send'])){
 																$sublocation = $row1["location2"];
 
 																}
+															$sel = "SELECT * FROM location WHERE location ='$location' ";
+															$rslt = $conn->query($sel);
+															while($rw = $rslt->fetch_assoc()){
+																$leadid = $rw['manager_id'];
+															}
 
 															$quantity = $quanin + $qty;
 
@@ -520,8 +530,8 @@ if(isset($_POST['send'])){
 
 															$res = $conn->query($query);
 
-															$queryin = "INSERT INTO record (type,subtype,name,inventory_id,price,quantity,unit,detail,location,sublocation,qr,branch,date,supplier,datereceive,remark,user)
-																		VALUES ('$type','$subtype','$name','$inventory_id','$price','$qty','$unit','Incoming','$location','$sublocation','$qr','$branch','$date','$supplier','$date','$remark','$userid')";
+															$queryin = "INSERT INTO record (type,subtype,name,inventory_id,price,quantity,unit,detail,location,sublocation,qr,branch,date,supplier,datereceive,remark,user,leadid)
+																		VALUES ('$type','$subtype','$name','$inventory_id','$price','$qty','$unit','Incoming','$location','$sublocation','$qr','$branch','$date','$supplier','$date','$remark','$userid','$leadid')";
 
 															$resin = $conn->query($queryin);
 
@@ -759,7 +769,11 @@ if(isset($_POST['send'])){
 											<option value="" selected disabled><?php echo $location;?></option>
 											<?php
 
-											$selectloc = "SELECT * FROM location";
+											if($secpass == '2'){
+												$selectloc = "SELECT * FROM location WHERE manager_id = '$userid'";
+											}else{
+												$selectloc = "SELECT * FROM location";
+											}
 											$resultloc = $conn->query($selectloc);
 											while($rowloc = $resultloc->fetch_assoc()){
 												$locationloc = $rowloc["location"];
