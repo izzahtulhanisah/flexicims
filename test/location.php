@@ -43,7 +43,7 @@ $idd = $_POST['id'];
 $location = $_POST['location'];
 $locationbase = $_POST['locationbase'];
 
-if(isset($_POST['managerid'])){	
+if(isset($_POST['managerid'])){
 	$managerid = $_POST['managerid'];
 	$query = "UPDATE location SET location = '$location', manager_id = '$managerid' WHERE id='$idd'";
 }
@@ -450,11 +450,12 @@ else {
 									</div>
 									<div class="modal-body">
 										<form action="" method="post">
-											<label>Location Name</label>
+											<label>Location Name :</label>
 											<input class="form-control" name="location" type="text" value=""></input>
-											<label>Manager</label>
+											<br>
+											<label>Manager (PIC) :</label>
 											<select class="form-control" name="managerid">
-											<option value="" disabled selected>Please Select...</option>
+											<option value="" disabled selected>Please Select</option>
 											<?php
 
 											$selectloc = "SELECT * FROM login WHERE secpass='2'";
@@ -475,8 +476,7 @@ else {
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-										<input type="submit" class="btn btn-success" name="sendloc"  onclick="return confirm('Are you sure you want to Add the location/sublocation?')" value="Submit" />
+										<input type="submit" class="btn btn-success" name="sendloc" value="Submit" />
 										</form>
 									</div>
 								</div>
@@ -520,7 +520,7 @@ else {
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-									<input type="submit" class="btn btn-success" name="addsubloc" onclick="return confirm('Are you sure you want to Add the location/sublocation?')" value="Submit" />
+									<input type="submit" class="btn btn-success" name="addsubloc" value="Submit" />
 									</form>
 								</div>
 							</div>

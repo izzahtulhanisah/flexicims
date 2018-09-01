@@ -71,7 +71,7 @@ include "config.php";
 
 if(isset($_POST['send'])){
 
-$expired =strtotime($_POST['expireddate']);
+// $expired =strtotime($_POST['expireddate']);
 
 $name = $_POST['name'];
 $address = $_POST['address'];
@@ -91,14 +91,14 @@ $res = $conn->query($query);
 
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">
-		alert(\"Staff Succesfully Edit\");
+		alert(\"Succesfully Edited Staff Details\");
 		window.location = (\"staff.php\")
 		</script>";
 	}
 
 else {
 	echo "<script type = \"text/javascript\">
-		alert(\"Staff Not Succesfully Edit\");
+		alert(\"Failed to Edit Staff Details\");
 		window.location = (\"staff.php\")
 		</script>";
 	}
@@ -126,47 +126,19 @@ else {
 						<input class="form-control" name="position" type="text" value="<?php echo $position; ?>"></input>
 						<br>
 						<label>Username</label>
-						<input class="form-control" name="username" type="text" value="<?php echo $users; ?>"></input>
+						<input class="form-control" type="text" value="<?php echo $users; ?>" disabled></input>
+						<input class="form-control" name="username" type="hidden" value="<?php echo $users; ?>"></input>
 						<br>
 						<label>Password</label>
 						<input class="form-control" name="password" type="password" value="<?php echo $password; ?>"></input>
 						<br>
 						<input type="hidden" class="btn btn-primary" name="loginid" value="<?php echo $loginid; ?>" />
-						<input type="submit" class="btn btn-success" name="send" value="Submit" />
+						<input type="submit" class="btn btn-success pull-right" name="send" value="Submit" />
 						<button class="btn btn-bg-grey" type="button" onclick="window.location.href='staff.php'">Back</button>
 						<br><br>
 						</form>
 				</div>
 		  </div>
-
-<form action="" method="post">
-<label>Name</label>
-<input class="form-control" name="name" type="text" value="<?php echo $name; ?>"></input>
-<br>
-<label>Address</label>
-<input class="form-control" name="address" type="text" value="<?php echo $address; ?>"></input>
-<br>
-<label>Email</label>
-<input class="form-control" name="email" type="text" value="<?php echo $email; ?>"></input>
-<br>
-<label>Contact</label>
-<input class="form-control" name="contact" type="text" value="<?php echo $contact; ?>"></input>
-<br>
-<label>Position</label>
-<input class="form-control" name="position" type="text" value="<?php echo $position; ?>"></input>
-<br>
-<label>Username</label>
-<input class="form-control" type="text" value="<?php echo $users; ?>"></input>
-<input class="form-control" name="username" type="hidden" value="<?php echo $users; ?>"></input>
-<br>
-<label>Password</label>
-<input class="form-control" name="password" type="password" value="<?php echo $password; ?>"></input>
-<br>
-<input type="hidden" class="btn btn-primary" name="loginid" value="<?php echo $loginid; ?>" />
-<input type="submit" class="btn btn-success" name="send" value="Submit" />
-<button class="btn btn-bg-grey" type="button" onclick="window.location.href='staff.php'">Back</button>
-<br><br>
-</form>
 
 	</div>
 </div>

@@ -24,7 +24,7 @@ if(isset($_POST['delloc'])){
 	$result = $conn->query($query);
 	if($result === TRUE){
 		echo "<script type = \"text/javascript\">
-					alert(\"Location Successfully Delete\");
+					alert(\"Successfully Deleted Location\");
 					window.location = (\"location.php\")
 				</script>";
 	}
@@ -36,7 +36,7 @@ if(isset($_POST['delsubloc'])){
 	$result = $conn->query($query);
 	if($result === TRUE){
 		echo "<script type = \"text/javascript\">
-					alert(\"Location Successfully Delete\");
+					alert(\"Successfully Deleted Sub-Location\");
 					window.location = (\"location.php\")
 				</script>";
 	}

@@ -50,7 +50,7 @@ date_default_timezone_set("Asia/Kuala_Lumpur");
 include "config.php";
 
 if(isset($_POST['send'])){
-	
+
 $name = $_POST['name'];
 $address = $_POST['address'];
 $email = $_POST['email'];
@@ -80,14 +80,14 @@ $res = $conn->query($query);
 
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">
-		alert(\"Manager Succesfully Add\");
+		alert(\"Succesfully Added a Manager\");
 		window.location = (\"manager.php\")
 		</script>";
 	}
 
 else {
 	echo "<script type = \"text/javascript\">
-		alert(\"Manager Not Succesfully Add\");
+		alert(\"Failed to Add a Manager\");
 		window.location = (\"manager.php\")
 		</script>";
 	}

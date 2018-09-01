@@ -89,14 +89,14 @@ $res1 = $conn->query($query1);
 
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">
-		alert(\"Manager Succesfully Edit\");
+		alert(\"Succesfully Edited Manager Details\");
 		window.location = (\"manager.php\")
 		</script>";
 	}
 
 else {
 	echo "<script type = \"text/javascript\">
-		alert(\"Manager Not Succesfully Edit\");
+		alert(\"Failed to Edit Manager Details\");
 		window.location = (\"manager.php\")
 		</script>";
 	}
@@ -124,7 +124,7 @@ else {
 					<input class="form-control" name="position" type="text" value="<?php echo $position; ?>"></input>
 					<br>
 					<label>Username :</label>
-					<input class="form-control" type="text" value="<?php echo $users; ?>"></input>
+					<input class="form-control" type="text" value="<?php echo $users; ?>" disabled></input>
 					<input class="form-control" name="username" type="hidden" value="<?php echo $users; ?>"></input>
 					<br>
 					<label>Password :</label>

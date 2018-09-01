@@ -70,9 +70,9 @@ while($row = $result->fetch_assoc()){
 							<tbody>
 								<tr>
 									<td><?php echo $username; ?><span class="pull-right">
-										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-placement="bottom" data-target="#myModal<?php echo $id; ?>" title="Info"><i class="fa fa-info-circle"></i> Details</button>
+										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-placement="bottom" data-target="#myModal<?php echo $id; ?>" title="Info"><i class="fa fa-info-circle"></i> Details</button>
 										<button type="button" onclick="window.location.href='directoredit.php?loginid=<?php echo $id; ?>'" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-edit"></i> Edit</button>
-										<a href="userdelete.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete the user?')" class="btn btn-danger btn-sm" ><i class="fa fa-remove"></i> Delete</a>
+										<a href="userdelete.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-danger btn-sm" ><i class="fa fa-remove"></i> Delete</a>
 									</span></td>
 									<div class="modal fade" id="TypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
@@ -81,9 +81,9 @@ while($row = $result->fetch_assoc()){
 <div class="modal fade" id="myModal<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header" style="background-color: lightgrey">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">View Director Details</h4>
+				<h4 class="modal-title" id="myModalLabel"><center>VIEW DIRECTOR DETAILS</center></h4>
 			</div>
 			<?php
 

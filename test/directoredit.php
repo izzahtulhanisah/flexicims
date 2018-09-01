@@ -91,14 +91,14 @@ $res1 = $conn->query($query1);
 
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">
-		alert(\"Succesfully Edited Details\");
+		alert(\"Successfully Edited Director Details\");
 		window.location = (\"director.php\")
 		</script>";
 	}
 
 else {
 	echo "<script type = \"text/javascript\">
-		alert(\"Failed to Edit Details\");
+		alert(\"Failed to Edit Director Details\");
 		window.location = (\"director.php\")
 		</script>";
 	}
@@ -128,14 +128,14 @@ else {
 					<br>
 					<label>Username :</label>
 					<input class="form-control" type="text" value="<?php echo $users; ?>" disabled></input>
-					<input class="form-control" name="username" type="hidden" value="<?php echo $users; ?>" disabled></input>
+					<input class="form-control" name="username" type="hidden" value="<?php echo $users; ?>"></input>
 					<br>
 					<label>Password</label>
 					<input class="form-control" name="password" type="password" value="<?php echo $password; ?>"></input>
 					<br>
 					<input type="hidden" class="btn btn-primary" name="loginid" value="<?php echo $loginid; ?>" />
-					<input type="submit" class="btn btn-success" name="send" value="Save" />
-					<button class="btn btn-bg-grey" type="button" onclick="window.location.href='manager.php'">Back</button>
+					<input type="submit" class="btn btn-success pull-right" name="send" value="Save" />
+					<button class="btn btn-bg-grey" type="button" onclick="window.location.href='director.php'">Back</button>
 					<br><br>
 					</form>
 
