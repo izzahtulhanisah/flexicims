@@ -39,8 +39,9 @@ while($row = $result->fetch_assoc()){
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Staff Edit</h1>
+                    <h3 class="page-header">Add New Staff</h3>
                 </div>
+						</div>
                 <!-- /.col-lg-12 -->
 
 <?php
@@ -79,14 +80,14 @@ $res = $conn->query($query);
 
 if($res === TRUE){
 	echo "<script type = \"text/javascript\">
-		alert(\"Staff Succesfully Edit\");
+		alert(\"Succesfully Added a Staff\");
 		window.location = (\"staff.php\")
 		</script>";
 	}
 
 else {
 	echo "<script type = \"text/javascript\">
-		alert(\"Staff Not Succesfully Edit\");
+		alert(\"Failed to Add a Staff\");
 		window.location = (\"staff.php\")
 		</script>";
 	}
@@ -94,34 +95,39 @@ else {
 
 ?>
 
+<div class="panel panel-warning" style="width: 500px">
+    <div class="panel-heading">Staff Details</div>
+    <div class="panel-body">
 
-<form action="" method="post">
-<label>Name</label>
-<input class="form-control" name="name" type="text" value=""></input>
-<br>
-<label>Address</label>
-<input class="form-control" name="address" type="text" value=""></input>
-<br>
-<label>Email</label>
-<input class="form-control" name="email" type="text" value=""></input>
-<br>
-<label>Contact</label>
-<input class="form-control" name="contact" type="text" value=""></input>
-<br>
-<label>Position</label>
-<input class="form-control" name="position" type="text" value=""></input>
-<br>
-<label>Username</label>
-<input class="form-control" name="username" type="text" value=""></input>
-<br>
-<label>Password</label>
-<input class="form-control" name="password" type="password" value=""></input>
-<br>
-<input type="hidden" class="btn btn-primary" name="loginid" value="" />
-<input type="submit" class="btn btn-primary" name="send" value="Enter" />
-<button class="btn btn-danger" type="button" onclick="window.location.href='home.php'">Back</button>
-<br><br>
-</form>
+				<form action="" method="post">
+				<label>Name</label>
+				<input class="form-control" name="name" type="text" value=""></input>
+				<br>
+				<label>Address</label>
+				<input class="form-control" name="address" type="text" value=""></input>
+				<br>
+				<label>Email</label>
+				<input class="form-control" name="email" type="text" value=""></input>
+				<br>
+				<label>Contact</label>
+				<input class="form-control" name="contact" type="text" value=""></input>
+				<br>
+				<label>Position</label>
+				<input class="form-control" name="position" type="text" value=""></input>
+				<br>
+				<label>Username</label>
+				<input class="form-control" name="username" type="text" value=""></input>
+				<br>
+				<label>Password</label>
+				<input class="form-control" name="password" type="password" value=""></input>
+				<br>
+				<input type="hidden" class="btn btn-primary" name="loginid" value="" />
+				<input type="submit" class="btn btn-success" name="send" value="Submit" />
+				<button class="btn btn-default" type="button" onclick="window.location.href='home.php'">Back</button>
+				<br><br>
+				</form>
+			</div>
+		</div>
 
 	</div>
 </div>

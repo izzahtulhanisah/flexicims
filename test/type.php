@@ -468,9 +468,9 @@ else {
 					<div class="modal fade" id="SubTypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
-								<div class="modal-header">
+								<div class="modal-header" style="background-color: lightgrey">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									<h4 class="modal-title" id="myModalLabel">Add Sub-Type</h4>
+									<h4 class="modal-title" id="myModalLabel"><center>ADD NEW SUB-TYPE</center></h4>
 								</div>
 								<div class="modal-body">
 									<form action="" method="post">
