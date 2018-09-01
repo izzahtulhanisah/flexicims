@@ -25,7 +25,7 @@ $result1 = $conn->query($query1);
 
 if($result === TRUE){
 	echo "<script type = \"text/javascript\">
-				alert(\"User Successfully Delete\");
+				alert(\"Successfully Deleted User\");
 				window.location = (\"userprofile.php\")
 			</script>";
 }
