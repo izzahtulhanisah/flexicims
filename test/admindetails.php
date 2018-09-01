@@ -41,7 +41,7 @@ include "include/menu.php";
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h3>ADMIN DETAILS</h3><hr>
+			<br><h4>NEED HELP <i class="fa fa-question-circle"></i></h4><hr>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>

@@ -47,8 +47,8 @@ while($row = $result->fetch_assoc()){
         <div class="col-lg-12">
 					<div class="panel panel-primary">
 							<div class="panel-heading">
-									<p>LIST OF ADMINS
-									<button class="btn btn-success btn-sm pull-right" onclick="window.location.href='adminadd.php'"><i class="fa fa-plus" style="font-size:12px"></i> New User</button></p>
+									<p>ADMIN DETAILS
+									<!-- <button class="btn btn-success btn-sm pull-right" onclick="window.location.href='adminadd.php'"><i class="fa fa-plus" style="font-size:12px"></i> New User</button></p> -->
 							</div>
 
 					<div class="panel-body">
@@ -78,9 +78,9 @@ while($row = $result->fetch_assoc()){
 <div class="modal fade" id="myModal<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header" style="background-color: lightgrey">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">View Admin Details</h4>
+				<h4 class="modal-title" id="myModalLabel"><center>VIEW ADMIN DETAILS</center></h4>
 			</div>
 			<?php
 
