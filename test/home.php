@@ -338,7 +338,8 @@ if(isset($_POST['send'])){
 													?>
 													  </ul>
 													</div>
-
+												</td>
+											</tr>
 
 													<div class="modal fade" id="outgoing<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 														<div class="modal-dialog">
@@ -815,69 +816,104 @@ if(isset($_POST['send'])){
 															<h4 class="modal-title" id="myModalLabel"><center>PRODUCT DETAILS</center></h4>
 														</div>
 														<div class="modal-body">
-															<table style="width:60%" align="center">
-																<tr>
-																	<td>Name:</td>
-															    <th><?php echo $name; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Product ID:</td>
-															    <th><?php echo $inventory_id; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Product Type:</td>
-															    <th><?php echo $type; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Product Sub-Type:</td>
-															    <th><?php echo $subtype; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Quantity:</td>
-															    <th><?php echo $quantity; ?></th>
-																</tr>
-																<tr>
-																	<td>Quantity:</td>
-															    <th><?php echo $unit; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Maximum Quantity:</td>
-															    <th><?php echo $max; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Minimimum Quantity:</td>
-															    <th><?php echo $min; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Critical Quantity:</td>
-															    <th><?php echo $critical; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Location:</td>
-															    <th><?php echo $location2; echo " | "; echo $location; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Supplier:</td>
-															    <th><?php echo $supplier; ?></th>
-																</tr>
-
-																<tr>
-																	<td>Status:</td>
-															    <th><?php echo $alert; ?></th>
-																</tr>
-
-															</table>
-
-
+															
+															<div class="row">
+																<div class="col-lg-4">
+																	<p>Name: 
+																</div>
+																<div class="col-lg-8">
+																	<b><?php echo $name; ?></b></p>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-4">
+																	<p>Product ID: </p>
+																</div>
+																<div class="col-lg-8">
+																	<b><?php echo $inventory_id; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-4">
+																	<p>Product Type: </p>
+																</div>
+																<div class="col-lg-8">
+																	<b><?php echo $type; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-4">
+																	<p>Product Sub-Type: </p>
+																</div>
+																<div class="col-lg-8">
+																	<b><?php echo $subtype; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-4">
+																<p>Quantity: </p>
+																</div>
+																<div class="col-lg-8">
+																<b><?php echo $quantity; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-4">
+																<p>Quantity: </p>
+																</div>
+																<div class="col-lg-8">
+																<b><?php echo $unit; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-4">
+																<p>Maximum Quantity: </p>
+																</div>
+																<div class="col-lg-8">
+																<b><?php echo $max; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-4">
+																<p>Minimimum Quantity: </p>
+																</div>
+																<div class="col-lg-8">
+																<b><?php echo $min; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-4">
+																<p>Critical Quantity: </p>
+																</div>
+																<div class="col-lg-8">
+																<b><?php echo $critical; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-4">
+																<p>Location:</p>
+																</div>
+																<div class="col-lg-8">
+																 <b><?php echo $location2; echo " | "; echo $location; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-4">
+																<p>Supplier: </p>
+																</div>
+																<div class="col-lg-8">
+																<b><?php echo $supplier; ?></b>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-4">
+																<p>Status: </p>
+																</div>
+																<div class="col-lg-8">
+																<b><?php echo $alert; ?></b>
+																</div>
+															</div>
+															
 														</div>
 														<div class="modal-footer">
 															<button type="button" class="btn btn-bg-grey" data-dismiss="modal">Close</button>
@@ -889,8 +925,7 @@ if(isset($_POST['send'])){
 											</div>
 											<!-- /.modal -->
 
-												</td>
-											</tr>
+												
 										<?php
 
 										}
