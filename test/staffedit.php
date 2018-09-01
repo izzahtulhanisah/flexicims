@@ -139,6 +139,35 @@ else {
 				</div>
 		  </div>
 
+<form action="" method="post">
+<label>Name</label>
+<input class="form-control" name="name" type="text" value="<?php echo $name; ?>"></input>
+<br>
+<label>Address</label>
+<input class="form-control" name="address" type="text" value="<?php echo $address; ?>"></input>
+<br>
+<label>Email</label>
+<input class="form-control" name="email" type="text" value="<?php echo $email; ?>"></input>
+<br>
+<label>Contact</label>
+<input class="form-control" name="contact" type="text" value="<?php echo $contact; ?>"></input>
+<br>
+<label>Position</label>
+<input class="form-control" name="position" type="text" value="<?php echo $position; ?>"></input>
+<br>
+<label>Username</label>
+<input class="form-control" type="text" value="<?php echo $users; ?>"></input>
+<input class="form-control" name="username" type="hidden" value="<?php echo $users; ?>"></input>
+<br>
+<label>Password</label>
+<input class="form-control" name="password" type="password" value="<?php echo $password; ?>"></input>
+<br>
+<input type="hidden" class="btn btn-primary" name="loginid" value="<?php echo $loginid; ?>" />
+<input type="submit" class="btn btn-success" name="send" value="Submit" />
+<button class="btn btn-bg-grey" type="button" onclick="window.location.href='staff.php'">Back</button>
+<br><br>
+</form>
+
 	</div>
 </div>
 
