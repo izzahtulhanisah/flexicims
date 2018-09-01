@@ -173,6 +173,9 @@ var options = {
 
 <?php
 include 'include/menu.php';
+
+
+if($secpass>= 1){
 ?>
 
 		<div id="page-wrapper">
@@ -254,7 +257,7 @@ include 'include/menu.php';
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="critical.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -294,7 +297,7 @@ include 'include/menu.php';
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="minimum.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -334,7 +337,7 @@ include 'include/menu.php';
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="maximum.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -385,7 +388,9 @@ include 'include/menu.php';
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-
+				<?php
+			}else{
+				?>
 				<div id="page-wrapper">
 		            <div class="row">
 		                <div class="col-lg-12">
@@ -545,6 +550,11 @@ include 'include/menu.php';
 		                </div>
 		            </div>
 		        </div>
+				
+				<?php
+			}
+				?>
+				
 
 
 <?php
