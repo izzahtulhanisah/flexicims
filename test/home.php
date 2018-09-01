@@ -496,8 +496,8 @@ if(isset($_POST['send'])){
 																$price = $row1["price"];
 																$qr = $row1["qr"];
 																$branch = $row1["branch"];
-																$location = $row["location"];
-																$sublocation = $row["location2"];
+																$location = $row1["location"];
+																$sublocation = $row1["location2"];
 
 																}
 
@@ -520,7 +520,7 @@ if(isset($_POST['send'])){
 															$res = $conn->query($query);
 
 															$queryin = "INSERT INTO record (type,subtype,name,inventory_id,price,quantity,unit,detail,location,sublocation,qr,branch,date,supplier,datereceive,remark,user)
-																		VALUES ('$type','$subtype','$name','$inventory_id','$price','$qty','$unit','Incoming','$qr','$branch','$date','$supplier','$date','$remark','$userid')";
+																		VALUES ('$type','$subtype','$name','$inventory_id','$price','$qty','$unit','Incoming','$location','$sublocation','$qr','$branch','$date','$supplier','$date','$remark','$userid')";
 
 															$resin = $conn->query($queryin);
 
@@ -556,7 +556,7 @@ if(isset($_POST['send'])){
 															<label>Remark / Comment</label>
 																<p><input class="form-control" name="remark" type="text" value=""></input></p>
 															<br>
-																<p><input class="" name="id" type="hidden" value="<?php echo $id; ?>"></input></p>
+																<p><input class="" name="idd" type="hidden" value="<?php echo $id; ?>"></input></p>
 															<br>
 
 
