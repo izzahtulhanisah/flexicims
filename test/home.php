@@ -50,7 +50,7 @@ while($row = $result->fetch_assoc()){
 	});
 
 	</script>
-	
+
 	<script>
 
 	$( document ).ready(function() {
@@ -343,9 +343,9 @@ if(isset($_POST['send'])){
 													<div class="modal fade" id="outgoing<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 														<div class="modal-dialog">
 															<div class="modal-content">
-																<div class="modal-header">
+																<div class="modal-header" style="background-color: lightgrey">
 																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-																	<h4 class="modal-title" id="myModalLabel"><center>Outgoing Form</center></h4>
+																	<h4 class="modal-title" id="myModalLabel"><center>OUTGOING FORM</center></h4>
 																</div>
 
 													<?php
@@ -422,19 +422,19 @@ if(isset($_POST['send'])){
 
 													<div class="modal-body">
 														<form action="" method="post">
-														<!-- <label></label> -->
+
 															<p><center><i>Quantity Left: <?php echo $quanout; ?></i></center></p>
-															<!-- <br> -->
-														<label>Input Quantity</label>
+
+														<label>Quantity :</label>
 															<p><input class="form-control" name="qty" type="text" value=""></input></p>
 															<br>
-														<label>Transporter / Tracking No</label>
+														<label>Transporter / Tracking No :</label>
 															<p><input class="form-control" name="transporter" type="text" ></input></p>
 															<br>
-														<label>Destination / Deliver To</label>
+														<label>Destination / Deliver To :</label>
 															<p><input class="form-control" name="deliverto" type="text" ></input></p>
 															<br>
-														<label>Remark / Comment</label>
+														<label>Remark / Comment :</label>
 														<p><input class="form-control" name="remark" type="text" ></input>
 														<input class="" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 														<input class="" name="name" type="hidden" value="<?php echo $name; ?>"></input>
@@ -463,9 +463,9 @@ if(isset($_POST['send'])){
 											<div class="modal fade" id="incoming<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 												<div class="modal-dialog">
 													<div class="modal-content">
-														<div class="modal-header">
+														<div class="modal-header" style="background-color: lightgrey">
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel"><center>Incoming Form</center></h4>
+															<h4 class="modal-title" id="myModalLabel"><center>INCOMING FORM</center></h4>
 														</div>
 															<?php
 
@@ -577,9 +577,9 @@ if(isset($_POST['send'])){
 											<div class="modal fade" id="edit<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 												<div class="modal-dialog">
 													<div class="modal-content">
-														<div class="modal-header">
+														<div class="modal-header" style="background-color: lightgrey">
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel"><center>Edit Product Details</center></h4>
+															<h4 class="modal-title" id="myModalLabel"><center>EDIT PRODUCT DETAILS</center></h4>
 														</div>
 
 											<?php
@@ -608,8 +608,8 @@ if(isset($_POST['send'])){
 											else{
 												$type = $_POST['type'];
 											}
-											
-											
+
+
 											if($_POST['subtype'] == ''){
 												$subtype = $subtype1;
 											}
@@ -801,9 +801,9 @@ if(isset($_POST['send'])){
 											<div class="modal fade" id="view<?php echo $id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 												<div class="modal-dialog">
 													<div class="modal-content">
-														<div class="modal-header">
+														<div class="modal-header" style="background-color: lightgrey">
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel">Product Details</h4>
+															<h4 class="modal-title" id="myModalLabel"><center>PRODUCT DETAILS</center></h4>
 														</div>
 														<div class="modal-body">
 															<table style="width:60%" align="center">
@@ -821,7 +821,7 @@ if(isset($_POST['send'])){
 																	<td>Product Type:</td>
 															    <th><?php echo $type; ?></th>
 																</tr>
-																
+
 																<tr>
 																	<td>Product Sub-Type:</td>
 															    <th><?php echo $subtype; ?></th>
