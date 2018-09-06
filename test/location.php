@@ -12,6 +12,7 @@ $select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
 	$id = $row["id"];
+	$userid = $row["id"];
 	$username = $row["username"];
 	$secpass = $row["secpass"];
 }
@@ -518,7 +519,11 @@ else {
 										<select class="form-control" name="location">
 											<option disabled selected>Select Location..</option>
 											<?php
-											$select = "SELECT location FROM location";
+											if($secpass == '2'){
+												$select = "SELECT * FROM location WHERE manager_id = '$userid'";
+											}else{
+												$select = "SELECT * FROM location";
+											}
 											$result1 = $conn->query($select);
 											while($row = $result1->fetch_assoc()){
 												$location=$row['location'];

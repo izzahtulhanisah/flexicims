@@ -11,9 +11,10 @@ $username=$_SESSION['username'];
 $select = "SELECT * FROM login WHERE username = '$username' ";
 $result = $conn->query($select);
 while($row = $result->fetch_assoc()){
-	$id = $row["id"];
-	$username = $row["username"];
+	$logid = $row["id"];
+	$userid = $row["id"];
 	$secpass = $row["secpass"];
+	$leadid = $row["lead_id"];
 }
 
 ?>
@@ -76,8 +77,15 @@ while($row = $result->fetch_assoc()){
 									include 'config.php';
 									
 									$counter=0;
-
-									$select = "SELECT * FROM record WHERE detail = 'Incoming' ORDER BY id DESC ";
+									if($secpass == 2){
+										$select = "SELECT * FROM record WHERE detail = 'Incoming' AND leadid = '$logid' ORDER BY id DESC ";
+									}
+									elseif($secpass == 3){
+										$select = "SELECT * FROM record WHERE detail = 'Incoming' AND leadid = '$leadid'  ORDER BY id DESC ";
+									}
+									else{
+										$select = "SELECT * FROM record WHERE detail = 'Incoming' ORDER BY id DESC ";
+									}
 									$result = $conn->query($select);
 									while($row = $result->fetch_assoc()){
 										$id = $row["id"];

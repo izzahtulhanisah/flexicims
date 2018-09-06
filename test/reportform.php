@@ -281,10 +281,15 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								<tr class="success">
 									<td>No.</td>
 									<td>Type</td>
+									<td>Subtype</td>
 									<td>Product Name</td>
 									<td>Product ID</td>
 									<td>Quantity</td>
+									<td>Location</td>
+									<td>Sublocation</td>
 									<td>Unit</td>
+									<td>Location</td>
+									<td>Sublocation</td>
 									<td>Activity</td>
 									<td>Date</td>
 									<td>User</td>
@@ -330,6 +335,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
 								$type = $row["type"];
+								$subtype = $row["subtype"];
 								$name = $row["name"];
 								$unit = $row["unit"];
 								$inventory_id = $row["inventory_id"];
@@ -340,6 +346,8 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$branch = $row["branch"];
 								$date = $row["date"];
 								$username = $row["username"];
+								$location = $row["location"];
+								$sublocation = $row["sublocation"];
 
 								$counter++;
 
@@ -347,10 +355,13 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								<tr>
 									<td><?php echo $counter; ?></td>
 									<td><?php echo $type; ?></td>
+									<td><?php echo $subtype; ?></td>
 									<td><?php echo $name; ?></td>
 									<td><?php echo $inventory_id; ?></td>
 									<td><?php echo $quantity; ?></td>
 									<td><?php echo $unit; ?></td>
+									<td><?php echo $location; ?></td>
+									<td><?php echo $sublocation; ?></td>
 									<td><?php echo $detail; ?></td>
 									<td><?php echo $date; ?></td>
 									<td><?php echo $username; ?></td>
@@ -382,10 +393,13 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								<tr class="success">
 									<td>No.</td>
 									<td>Type</td>
+									<td>Subype</td>
 									<td>Product Name</td>
 									<td>Product ID</td>
 									<td>Quantity</td>
 									<td>Unit</td>
+									<td>Location</td>
+									<td>Sublocation</td>
 									<td>Activity</td>
 									<td>Date</td>
 									<td>User</td>
@@ -429,6 +443,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
 								$type = $row["type"];
+								$subtype = $row["subtype"];
 								$unit = $row["unit"];
 								$name = $row["name"];
 								$inventory_id = $row["inventory_id"];
@@ -439,6 +454,8 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$branch = $row["branch"];
 								$date = $row["date"];
 								$username = $row["username"];
+								$location = $row["location"];
+								$sublocation = $row["sublocation"];
 								
 								$counter++;
 
@@ -446,10 +463,13 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								<tr>
 									<td><?php echo $counter; ?></td>
 									<td><?php echo $type; ?></td>
+									<td><?php echo $subtype; ?></td>
 									<td><?php echo $name; ?></td>
 									<td><?php echo $inventory_id; ?></td>
 									<td><?php echo $quantity; ?></td>
 									<td><?php echo $unit; ?></td>
+									<td><?php echo $location; ?></td>
+									<td><?php echo $sublocation; ?></td>									
 									<td><?php echo $detail; ?></td>
 									<td><?php echo $date; ?></td>
 									<td><?php echo $username; ?></td>
@@ -481,10 +501,13 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								<tr class="success">
 									<td>No.</td>
 									<td>Type</td>
+									<td>Subype</td>
 									<td>Product Name</td>
 									<td>Product ID</td>
 									<td>Quantity</td>
 									<td>Unit</td>
+									<td>Location</td>
+									<td>Sublocation</td>
 									<td>Activity</td>
 									<td>Date</td>
 									<td>User</td>
@@ -539,6 +562,8 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$branch = $row["branch"];
 								$date = $row["date"];
 								$username = $row["username"];
+								$location = $row["location"];
+								$sublocation = $row["sublocation"];
 
 								$counter++;
 
@@ -546,10 +571,13 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								<tr>
 									<td><?php echo $counter; ?></td>
 									<td><?php echo $type; ?></td>
+									<td><?php echo $subtype; ?></td>
 									<td><?php echo $name; ?></td>
 									<td><?php echo $inventory_id; ?></td>
 									<td><?php echo $quantity; ?></td>
 									<td><?php echo $unit; ?></td>
+									<td><?php echo $location; ?></td>
+									<td><?php echo $sublocation; ?></td>
 									<td><?php echo $detail; ?></td>
 									<td><?php echo $date; ?></td>
 									<td><?php echo $username; ?></td>
@@ -581,9 +609,12 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								<tr class="success">
 									<td>No.</td>
 									<td>Type</td>
+									<td>Subtype</td>
 									<td>Inventory Name</td>
 									<td>Inventory ID</td>
 									<td>Quantity</td>
+									<td>Location</td>
+									<td>Sublocation</td>
 									<td>Detail</td>
 									<td>Date</td>
 									<td>User</td>
@@ -599,6 +630,7 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 							while($row = $result->fetch_assoc()){
 								$id = $row["id"];
 								$type = $row["type"];
+								$subtype = $row["subtype"];
 								$name = $row["name"];
 								$inventory_id = $row["inventory_id"];
 								$price = $row["price"];
@@ -608,6 +640,8 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								$branch = $row["branch"];
 								$date = $row["date"];
 								$username = $row["username"];
+								$location = $row["location"];
+								$sublocation = $row["sublocation"];
 
 								$counter++;
 
@@ -615,9 +649,12 @@ echo "['" . $row['type'] . "', '" . $row['incoming'] . "', '" . $row['outgoing']
 								<tr>
 									<td><?php echo $counter; ?></td>
 									<td><?php echo $type; ?></td>
+									<td><?php echo $subtype; ?></td>
 									<td><?php echo $name; ?></td>
 									<td><?php echo $inventory_id; ?></td>
 									<td><?php echo $quantity; ?></td>
+									<td><?php echo $location; ?></td>
+									<td><?php echo $sublocation; ?></td>
 									<td><?php echo $detail; ?></td>
 									<td><?php echo $date; ?></td>
 									<td><?php echo $username; ?></td>
