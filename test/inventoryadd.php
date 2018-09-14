@@ -122,7 +122,7 @@ while($rw = $rslt->fetch_assoc()){
 }
 
 if($quantity <= 0){
-	$status = "No Stock";
+	$status = "No Stock"; 
 }else if($critical >= $quantity){
 	$status = "Critical";
 }else if($minimum >= $quantity && $critical < $quantity){
