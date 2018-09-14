@@ -54,10 +54,10 @@
 								if($secpass>= '3'){}else{
 								?>
 								<li>
-                                    <a href="location.php">Location</a>
+                                    <a href="location.php">Register Storage Location</a>
                                 </li>
                                 <li>
-                                    <a href="type.php">Product Type</a>
+                                    <a href="type.php">Register Item Type</a>
                                 </li>
 								<?php
 								}
@@ -74,21 +74,21 @@
                             <ul class="nav nav-second-level">
 
                                 <li>
-                                    <a href="incoming.php">Incoming</a>
+                                    <a href="incoming.php">Incoming Record</a>
                                 </li>
 								                <li>
-                                    <a href="outgoing.php">Outgoing</a>
+                                    <a href="outgoing.php">Outgoing Record</a>
                                 </li>
                                 <li>
-                                    <a href="record.php">Record</a>
+                                    <a href="record.php">All Records</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
 						<?php
-						
+
 						if($secpass >= '3'){}else{
-						
+
 						?>
 						<li>
                             <a href="report.php"><i class="fa fa-folder-open"></i> Report</a>

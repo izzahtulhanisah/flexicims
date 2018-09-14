@@ -167,7 +167,7 @@ else {
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><center>MANAGE PRODUCT TYPE</center></h3>
+                    <h3 class="page-header"><center>MANAGE ITEM TYPE</center></h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -177,9 +177,9 @@ else {
         <div class="col-lg-12">
 					<div class="panel panel-primary">
 							<div class="panel-heading">
-									<p>LIST OF PRODUCT TYPES
+									<p>LIST OF ITEM TYPES
 										<span class="pull-right">
-											<button class="btn btn-success btn-sm" data-toggle="modal" data-placement="bottom" data-target="#TypeModal" title="Add"><i class="fa fa-plus" style="font-size:12px"></i> New Product Type</button>
+											<button class="btn btn-success btn-sm" data-toggle="modal" data-placement="bottom" data-target="#TypeModal" title="Add"><i class="fa fa-plus" style="font-size:12px"></i> New Item Type</button>
 											<button class="btn btn-default btn-sm" data-toggle="modal" data-placement="bottom" data-target="#SubTypeModal" title="Add"><i class="fa fa-plus" style="font-size:12px"></i> New Sub-Type</button>
 										</span>
 									</p>
@@ -189,7 +189,7 @@ else {
 						<table width="100%" class="table table-striped table-bordered table-hover table-sm" id="table">
 							<thead>
 								<tr>
-								  <th>Product Type Name</th>
+								  <th>Item Type</th>
 								</tr>
 							</thead>
 							<?php
@@ -250,7 +250,7 @@ else {
 											<div class="modal-content">
 												<div class="modal-header" style="background-color: lightgrey">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4 class="modal-title" id="myModalLabel"><center>EDIT PRODUCT TYPE</center></h4>
+													<h4 class="modal-title" id="myModalLabel"><center>EDIT ITEM TYPE</center></h4>
 												</div>
 												<?php
 
@@ -264,7 +264,7 @@ else {
 												?>
 												<div class="modal-body">
 													<form action="" method="post">
-														<label>Product Type :</label>
+														<label>Item Type :</label>
 														<input class="form-control" name="type" type="text" value="<?php echo $type; ?>"></input>
 														<br>
 														<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
@@ -314,7 +314,7 @@ else {
 											<div class="modal-content">
 												<div class="modal-header" style="background-color: lightgrey">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-														<h4 class="modal-title" id="myModalLabel"><center>VIEW PRODUCT TYPE DETAILS</center></h4>
+														<h4 class="modal-title" id="myModalLabel"><center>VIEW ITEM TYPE DETAILS</center></h4>
 												</div>
 												<?php
 
@@ -327,7 +327,7 @@ else {
 												?>
 												<div class="modal-body">
 													<form action="typedelete.php" method="post">
-														<label>Product Type :</label>
+														<label>Item Type :</label>
 														<input class="form-control" name="type" type="text" value="<?php echo $type; ?>" disabled></input>
 														<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 														<input class="form-control" name="typebase" type="hidden" value="<?php echo $type; ?>"></input>
@@ -371,7 +371,7 @@ else {
 											<div class="modal-content">
 												<div class="modal-header" style="background-color: lightgrey">
 													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-													<h4 class="modal-title" id="myModalLabel"><center>DELETE PRODUCT TYPE</center></h4>
+													<h4 class="modal-title" id="myModalLabel"><center>DELETE ITEM TYPE</center></h4>
 												</div>
 												<?php
 
@@ -384,7 +384,7 @@ else {
 												?>
 												<div class="modal-body">
 													<form action="typedelete.php" method="post">
-														<label>Product Type :</label>
+														<label>Item Type :</label>
 														<input class="form-control" name="type" type="text" value="<?php echo $type; ?>"></input>
 														<input class="form-control" name="id" type="hidden" value="<?php echo $id; ?>"></input>
 														<input class="form-control" name="typebase" type="hidden" value="<?php echo $type; ?>"></input>
@@ -444,7 +444,7 @@ else {
 							<div class="modal-content">
 								<div class="modal-header" style="background-color: lightgrey">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									<h4 class="modal-title" id="myModalLabel"><center>ADD NEW PRODUCT TYPE<center></h4>
+									<h4 class="modal-title" id="myModalLabel"><center>ADD NEW ITEM TYPE<center></h4>
 								</div>
 								<div class="modal-body">
 									<form action="" method="post">
@@ -474,9 +474,9 @@ else {
 								</div>
 								<div class="modal-body">
 									<form action="" method="post">
-										<label>Product Type :</label>
+										<label>Item Type :</label>
 										<select class="form-control" name="type">
-											<option disabled selected>Select Product Type</option>
+											<option disabled selected>Select Item Type</option>
 											<?php
 											$select = "SELECT type FROM type";
 											$result1 = $conn->query($select);
