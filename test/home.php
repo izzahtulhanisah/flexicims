@@ -198,7 +198,7 @@ if(isset($_POST['send'])){
 							<?php
 							if($secpass>= 3){}else{
 							?>
-							<button class="btn btn-success pull-right btn-sm" onclick="window.location.href='inventoryadd.php'"><i class="fa fa-plus" style="font-size:12px"></i> New Item</button></p>
+							<button class="btn btn-success pull-right btn-sm" onclick="window.location.href='inventoryadd.php'"><i class="fa fa-plus" style="font-size:12px"></i> Register New Item</button></p>
 							<?php
 							}
 							?>
@@ -213,9 +213,9 @@ if(isset($_POST['send'])){
 										<thead>
 											<tr>
 												<td><b>No</b></td>
-												<td><b>Name</b></td>
+												<td><b>Item</b></td>
 												<td><b>ID</b></td>
-												<td><b>Type</b></td>
+												<td><b>Item Type</b></td>
 												<td><b>Sub-Type</b></td>
 												<td><b>Quantity</b></td>
 												<td><b>Unit</b></td>
@@ -322,7 +322,7 @@ if(isset($_POST['send'])){
 														<li class="divider"></li>
 														<li><a href="#" class="dropdown-item" data-toggle="modal" data-placement="bottom" data-target="#incoming<?php echo $id; ?>" title="incoming">Incoming</a></li>
 														<li class="divider"></li>
-														<li><a href="#" class="dropdown-item" data-toggle="modal" data-placement="bottom" data-target="#edit<?php echo $id; ?>" title="edit">Edit</a></li>		
+														<li><a href="#" class="dropdown-item" data-toggle="modal" data-placement="bottom" data-target="#edit<?php echo $id; ?>" title="edit">Edit</a></li>
 														<li class="divider"></li>
 														<li><a href="#" class="dropdown-item" data-toggle="modal" data-placement="bottom" data-target="#view<?php echo $id; ?>" title="view">View</a></li>
 												<?php
@@ -590,7 +590,7 @@ if(isset($_POST['send'])){
 													<div class="modal-content">
 														<div class="modal-header" style="background-color: lightgrey">
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel"><center>EDIT PRODUCT DETAILS</center></h4>
+															<h4 class="modal-title" id="myModalLabel"><center>EDIT ITEM DETAILS</center></h4>
 														</div>
 
 											<?php
@@ -618,7 +618,7 @@ if(isset($_POST['send'])){
 												$type = $_POST['type'];
 											}
 											elseif(!isset($_POST['type'])){
-												
+
 												$type = $typebase;
 											}
 
@@ -626,7 +626,7 @@ if(isset($_POST['send'])){
 											if(isset($_POST['subtype'])){
 												$subtype = $_POST['subtype'];
 											}
-											elseif(!isset($_POST['subtype'])){	
+											elseif(!isset($_POST['subtype'])){
 												$subtype = $subtypebase;
 											}
 											$inventory_id = $_POST['inventory_id'];
@@ -639,28 +639,28 @@ if(isset($_POST['send'])){
 											$critical=$_POST['critical'];
 											$minimum=$_POST['minimum'];
 											$maximum=$_POST['maximum'];
-											
+
 											if(isset($_POST['location'])){
 												$location=$_POST['location'];
 											}
-											elseif(!isset($_POST['location'])){	
+											elseif(!isset($_POST['location'])){
 												$location=$locationbase;
 											}
-											
+
 											if(isset($_POST['sublocation'])){
 												$sublocation=$_POST['sublocation'];
 											}
-											elseif(!isset($_POST['sublocation'])){	
+											elseif(!isset($_POST['sublocation'])){
 												$sublocation=$sublocationbase;
 											}
-											
+
 											if(isset($_POST['unit'])){
 												$unit=$_POST['unit'];
 											}
-											elseif(!isset($_POST['unit'])){	
+											elseif(!isset($_POST['unit'])){
 												$unit=$unitbase;
 											}
-											
+
 											$description=$_POST['description'];
 											$dateupdate=date("Y-m-d H:i:s");
 											$expireddate=date("d-m-Y",$expired);
@@ -721,7 +721,7 @@ if(isset($_POST['send'])){
 											<p><input class="form-control" name="name" type="text" value="<?php echo $name; ?>" disabled></input></p>
 											<input class="form-control" name="name" type="hidden" value="<?php echo $name; ?>" ></input>
 										<br>
-										<label>Product ID</label>
+										<label>Item ID</label>
 											<p><input class="form-control" name="inventory_id" type="text" value="<?php echo $inventory_id; ?>" disabled></input></p>
 											<input class="form-control" name="inventory_id" type="hidden" value="<?php echo $inventory_id; ?>" ></input>
 										<br>
@@ -801,17 +801,17 @@ if(isset($_POST['send'])){
 
 												<input type="submit" class="btn btn-success" name="sendedit<?php echo $id; ?>" value="Save Changes" />
 												</form>
-												
-												
-												
+
+
+
 												<?php
-												
+
 												//for all
 												}else{
 												?>
-												
-												
-												
+
+
+
 												<form action="" method="post">
 
 											<label>Type</label>
@@ -854,7 +854,7 @@ if(isset($_POST['send'])){
 										<label>Name</label>
 											<p><input class="form-control" name="name" type="text" value="<?php echo $name; ?>"></input></p>
 										<br>
-										<label>Product ID</label>
+										<label>Item ID</label>
 											<p><input class="form-control" name="inventory_id" type="text" value="<?php echo $inventory_id; ?>"></input></p>
 										<br>
 										<!-- <label>Price</label>
@@ -934,7 +934,7 @@ if(isset($_POST['send'])){
 												<input type="submit" class="btn btn-success" name="sendedit<?php echo $id; ?>" value="Save Changes" />
 												</form>
 												<?php
-												
+
 												}
 												?>
 											</div>
@@ -953,13 +953,13 @@ if(isset($_POST['send'])){
 													<div class="modal-content">
 														<div class="modal-header" style="background-color: lightgrey">
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-															<h4 class="modal-title" id="myModalLabel"><center>PRODUCT DETAILS</center></h4>
+															<h4 class="modal-title" id="myModalLabel"><center>ITEM DETAILS</center></h4>
 														</div>
 														<div class="modal-body">
-															
+
 															<div class="row">
 																<div class="col-lg-6">
-																	<p>Name: 
+																	<p>Item:
 																</div>
 																<div class="col-lg-6">
 																	<b><?php echo $name; ?></b></p>
@@ -967,7 +967,7 @@ if(isset($_POST['send'])){
 															</div>
 															<div class="row">
 																<div class="col-lg-6">
-																	<p>Product ID: </p>
+																	<p>Item ID: </p>
 																</div>
 																<div class="col-lg-6">
 																	<b><?php echo $inventory_id; ?></b>
@@ -975,7 +975,7 @@ if(isset($_POST['send'])){
 															</div>
 															<div class="row">
 																<div class="col-lg-6">
-																	<p>Product Type: </p>
+																	<p>Item Type: </p>
 																</div>
 																<div class="col-lg-6">
 																	<b><?php echo $type; ?></b>
@@ -983,7 +983,7 @@ if(isset($_POST['send'])){
 															</div>
 															<div class="row">
 																<div class="col-lg-6">
-																	<p>Product Sub-Type: </p>
+																	<p>Sub-Type: </p>
 																</div>
 																<div class="col-lg-6">
 																	<b><?php echo $subtype; ?></b>
@@ -1053,7 +1053,7 @@ if(isset($_POST['send'])){
 																<b><?php echo $alert; ?></b>
 																</div>
 															</div>
-															
+
 														</div>
 														<div class="modal-footer">
 															<button type="button" class="btn btn-bg-grey" data-dismiss="modal">Close</button>
@@ -1065,7 +1065,7 @@ if(isset($_POST['send'])){
 											</div>
 											<!-- /.modal -->
 
-												
+
 										<?php
 
 										}

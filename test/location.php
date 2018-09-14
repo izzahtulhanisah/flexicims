@@ -174,7 +174,7 @@ else {
       	<div class="col-lg-12">
 					<div class="panel panel-primary">
 							<div class="panel-heading">
-									<p>LIST OF INVENTORY LOCATIONS
+									<p>LIST OF STORAGE LOCATIONS
 										<span class="pull-right">
 											<button class="btn btn-success btn-sm" data-toggle="modal" data-placement="bottom" data-target="#add" title="Add"><i class="fa fa-plus"></i> New Location</button>
 											<button class="btn btn-default btn-sm" data-toggle="modal" data-placement="bottom" data-target="#addsub" title="Add Sub-Location"><i class="fa fa-plus"></i> New Sub-Location</button>
@@ -192,7 +192,7 @@ else {
 								</tr>
 							</thead>
 							<?php
-							
+
 							if($secpass== '2'){
 								$select = "SELECT * FROM location WHERE manager_id = '$id'";
 							}elseif($secpass== '3'){

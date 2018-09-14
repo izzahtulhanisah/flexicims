@@ -58,9 +58,9 @@ while($row = $result->fetch_assoc()){
                                     <thead>
                                         <tr>
 											<td><b>No</b></td>
-											<td><b>Name</b></td>
+											<td><b>Item</b></td>
 											<td><b>ID</b></td>
-											<td><b>Type</b></td>
+											<td><b>Type | Subtype</b></td>
 											<!-- <td>Price</td> -->
 											<td><b>Quantity</b></td>
 											<td><b>Unit</b></td>
@@ -75,7 +75,7 @@ while($row = $result->fetch_assoc()){
 									<?php
 
 									include 'config.php';
-									
+
 									$counter=0;
 									if($secpass == 2){
 										$select = "SELECT * FROM record WHERE detail = 'Incoming' AND leadid = '$logid' ORDER BY id DESC ";
@@ -90,6 +90,7 @@ while($row = $result->fetch_assoc()){
 									while($row = $result->fetch_assoc()){
 										$id = $row["id"];
 										$type = $row["type"];
+										$subtype = $row["subtype"];
 										$name = $row["name"];
 										$inventory_id = $row["inventory_id"];
 										$price = $row["price"];
@@ -100,7 +101,7 @@ while($row = $result->fetch_assoc()){
 										$supplier = $row["supplier"];
 										$datereceive = $row["datereceive"];
 										$remark = $row["remark"];
-										
+
 										$counter++;
 
 									?>
@@ -108,7 +109,7 @@ while($row = $result->fetch_assoc()){
 											<td><?php echo $counter; ?></td>
 											<td><?php echo $name; ?></td>
 											<td><?php echo $inventory_id; ?></td>
-											<td><?php echo $type; ?></td>
+											<td><?php echo $type; echo " | "; echo $subtype;?></td>
 											<td><?php echo $quantity; ?></td>
 											<td><?php echo $unit; ?></td>
 											<td><?php echo $remark; ?></td>
