@@ -42,7 +42,7 @@
                             <a href="index.php"><i class="fa fa-home"></i> Dashboard</a>
                         </li>
 						<?php
-						if($secpass == '0'){}else{
+						if($secpass == '0' OR $secpass == '1'){}else{
 						?>
                         <li>
                             <a href="#"><i class="fa fa-cubes"></i> Inventory Management<span class="fa arrow"></span></a>
@@ -96,7 +96,7 @@
 						<?php
 						}
 						}
-						if($secpass>= '2'){}else{
+						if($secpass>= '1'){}else{
 						?>
                         <li>
                             <a href="#"><i class="fa fa-user"></i> Users<span class="fa arrow"></span></a>
@@ -120,7 +120,7 @@
 						if($secpass >= '2'){}else{
 						?>
                         <li>
-                            <a href="https://goo.gl/forms/t5Juvhv7pF7v3VGL2"><i class="fa fa-send"></i> Feedback</a>
+                            <a href="https://goo.gl/forms/t5Juvhv7pF7v3VGL2" target="_blank"><i class="fa fa-send"></i> Feedback</a>
                         </li>
 						<?php
 						}

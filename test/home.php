@@ -321,16 +321,16 @@ if(isset($_POST['send'])){
 														<li><a href="#" class="dropdown-item" data-toggle="modal" data-placement="bottom" data-target="#outgoing<?php echo $id; ?>" title="outgoing">Outgoing</a></li>
 														<li class="divider"></li>
 														<li><a href="#" class="dropdown-item" data-toggle="modal" data-placement="bottom" data-target="#incoming<?php echo $id; ?>" title="incoming">Incoming</a></li>
-														<?php
+														<li class="divider"></li>
+														<li><a href="#" class="dropdown-item" data-toggle="modal" data-placement="bottom" data-target="#edit<?php echo $id; ?>" title="edit">Edit</a></li>		
+														<li class="divider"></li>
+														<li><a href="#" class="dropdown-item" data-toggle="modal" data-placement="bottom" data-target="#view<?php echo $id; ?>" title="view">View</a></li>
+												<?php
 
 												if($secpass>= 3){}
 												else{
 
 												?>
-														<li class="divider"></li>
-														<li><a href="#" class="dropdown-item" data-toggle="modal" data-placement="bottom" data-target="#edit<?php echo $id; ?>" title="edit">Edit</a></li>
-														<li class="divider"></li>
-														<li><a href="#" class="dropdown-item" data-toggle="modal" data-placement="bottom" data-target="#view<?php echo $id; ?>" title="view">View</a></li>
 														<li class="divider"></li>
 														<li><a href="inventorydel.php?id=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this?')" class="dropdown-item">Delete</a></li>
 														<?php
@@ -679,7 +679,7 @@ if(isset($_POST['send'])){
 												$status = "Sufficient";
 											}
 
-											$query = "UPDATE inventory SET id= '$id', name='$name', type='$type', subtype='$subtype', inventory_id='$inventory_id', price='$price', quantity='$quantity', unit='$unit', qr='$qr', branch='$branch', dateupdate='$dateupdate', critical='$critical', min='$minimum', location='$location', location2='$sublocation', description='$description', status='$status' WHERE  id='$id' ";
+											$query = "UPDATE inventory SET id= '$id', name='$name', type='$type', subtype='$subtype', inventory_id='$inventory_id', price='$price', quantity='$quantity', unit='$unit', qr='$qr', branch='$branch', dateupdate='$dateupdate', critical='$critical', min='$minimum', max='$maximum', location='$location', location2='$sublocation', description='$description', status='$status' WHERE  id='$id' ";
 											$res = $conn->query($query);
 
 											$queryin = "";
@@ -704,6 +704,114 @@ if(isset($_POST['send'])){
 											?>
 
 											<div class="modal-body">
+											<?php
+											if($secpass == '3'){
+											?>
+												<form action="" method="post">
+
+											<label>Type</label>
+											<p><input class="form-control" name="type" type="text" value="<?php echo $type; ?>" disabled></input></p>
+											<input class="form-control" name="type" type="hidden" value="<?php echo $type; ?>" ></input>
+										<br>
+										<label>Sub-Type</label>
+											<p><input class="form-control" name="subtype" type="text" value="<?php echo $subtype; ?>" disabled></input></p>
+											<input class="form-control" name="subtype" type="hidden" value="<?php echo $subtype; ?>" ></input>
+										<br>
+										<label>Name</label>
+											<p><input class="form-control" name="name" type="text" value="<?php echo $name; ?>" disabled></input></p>
+											<input class="form-control" name="name" type="hidden" value="<?php echo $name; ?>" ></input>
+										<br>
+										<label>Product ID</label>
+											<p><input class="form-control" name="inventory_id" type="text" value="<?php echo $inventory_id; ?>" disabled></input></p>
+											<input class="form-control" name="inventory_id" type="hidden" value="<?php echo $inventory_id; ?>" ></input>
+										<br>
+										<!-- <label>Price</label>
+											<p><input class="form-control" name="price" type="text" value="<php echo $price; ?>"></input>
+										<br> -->
+										<label>Quantity</label>
+											<p><input class="form-control" name="quantity" type="text" value="<?php echo $quantity; ?>" disabled></input></p>
+											<input class="form-control" name="quantity" type="hidden" value="<?php echo $quantity; ?>" ></input>
+										<br>
+										<label>Unit</label>
+											<p><input class="form-control" name="unit" type="text" value="<?php echo $unit; ?>" disabled></input></p>
+											<input class="form-control" name="unit" type="hidden" value="<?php echo $unit; ?>" ></input>
+										<br>
+										<label>Location</label>
+											<p><select class="form-control select3" name="location">
+											<option value="" selected disabled><?php echo $location;?></option>
+											<?php
+
+											if($secpass == '2'){
+												$selectloc = "SELECT * FROM location WHERE manager_id = '$leadid'";
+											}else{
+												$selectloc = "SELECT * FROM location WHERE manager_id = '$leadid'";
+											}
+											$resultloc = $conn->query($selectloc);
+											while($rowloc = $resultloc->fetch_assoc()){
+												$locationloc = $rowloc["location"];
+
+											echo "<option value='". $locationloc ."'>". $locationloc ."</option>";
+
+											}
+
+											?>
+											</select>
+										<br>
+										<label>Sub-Location</label>
+											<p><select class="form-control select4" name="sublocation" >
+											<option value="" selected disabled><?php echo $location2;?></option>
+											<?php
+
+											$selectloc = "SELECT * FROM sublocation";
+											$resultloc = $conn->query($selectloc);
+											while($rowloc = $resultloc->fetch_assoc()){
+											$locationsub = $rowloc["location"];
+											$sublocation = $rowloc["sublocation"];
+
+											echo "<option class='". $locationsub ."'>". $sublocation ."</option>";
+
+											}
+
+											?>
+											</select></p>
+										<br>
+										<label>Critical Quantity</label>
+											<p><input class="form-control" name="critical" type="text" value="<?php echo $critical; ?>" disabled></input></p>
+											<input class="form-control" name="critical" type="hidden" value="<?php echo $critical; ?>" ></input>
+										<br>
+										<label>Minimum Quantity</label>
+											<p><input class="form-control" name="minimum" type="text" value="<?php echo $min; ?>" disabled></input></p>
+											<input class="form-control" name="minimum" type="hidden" value="<?php echo $min; ?>" ></input>
+										<br>
+										<label>Maximum Quantity</label>
+											<p><input class="form-control" name="maximum" type="text" value="<?php echo $max; ?>" disabled></input></p>
+											<input class="form-control" name="maximum" type="hidden" value="<?php echo $max; ?>" ></input>
+										<br>
+										<label>Description</label>
+											<p><input class="form-control" name="description" type="text" value="<?php echo $description; ?>" disabled></input></p>
+											<input class="form-control" name="description" type="hidden" value="<?php echo $description; ?>" ></input>
+											<input class="" name="idd" type="hidden" value="<?php echo $id; ?>"></input>
+										<br>
+
+													<br>
+
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+												<input type="submit" class="btn btn-success" name="sendedit<?php echo $id; ?>" value="Save Changes" />
+												</form>
+												
+												
+												
+												<?php
+												
+												//for all
+												}else{
+												?>
+												
+												
+												
 												<form action="" method="post">
 
 											<label>Type</label>
@@ -825,6 +933,10 @@ if(isset($_POST['send'])){
 
 												<input type="submit" class="btn btn-success" name="sendedit<?php echo $id; ?>" value="Save Changes" />
 												</form>
+												<?php
+												
+												}
+												?>
 											</div>
 
 											</div>
